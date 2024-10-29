@@ -1,0 +1,49 @@
+<div>
+  <div><h1>Recuperación</h1></div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ctable">
+      <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.idRecuperacion }}</td>
+      </ng-container>
+
+      <!-- DateApplication Column -->
+      <ng-container matColumnDef="DateApplication">
+        <th mat-header-cell *matHeaderCellDef>DateApplication</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaSolicitud }}</td>
+      </ng-container>
+
+      <!-- CellpRecuperationCodeone Column -->
+      <ng-container matColumnDef="RecuperationCode">
+        <th mat-header-cell *matHeaderCellDef>RecuperationCode</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.codigoRecuperacion }}
+        </td>
+      </ng-container>
+
+      <!-- State Column -->
+      <ng-container matColumnDef="State">
+        <th mat-header-cell *matHeaderCellDef>State</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.estadoRecuperacion }}
+        </td>
+      </ng-container>
+
+      <!-- ExpirationDate Column -->
+      <ng-container matColumnDef="ExpirationDate">
+        <th mat-header-cell *matHeaderCellDef>ExpirationDate</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fechaExpiracion }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

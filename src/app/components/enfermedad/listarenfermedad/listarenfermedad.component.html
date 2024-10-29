@@ -1,0 +1,38 @@
+<div>
+    <div><h1>Enfermedad</h1></div>
+  
+    <div>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ctable">
+        <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+  
+        <!-- Id Column -->
+        <ng-container matColumnDef="Id">
+          <th mat-header-cell *matHeaderCellDef>No.</th>
+          <td mat-cell *matCellDef="let element">{{ element.idEnfermedad }}</td>
+        </ng-container>
+  
+        <!-- Name Column -->
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.nombreEnfermedad }}</td>
+        </ng-container>
+  
+        <!-- Cellpone Column -->
+        <ng-container matColumnDef="Description">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
+          <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+        </ng-container>
+  
+        <!-- Address Column -->
+        <ng-container matColumnDef="Symptoms">
+          <th mat-header-cell *matHeaderCellDef>Síntomas</th>
+          <td mat-cell *matCellDef="let element">{{ element.sintomas }}</td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+  

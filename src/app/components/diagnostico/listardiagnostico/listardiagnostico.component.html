@@ -1,0 +1,74 @@
+<div>
+  <div><h1>Diagnósticos</h1></div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ctable">
+      <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.idDiagnostico }}</td>
+      </ng-container>
+
+      <!-- DateDiagnostic Column -->
+      <ng-container matColumnDef="DateDiagnostic">
+        <th mat-header-cell *matHeaderCellDef>DateDiagnostic</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.fechaDiagnostico }}
+        </td>
+      </ng-container>
+
+      <!-- HourDiagnostic Column -->
+      <ng-container matColumnDef="HourDiagnostic">
+        <th mat-header-cell *matHeaderCellDef>HourDiagnostic</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.horaDiagnostico }}
+        </td>
+      </ng-container>
+
+      <!-- Imagen Column -->
+      <ng-container matColumnDef="Imagen">
+        <th mat-header-cell *matHeaderCellDef>Imagen</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.imagenDiagnostico }}
+        </td>
+      </ng-container>
+
+      <!-- Punctuation Column -->
+      <ng-container matColumnDef="Punctuation">
+        <th mat-header-cell *matHeaderCellDef>Punctuation</th>
+        <td mat-cell *matCellDef="let element">{{ element.puntuacion }}</td>
+      </ng-container>
+
+      <!-- UserId Column -->
+      <ng-container matColumnDef="UserId">
+        <th mat-header-cell *matHeaderCellDef>UserId</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.usuario.idUsuario}}
+        </td>
+      </ng-container>
+
+      <!-- Enfermedad Column -->
+      <ng-container matColumnDef="Enfermedad">
+        <th mat-header-cell *matHeaderCellDef>Enfermedad</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.enfermedad?.nombreEnfermedad }}
+        </td>
+      </ng-container>
+
+      <!-- CentroMedico Column -->
+      <ng-container matColumnDef="CentroMedico">
+        <th mat-header-cell *matHeaderCellDef>CentroMedico</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.centrosMedicos.nombre }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+
+  </div>
+</div>

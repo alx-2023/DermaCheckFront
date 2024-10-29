@@ -1,0 +1,26 @@
+.ctable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1.1em;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .mat-header-cell {
+    background-color: #007bff; /* Cambia este color según tu tema */
+    color: white;
+  }
+  
+  .mat-cell {
+    transition: background-color 0.3s;
+  }
+  
+  .mat-row:hover .mat-cell {
+    background-color: rgba(0, 123, 255, 0.1); /* Color al pasar el mouse */
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #007bff; /* Cambia este color según tu tema */
+  }
+  

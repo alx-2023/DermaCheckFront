@@ -1,0 +1,67 @@
+<div>
+  <div><h1>Tratamientos</h1></div>
+
+  <div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ctable">
+      <!--- Note that these columns can be defined in any order.
+                      The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Id Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.idTratamiento }}</td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.nombreTratamiento }}
+        </td>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="Description">
+        <th mat-header-cell *matHeaderCellDef>Cellpone</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.descripcionTratamiento }}
+        </td>
+      </ng-container>
+
+      <!-- Material Column -->
+      <ng-container matColumnDef="Material">
+        <th mat-header-cell *matHeaderCellDef>Material</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.materialMedicinal }}
+        </td>
+      </ng-container>
+
+      <!-- Comment Column -->
+      <ng-container matColumnDef="Comment">
+        <th mat-header-cell *matHeaderCellDef>Comment</th>
+        <td mat-cell *matCellDef="let element">{{ element.comentario }}</td>
+      </ng-container>
+
+      <!-- DateStart Column -->
+      <ng-container matColumnDef="DateStart">
+        <th mat-header-cell *matHeaderCellDef>DateStart</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaInicio }}</td>
+      </ng-container>
+
+      <!-- DateEnd Column -->
+      <ng-container matColumnDef="DateEnd">
+        <th mat-header-cell *matHeaderCellDef>DateEnd</th>
+        <td mat-cell *matCellDef="let element">{{ element.fechaFinal }}</td>
+      </ng-container>
+
+      <!-- State Column -->
+      <ng-container matColumnDef="State">
+        <th mat-header-cell *matHeaderCellDef>State</th>
+        <td mat-cell *matCellDef="let element">{{ element.estado }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>

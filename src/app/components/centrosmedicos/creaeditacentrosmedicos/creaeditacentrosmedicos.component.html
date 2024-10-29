@@ -1,0 +1,48 @@
+<div class="contenedor">
+  <h1>Registro de Centros médicos</h1>
+  <form [formGroup]="form" (submit)="aceptar()">
+    <div class="menu-name">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput placeholder="Ex. Centro dermacheck" formControlName="hnombre" />
+      </mat-form-field>
+    </div>
+    <div class="menu-phone">
+      <mat-form-field hintLabel="Max 9 characters">
+        <mat-label>Ingresa tu celular</mat-label>
+        <input
+          matInput
+          #input
+          maxlength="9"
+          placeholder="Ex. 984565676"
+          (input)="onInput($event)"
+          formControlName="htelefono"
+        />
+        <mat-hint align="end">{{ value().length }}/9</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="menu-address">
+      <mat-form-field class="example-full-width">
+        <mat-label>Dirección</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Av. Los Álamos 123"
+          formControlName="hdireccion"
+        />
+      </mat-form-field>
+    </div>
+    <div class="menu-specialities">
+      <mat-form-field class="example-full-width">
+        <mat-label>Especialidades</mat-label>
+        <input
+          matInput
+          placeholder="Ex. Dermatología"
+          formControlName="hespecialidades"
+        />
+      </mat-form-field>
+    </div>
+    <div class="menu-button">
+      <button mat-flat-button>Registrar</button>
+    </div>
+  </form>
+</div>

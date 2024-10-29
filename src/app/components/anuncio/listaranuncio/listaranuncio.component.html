@@ -1,0 +1,19 @@
+<div class="container my-4">
+  <h1 class="text-center">Anuncios</h1>
+  <div class="row"> 
+    <ng-container *ngFor="let element of dataSource.data">
+      <mat-card class="col-md-4 mb-4" style="margin: 0 20px;"> 
+        <mat-card-header>
+          <mat-card-title>{{ element.descripcion }}</mat-card-title>
+          <mat-card-subtitle>Id: {{ element.idAnuncio }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Url: </strong> <a href="{{ element.url }}" target="_blank">{{ element.url }}</a></p>
+          <p><strong>Credits: </strong> {{ element.creditos }}</p>
+          <p><strong>Gains: </strong> {{ element.ingresosPorAnuncioSoles }}</p>
+          <p><strong>Duration: </strong> {{ element.duracionMinutos }} minutes</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
