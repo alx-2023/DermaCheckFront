@@ -10,6 +10,7 @@ import { RolComponent } from './components/rol/rol.component';
 import { DiagnosticoComponent } from './components/diagnostico/diagnostico.component';
 import { DiagnosticoxtratamientoComponent } from './components/diagnosticoxtratamiento/diagnosticoxtratamiento.component';
 import { CreaeditacentrosmedicosComponent } from './components/centrosmedicos/creaeditacentrosmedicos/creaeditacentrosmedicos.component';
+import { LoginComponent } from './components/login/login.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,7 @@ export const routes: Routes = [
   { path: 'recuperaciones', component: RecuperacionComponent },
   { path: 'roles', component: RolComponent },
   { path: 'diagnosticos', component: DiagnosticoComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: 'diagnosticos-tratamientos',
     component: DiagnosticoxtratamientoComponent,

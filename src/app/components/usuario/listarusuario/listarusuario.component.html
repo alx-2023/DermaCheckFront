@@ -1,69 +1,27 @@
-<div>
-  <div><h1>Usuarios</h1></div>
-
-  <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ctable">
-      <!--- Note that these columns can be defined in any order.
-                        The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Id Column -->
-      <ng-container matColumnDef="Id">
-        <th mat-header-cell *matHeaderCellDef>Id.</th>
-        <td mat-cell *matCellDef="let element">{{ element.idUsuario }}</td>
-      </ng-container>
-
-      <!-- Username Column -->
-      <ng-container matColumnDef="Username">
-        <th mat-header-cell *matHeaderCellDef>Username.</th>
-        <td mat-cell *matCellDef="let element">{{ element.username }}</td>
-      </ng-container>
-
-      <!-- Nombres Column -->
-      <ng-container matColumnDef="Nombres">
-        <th mat-header-cell *matHeaderCellDef>Nombres</th>
-        <td mat-cell *matCellDef="let element">
-          {{ element.nombres }}
-        </td>
-      </ng-container>
-
-      <!-- Apellidos Column -->
-      <ng-container matColumnDef="Apellidos">
-        <th mat-header-cell *matHeaderCellDef>Apellidos</th>
-        <td mat-cell *matCellDef="let element">{{ element.apellidos }}</td>
-      </ng-container>
-
-      <!-- Correo Column -->
-      <ng-container matColumnDef="Correo">
-        <th mat-header-cell *matHeaderCellDef>Correo</th>
-        <td mat-cell *matCellDef="let element">{{ element.correo }}</td>
-      </ng-container>
-
-      <!-- SitioWeb Column -->
-      <ng-container matColumnDef="SitioWeb">
-        <th mat-header-cell *matHeaderCellDef>SitioWeb</th>
-        <td mat-cell *matCellDef="let element">{{ element.sitioWeb }}</td>
-      </ng-container>
-
-      <!-- Cellphone Column -->
-      <ng-container matColumnDef="Cellphone">
-        <th mat-header-cell *matHeaderCellDef>Cellphone</th>
-        <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
-      </ng-container>
-
-      <!-- NameCompany Column -->
-      <ng-container matColumnDef="NameCompany">
-        <th mat-header-cell *matHeaderCellDef>NameCompany</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombreEmpresa }}</td>
-      </ng-container>
-
-      <!-- EsPremiun Column -->
-      <ng-container matColumnDef="EsPremiun">
-        <th mat-header-cell *matHeaderCellDef>EsPremiun</th>
-        <td mat-cell *matCellDef="let element">{{ element.esPremium }}</td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+<div class="container my-4">
+  <h1 class="text-center">Usuarios</h1>
+  <div class="row">
+    <ng-container *ngFor="let element of dataSource.data">
+      <mat-card class="col-md-4 mb-4" style="margin: 0 20px">
+        <mat-card-header>
+          <mat-card-title>Username: {{ element.username }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Id: </strong> {{ element.idUsuario }}</p>
+          <p><strong>Nombres: </strong> {{ element.nombres }}</p>
+          <p><strong>Apellidos: </strong> {{ element.apellidos }}</p>
+          <p><strong>Correo: </strong> {{ element.correo }}</p>
+          <p>
+            <strong>Sitio Web: </strong>
+            <a href="{{ element.sitioWeb }}" target="_blank">{{
+              element.sitioWeb
+            }}</a>
+          </p>
+          <p><strong>Teléfono: </strong> {{ element.telefono }}</p>
+          <p><strong>Nombre de Empresa: </strong> {{ element.nombreEmpresa }}</p>
+          <p><strong>Es Premium: </strong> {{ element.esPremium }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
   </div>
 </div>

@@ -23,4 +23,15 @@
     margin-bottom: 20px;
     color: #007bff; /* Cambia este color según tu tema */
   }
-  
+
+  mat-card {
+    background-color: rgb(177, 177, 227);
+  }
+
+  mat-card-title {
+    color: rgb(66, 6, 47);
+  }
+
+  mat-card-content p {
+    color: rgb(11, 11, 105);
+  }

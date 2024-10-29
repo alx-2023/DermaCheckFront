@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Usuario } from '../../../models/Usuario';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { UsuarioService } from '../../../services/usuario.service';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-listarusuario',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [CommonModule, MatCardModule],
   templateUrl: './listarusuario.component.html',
   styleUrl: './listarusuario.component.css'
 })
