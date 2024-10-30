@@ -17,10 +17,10 @@ export class UsuarioService {
   insert(usuario: Usuario) {
     return this.http.post(this.url, usuario);
   }
-  setId(listaNueva: Usuario[]) {
+  setList(listaNueva: Usuario[]) {
     return this.listaCambio.next(listaNueva);
   }
-  getId() {
+  getList() {
     return this.listaCambio.asObservable();
   }
   delete(id: number) {

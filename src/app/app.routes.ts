@@ -11,6 +11,8 @@ import { DiagnosticoComponent } from './components/diagnostico/diagnostico.compo
 import { DiagnosticoxtratamientoComponent } from './components/diagnosticoxtratamiento/diagnosticoxtratamiento.component';
 import { CreaeditacentrosmedicosComponent } from './components/centrosmedicos/creaeditacentrosmedicos/creaeditacentrosmedicos.component';
 import { LoginComponent } from './components/login/login.component';
+import { CreaeditausuariosComponent } from './components/usuario/creaeditausuarios/creaeditausuarios.component';
+import { CreaeditadiagnosticoxtratamientoComponent } from './components/diagnosticoxtratamiento/creaeditadiagnosticoxtratamiento/creaeditadiagnosticoxtratamiento.component';
 
 export const routes: Routes = [
   {
@@ -18,14 +20,23 @@ export const routes: Routes = [
     component: CentrosmedicosComponent,
     children: [
       {
-        path: 'nuevo',
+        path: 'insertar',
         component: CreaeditacentrosmedicosComponent,
       },
     ],
   },
   { path: 'enfermedades', component: EnfermedadComponent },
   { path: 'tratamientos', component: TratamientoComponent },
-  { path: 'usuarios', component: UsuarioComponent },
+  {
+    path: 'usuarios',
+    component: UsuarioComponent,
+    children: [
+      {
+        path: 'insertar',
+        component: CreaeditausuariosComponent,
+      },
+    ],
+  },
   { path: 'anuncios', component: AnuncioComponent },
   {
     path: 'articulos-dermatologicos',
@@ -38,5 +49,11 @@ export const routes: Routes = [
   {
     path: 'diagnosticos-tratamientos',
     component: DiagnosticoxtratamientoComponent,
+    children: [
+      {
+        path: 'insertar',
+        component: CreaeditadiagnosticoxtratamientoComponent,
+      },
+    ],
   },
 ];

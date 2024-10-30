@@ -17,10 +17,10 @@ export class RolService {
   insert(rol: Rol) {
     return this.http.post<Rol>(this.url, rol);
   }
-  setId(listaNueva: Rol[]) {
+  setList(listaNueva: Rol[]) {
     return this.listaCambio.next(listaNueva);
   }
-  getId() {
+  getList() {
     return this.listaCambio.asObservable();
   }
   delete(id: number) {

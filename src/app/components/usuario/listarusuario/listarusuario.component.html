@@ -1,7 +1,7 @@
 <div class="container my-4">
   <h1 class="text-center">Usuarios</h1>
   <div class="row">
-    <ng-container *ngFor="let element of dataSource.data">
+    <ng-container *ngFor="let element of pagedData">
       <mat-card class="col-md-4 mb-4" style="margin: 0 20px">
         <mat-card-header>
           <mat-card-title>Username: {{ element.username }}</mat-card-title>
@@ -13,9 +13,9 @@
           <p><strong>Correo: </strong> {{ element.correo }}</p>
           <p>
             <strong>Sitio Web: </strong>
-            <a href="{{ element.sitioWeb }}" target="_blank">{{
-              element.sitioWeb
-            }}</a>
+            <a href="{{ element.sitioWeb }}" target="_blank">
+              {{ element.sitioWeb }}
+            </a>
           </p>
           <p><strong>Teléfono: </strong> {{ element.telefono }}</p>
           <p><strong>Nombre de Empresa: </strong> {{ element.nombreEmpresa }}</p>
@@ -23,5 +23,15 @@
         </mat-card-content>
       </mat-card>
     </ng-container>
+  </div>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="dataSource.length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[3, 5]"
+                   (page)="onPageChange($event)"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
   </div>
 </div>

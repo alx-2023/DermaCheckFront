@@ -7,35 +7,50 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/usuarios">Usuarios</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="usuariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Usuarios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="usuariosDropdown">
+              <li><a class="dropdown-item" routerLink="/usuarios">Listar</a></li>
+              <li><a class="dropdown-item" routerLink="/usuarios/insertar">Registrar</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/roles">Roles</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="rolesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Roles
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="rolesDropdown">
+              <li><a class="dropdown-item" routerLink="/roles/listar">Listar</a></li>
+              <li><a class="dropdown-item" routerLink="/roles/registrar">Registrar</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/recuperaciones">Recuperaciones</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="recuperacionesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Recuperaciones
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="recuperacionesDropdown">
+              <li><a class="dropdown-item" routerLink="/recuperaciones/listar">Listar</a></li>
+              <li><a class="dropdown-item" routerLink="/recuperaciones/registrar">Registrar</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/articulos-dermatologicos">Artículos dermatológicos</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="diagnosticosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Diagnósticos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="diagnosticosDropdown">
+              <li><a class="dropdown-item" routerLink="/diagnosticos/listar">Listar</a></li>
+              <li><a class="dropdown-item" routerLink="/diagnosticos/registrar">Registrar</a></li>
+            </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/anuncios">Anuncios</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/centros-medicos">Centros médicos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/enfermedades">Enfermedades</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/diagnosticos">Diagnosticos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/tratamientos">Tratamientos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/diagnosticos-tratamientos">Diagnosticos x Tratamientos</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-light" href="#" id="diagnosticosxTratamientosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              DiagnósticosxTratamientos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="diagnosticosxTratamientosDropdown">
+              <li><a class="dropdown-item" routerLink="/diagnosticos-tratamientos">Listar</a></li>
+              <li><a class="dropdown-item" routerLink="/diagnosticos-tratamientos/insertar">Registrar</a></li>
+            </ul>
           </li>
           <li class="nav-item">
             <a class="nav-link text-light" routerLink="/login">Log In</a>
