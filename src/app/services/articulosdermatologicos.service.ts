@@ -31,6 +31,6 @@ export class ArticulosdermatologicosService {
     return this.http.get<ArticulosDermatologicos>(`${this.url}/${id}`);
   }
   update(articulosDermatologicos: ArticulosDermatologicos) {
-    return this.http.put(this.url, articulosDermatologicos);
+    return this.http.patch(this.url, articulosDermatologicos);
   }
 }

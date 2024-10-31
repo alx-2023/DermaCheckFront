@@ -34,6 +34,6 @@ export class RecuperacionService {
     return this.http.get<Recuperacion>(`${this.url}/${id}`);
   }
   update(recuperacion: Recuperacion) {
-    return this.http.put(this.url, recuperacion);
+    return this.http.patch(this.url, recuperacion);
   }
 }

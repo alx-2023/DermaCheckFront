@@ -30,6 +30,6 @@ export class UsuarioService {
     return this.http.get<Usuario>(`${this.url}/${id}`);
   }
   update(usuario: Usuario) {
-    return this.http.put(this.url, usuario);
+    return this.http.patch(this.url, usuario);
   }
 }

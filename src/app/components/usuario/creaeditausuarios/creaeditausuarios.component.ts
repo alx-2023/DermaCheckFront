@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Usuario } from '../../../models/Usuario';
 import { UsuarioService } from '../../../services/usuario.service';
-import { ActivatedRoute, Params, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-creaeditausuarios',
@@ -20,7 +25,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatSelectModule,
     MatButtonModule,
     ReactiveFormsModule,
-    CommonModule, MatCheckboxModule
+    CommonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
   ],
   templateUrl: './creaeditausuarios.component.html',
   styleUrl: './creaeditausuarios.component.css',
@@ -43,14 +50,14 @@ export class CreaeditausuariosComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
-
+      this.init(); //Inicializar el init
       this.isReadonly = true;
-    });
+    }); 
     this.form = this.formBuilder.group({
       hcodigo: [''],
       husername: ['', Validators.required],
       hpassword: ['', Validators.required],
-      henabled: [''],
+      henabled: [true],
       hnombres: ['', Validators.required],
       hapellidos: ['', Validators.required],
       hcorreo: ['', Validators.required],
@@ -93,22 +100,21 @@ export class CreaeditausuariosComponent implements OnInit {
 
   init() {
     if (this.edicion) {
-      this.uS.listId(this.id).subscribe(data => {
-        this.form = new FormGroup ({
-          hcodigo : new FormControl(data.idUsuario),
-          husername : new FormControl(data.username),
-          hpassword : new FormControl(data.password),
-          henabled : new FormControl(data.enabled),
-          hnombres : new FormControl(data.nombres),
-          hapellidos : new FormControl(data.apellidos),
-          hcorreo : new FormControl(data.correo),
-          hsitioWeb : new FormControl(data.sitioWeb),
-          htelefono : new FormControl(data.telefono),
-          hnombreEmpresa : new FormControl(data.nombreEmpresa),
-          hesPremium : new FormControl(data.esPremium),
-        })
-      })
+      this.uS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          hcodigo: new FormControl(data.idUsuario),
+          husername: new FormControl(data.username),
+          hpassword: new FormControl(data.password),
+          henabled: new FormControl(data.enabled),
+          hnombres: new FormControl(data.nombres),
+          hapellidos: new FormControl(data.apellidos),
+          hcorreo: new FormControl(data.correo),
+          hsitioWeb: new FormControl(data.sitioWeb),
+          htelefono: new FormControl(data.telefono),
+          hnombreEmpresa: new FormControl(data.nombreEmpresa),
+          hesPremium: new FormControl(data.esPremium),
+        });
+      });
     }
   }
-
 }

@@ -30,6 +30,6 @@ export class RolService {
     this.http.get<Rol>(`${this.url}/${id}`);
   }
   update(rol: Rol) {
-    this.http.put(this.url, rol);
+    this.http.patch(this.url, rol);
   }
 }

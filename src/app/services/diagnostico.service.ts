@@ -30,6 +30,6 @@ export class DiagnosticoService {
     return this.http.get<Diagnostico>(`${this.url}/${id}`);
   }
   update(diagnostico: Diagnostico) {
-    return this.http.put(this.url, diagnostico);
+    return this.http.patch(this.url, diagnostico);
   }
 }

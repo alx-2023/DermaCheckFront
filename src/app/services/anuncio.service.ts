@@ -32,6 +32,6 @@ export class AnuncioService {
     return this.http.get<Anuncio>(`${this.url}/${id}`);
   }
   update(anuncio: Anuncio) {
-    return this.http.put(this.url, anuncio);
+    return this.http.patch(this.url, anuncio);
   }
 }

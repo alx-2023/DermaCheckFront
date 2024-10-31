@@ -23,6 +23,10 @@ export const routes: Routes = [
         path: 'insertar',
         component: CreaeditacentrosmedicosComponent,
       },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditausuariosComponent,
+      },
     ],
   },
   { path: 'enfermedades', component: EnfermedadComponent },
@@ -33,6 +37,10 @@ export const routes: Routes = [
     children: [
       {
         path: 'insertar',
+        component: CreaeditausuariosComponent,
+      },
+      {
+        path: 'ediciones/:id',
         component: CreaeditausuariosComponent,
       },
     ],

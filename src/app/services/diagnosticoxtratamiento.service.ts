@@ -34,6 +34,6 @@ export class DiagnosticoxtratamientoService {
     return this.http.get<DiagnosticoxTratamiento>(`${this.url}/${id}`);
   }
   update(diagnosticoxTratamiento: DiagnosticoxTratamiento) {
-    return this.http.put(this.url, diagnosticoxTratamiento);
+    return this.http.patch(this.url, diagnosticoxTratamiento);
   }
 }

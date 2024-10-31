@@ -32,6 +32,6 @@ export class CentrosmedicosService {
     return this.http.get<CentrosMedicos>(`${this.url}/${id}`);
   }
   update(centroMedico: CentrosMedicos) {
-    return this.http.put(this.url, centroMedico);
+    return this.http.patch(this.url, centroMedico);
   }
 }

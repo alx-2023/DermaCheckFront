@@ -1,14 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
 import { Usuario } from '../../../models/Usuario';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { UsuarioService } from '../../../services/usuario.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon'
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-listarusuario',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatPaginator],
+  imports: [CommonModule, MatCardModule, MatPaginator, MatIconModule, RouterModule],
   templateUrl: './listarusuario.component.html',
   styleUrls: ['./listarusuario.component.css']
 })
@@ -46,4 +49,15 @@ export class ListarusuarioComponent implements OnInit {
     this.currentPage = event.pageIndex;
     this.updatePagedData();
   }
+
+  eliminar(id: number): void {
+    this.uS.delete(id).subscribe(() => {
+      this.uS.list().subscribe((data) => {
+        this.dataSource = data; 
+        this.updatePagedData();  
+      });
+    });
+  }
+  
+
 }
