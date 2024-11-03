@@ -6,7 +6,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { CentrosMedicos } from '../../../models/CentrosMedicos';
 import { CentrosmedicosService } from '../../../services/centrosmedicos.service';
-import { Router } from '@angular/router';
+import { Router,Params,ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-creaeditacentrosmedicos',
@@ -17,6 +19,9 @@ import { Router } from '@angular/router';
     MatSelectModule,
     MatButtonModule,
     ReactiveFormsModule,
+    CommonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
 
   ],
   templateUrl: './creaeditacentrosmedicos.component.html',
@@ -25,42 +30,71 @@ import { Router } from '@angular/router';
 
 export class CreaeditacentrosmedicosComponent implements OnInit {
   form: FormGroup = new FormGroup({});
-  centroMedico: CentrosMedicos = new CentrosMedicos();
-
+  CentrosMedicos:CentrosMedicos = new CentrosMedicos();
+  id: number = 0;
+  edicion: boolean = false;
+  isReadonly: boolean = false;
 
   constructor(
     private cS: CentrosmedicosService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init(); //Inicializar el init
+      this.isReadonly = true;
+    }); 
+    
       this.form = this.formBuilder.group({
+        hcodigo: [''],
         hnombre: ['', Validators.required],
         htelefono: ['', Validators.required],
         hdireccion: ['', Validators.required],
         hespecialidades: ['', Validators.required],
-      })
+      });
   }
 
   aceptar (): void {
     if (this.form.valid) {
-      this.centroMedico.nombre = this.form.value.hnombre;
-      this.centroMedico.direccion = this.form.value.hdireccion;
-      this.centroMedico.telefono = this.form.value.htelefono;
-      this.centroMedico.especialidades = this.form.value.hespecialidades;
-      this.cS.insert(this.centroMedico).subscribe(() => {
-        this.cS.list().subscribe((d) => {
-          this.cS.setList(d);
-        })
-      })
+      this.CentrosMedicos.nombre = this.form.value.hnombre;
+      this.CentrosMedicos.direccion = this.form.value.hdireccion;
+      this.CentrosMedicos.telefono = this.form.value.htelefono;
+      this.CentrosMedicos.especialidades = this.form.value.hespecialidades;
+      if (this.edicion) {
+        this.cS.update(this.CentrosMedicos).subscribe((data) => {
+          this.cS.list().subscribe((data) => {
+            this.cS.setList(data);
+          });
+        });
+      } else {
+        this.cS.insert(this.CentrosMedicos).subscribe(() => {
+          this.cS.list().subscribe((d) => {
+            this.cS.setList(d);
+          });
+        });
+      }
+       
     }
     this.router.navigate(['centros-medicos']);
   }
-  protected readonly value = signal('');
 
-  protected onInput(event: Event) {
-    this.value.set((event.target as HTMLInputElement).value);
+  init() {
+    if (this.edicion) {
+      this.cS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          hcodigo: new FormControl(data.idCentroMedico),
+          hnombre: new FormControl(data.nombre),
+          htelefono: new FormControl(data.telefono),
+          hdireccion: new FormControl(data.direccion),
+          hespecialidades: new FormControl(data.especialidades),
+          
+        });
+      });
+    }
   }
-
 }

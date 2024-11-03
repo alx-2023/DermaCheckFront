@@ -25,7 +25,7 @@ export const routes: Routes = [
       },
       {
         path: 'ediciones/:id',
-        component: CreaeditausuariosComponent,
+        component: CreaeditacentrosmedicosComponent,
       },
     ],
   },

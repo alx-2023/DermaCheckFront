@@ -1,48 +1,51 @@
-<div class="contenedor">
-  <h1>Registro de Centros médicos</h1>
-  <form [formGroup]="form" (submit)="aceptar()">
-    <div class="menu-name">
-      <mat-form-field class="example-full-width">
-        <mat-label>Nombre</mat-label>
-        <input matInput placeholder="Ex. Centro dermacheck" formControlName="hnombre" />
+<div class="container" style="text-align: center; margin: 10%">
+  <div style="margin: 5%">
+    <h1>Registro de Centros Medicos</h1>
+  </div>
+  <div>
+    <form [formGroup]="form" (submit)="aceptar()" style="display: flex; flex-direction: column; align-items: center;">
+      <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="hcodigo" [readonly]="isReadonly" />
       </mat-form-field>
-    </div>
-    <div class="menu-phone">
-      <mat-form-field hintLabel="Max 9 characters">
-        <mat-label>Ingresa tu celular</mat-label>
+
+      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+        <mat-label>Nombre</mat-label>
         <input
           matInput
-          #input
-          maxlength="9"
-          placeholder="Ex. 984565676"
-          (input)="onInput($event)"
+          placeholder="Ejem. Centro Medico Jose Olaya"
+          formControlName="hnombre"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+        <mat-label>Teléfono</mat-label>
+        <input
+          matInput
+          placeholder="Ej. 987456963"
           formControlName="htelefono"
         />
-        <mat-hint align="end">{{ value().length }}/9</mat-hint>
       </mat-form-field>
-    </div>
-    <div class="menu-address">
-      <mat-form-field class="example-full-width">
+
+    
+      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Dirección</mat-label>
-        <input
-          matInput
-          placeholder="Ex. Av. Los Álamos 123"
-          formControlName="hdireccion"
-        />
+        <input matInput placeholder="Av.Los Lirios 243" formControlName="hdireccion" />
       </mat-form-field>
-    </div>
-    <div class="menu-specialities">
-      <mat-form-field class="example-full-width">
+
+      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Especialidades</mat-label>
         <input
           matInput
-          placeholder="Ex. Dermatología"
+          placeholder="Ej: Cardiología"
           formControlName="hespecialidades"
         />
       </mat-form-field>
-    </div>
-    <div class="menu-button">
-      <button mat-flat-button>Registrar</button>
-    </div>
-  </form>
+
+    
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <button mat-button class="custom-button" style="margin-top: 20px;">Registrar</button>
+      </div>
+    </form>
+  </div>
 </div>

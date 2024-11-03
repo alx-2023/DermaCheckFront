@@ -1,43 +1,40 @@
-<div>
-  <div><h1>Centros médicos</h1></div>
-
-  <div>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 ctable">
-      <!--- Note that these columns can be defined in any order.
-                    The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Id Column -->
-      <ng-container matColumnDef="Id">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">{{ element.idCentroMedico }}</td>
-      </ng-container>
-
-      <!-- Name Column -->
-      <ng-container matColumnDef="Name">
-        <th mat-header-cell *matHeaderCellDef>Name</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
-      </ng-container>
-
-      <!-- Cellpone Column -->
-      <ng-container matColumnDef="Cellpone">
-        <th mat-header-cell *matHeaderCellDef>Cellpone</th>
-        <td mat-cell *matCellDef="let element">{{ element.telefono }}</td>
-      </ng-container>
-
-      <!-- Address Column -->
-      <ng-container matColumnDef="Address">
-        <th mat-header-cell *matHeaderCellDef>Address</th>
-        <td mat-cell *matCellDef="let element">{{ element.direccion }}</td>
-      </ng-container>
-
-      <!-- Specialties Column -->
-      <ng-container matColumnDef="Specialties">
-        <th mat-header-cell *matHeaderCellDef>Specialties</th>
-        <td mat-cell *matCellDef="let element">{{ element.especialidades }}</td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-    </table>
+<div class="container my-4">
+  <h1 class="text-center">Centros Medicos</h1>
+  <div class="row justify-content-center align-items-center">
+    <ng-container *ngFor="let element of pagedData">
+      <mat-card class="col-md-4 mb-4" style="margin: 0 20px">
+        <mat-card-header>
+          <mat-card-title>Nombre: {{ element.nombre }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Id: </strong> {{ element.idCentroMedico }}</p>
+          <p><strong>Nombre: </strong> {{ element.nombre }}</p>
+          <p><strong>Telefono: </strong> {{ element.telefono }}</p>
+          <p><strong>Direccion: </strong> {{ element.direccion }}</p>
+           
+          <p><strong>Especialidades: </strong> {{ element.especialidades }}</p>
+          <p>
+            <button mat-raised-button [routerLink]="['ediciones', element.idCentroMedico]">
+              <mat-icon>edit</mat-icon> Editar
+            </button>
+          </p>
+          <p>
+            <button mat-button (click)="eliminar(element.idCentroMedico)">
+              <mat-icon>delete</mat-icon> Eliminar
+            </button>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
   </div>
-</div>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="dataSource.length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[3, 6]"
+                   (page)="onPageChange($event)"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>
+ 
