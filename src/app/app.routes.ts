@@ -13,6 +13,7 @@ import { CreaeditacentrosmedicosComponent } from './components/centrosmedicos/cr
 import { LoginComponent } from './components/login/login.component';
 import { CreaeditausuariosComponent } from './components/usuario/creaeditausuarios/creaeditausuarios.component';
 import { CreaeditadiagnosticoxtratamientoComponent } from './components/diagnosticoxtratamiento/creaeditadiagnosticoxtratamiento/creaeditadiagnosticoxtratamiento.component';
+import { CreaeditarolComponent } from './components/rol/creaeditarol/creaeditarol.component';
 
 export const routes: Routes = [
   {
@@ -51,7 +52,18 @@ export const routes: Routes = [
     component: ArticulosdermatologicosComponent,
   },
   { path: 'recuperaciones', component: RecuperacionComponent },
-  { path: 'roles', component: RolComponent },
+  { path: 'roles', component: RolComponent,
+    children: [
+      {
+        path: 'insertar',
+        component: CreaeditarolComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditarolComponent,
+      },
+    ],
+   },
   { path: 'diagnosticos', component: DiagnosticoComponent },
   { path: 'login', component: LoginComponent },
   {

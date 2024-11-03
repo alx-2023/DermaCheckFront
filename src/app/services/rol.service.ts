@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Rol } from '../models/Rol';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
@@ -23,13 +23,15 @@ export class RolService {
   getList() {
     return this.listaCambio.asObservable();
   }
-  delete(id: number) {
-    this.http.delete(`${this.url}/${id}`);
+  delete(id: number): Observable <void> {
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
-  listId(id: number) {
-    this.http.get<Rol>(`${this.url}/${id}`);
+
+  listId(id: number): Observable<Rol> {
+    return this.http.get<Rol>(`${this.url}/${id}`);
   }
-  update(rol: Rol) {
-    this.http.patch(this.url, rol);
+
+  update(rol: Rol): Observable<Rol> {
+    return this.http.patch<Rol>(this.url, rol);
   }
 }
