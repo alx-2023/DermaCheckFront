@@ -14,23 +14,31 @@ import { LoginComponent } from './components/login/login.component';
 import { CreaeditausuariosComponent } from './components/usuario/creaeditausuarios/creaeditausuarios.component';
 import { CreaeditadiagnosticoxtratamientoComponent } from './components/diagnosticoxtratamiento/creaeditadiagnosticoxtratamiento/creaeditadiagnosticoxtratamiento.component';
 import { CreaeditarolComponent } from './components/rol/creaeditarol/creaeditarol.component';
+import { CreaeditaenfermedadComponent } from './components/enfermedad/creaeditaenfermedad/creaeditaenfermedad.component';
 
 export const routes: Routes = [
   {
-    path: 'centros-medicos',
-    component: CentrosmedicosComponent,
+    path: 'centros-medicos',component: CentrosmedicosComponent,
     children: [
       {
-        path: 'insertar',
-        component: CreaeditacentrosmedicosComponent,
+        path: 'insertar',component: CreaeditacentrosmedicosComponent,
       },
       {
-        path: 'ediciones/:id',
-        component: CreaeditacentrosmedicosComponent,
+        path: 'ediciones/:id',component: CreaeditacentrosmedicosComponent,
       },
     ],
   },
-  { path: 'enfermedades', component: EnfermedadComponent },
+  { path: 'enfermedades', component: EnfermedadComponent, 
+    children: 
+    [
+      {
+        path: 'insertar',component: CreaeditaenfermedadComponent,
+      },
+      {
+        path: 'ediciones/:id',component: CreaeditaenfermedadComponent,
+      },
+    ],
+  },
   { path: 'tratamientos', component: TratamientoComponent },
   {
     path: 'usuarios',
