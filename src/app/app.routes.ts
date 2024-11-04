@@ -14,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { CreaeditausuariosComponent } from './components/usuario/creaeditausuarios/creaeditausuarios.component';
 import { CreaeditadiagnosticoxtratamientoComponent } from './components/diagnosticoxtratamiento/creaeditadiagnosticoxtratamiento/creaeditadiagnosticoxtratamiento.component';
 import { CreaeditarolComponent } from './components/rol/creaeditarol/creaeditarol.component';
+import { CreaeditarecuperacionComponent } from './components/recuperacion/creaeditarecuperacion/creaeditarecuperacion.component';
+import { CreaeditaenfermedadComponent } from './components/enfermedad/creaeditaenfermedad/creaeditaenfermedad.component';
 
 export const routes: Routes = [
   {
@@ -30,7 +32,17 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: 'enfermedades', component: EnfermedadComponent },
+  { path: 'enfermedades', component: EnfermedadComponent, 
+    children: 
+    [
+      {
+        path: 'insertar',component:  CreaeditaenfermedadComponent,
+      },
+      {
+        path: 'ediciones/:id',component: CreaeditaenfermedadComponent,
+      },
+    ],
+  },
   { path: 'tratamientos', component: TratamientoComponent },
   {
     path: 'usuarios',
@@ -51,7 +63,19 @@ export const routes: Routes = [
     path: 'articulos-dermatologicos',
     component: ArticulosdermatologicosComponent,
   },
-  { path: 'recuperaciones', component: RecuperacionComponent },
+  { path: 'recuperaciones', component: RecuperacionComponent, 
+
+    children: [
+      {
+        path: 'insertar',
+        component: CreaeditarecuperacionComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditarecuperacionComponent,
+      },
+    ],
+  },
   { path: 'roles', component: RolComponent,
     children: [
       {

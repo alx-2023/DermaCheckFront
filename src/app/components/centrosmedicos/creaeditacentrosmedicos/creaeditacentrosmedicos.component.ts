@@ -65,16 +65,19 @@ export class CreaeditacentrosmedicosComponent implements OnInit {
       this.CentrosMedicos.direccion = this.form.value.hdireccion;
       this.CentrosMedicos.telefono = this.form.value.htelefono;
       this.CentrosMedicos.especialidades = this.form.value.hespecialidades;
+      this.CentrosMedicos.idCentroMedico = this.form.value.hcodigo;
       if (this.edicion) {
-        this.cS.update(this.CentrosMedicos).subscribe((data) => {
+        this.cS.update(this.CentrosMedicos).subscribe((d) => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
+            
           });
         });
       } else {
-        this.cS.insert(this.CentrosMedicos).subscribe(() => {
+        this.cS.insert(this.CentrosMedicos).subscribe((d) => {
           this.cS.list().subscribe((d) => {
             this.cS.setList(d);
+             
           });
         });
       }

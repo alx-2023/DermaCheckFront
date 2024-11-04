@@ -70,15 +70,24 @@ export class CreaeditarolComponent implements OnInit {
       this.Rol.nombreRol = this.form.value.hnombreRol;
       this.Rol.idRol = this.form.value.hcodigo;
       this.Rol.user.idUsuario = this.form.value.huser;
-      this.rS.insert(this.Rol).subscribe((data) => {
-        this.rS.list().subscribe((data) => {
-          this.rS.setList(data);
+      if (this.edicion) {
+        this.rS.update(this.Rol).subscribe((data) => {
+          this.rS.list().subscribe((data) => {
+            this.rS.setList(data);
+          });
         });
-      });
-      //redireccione a la lista
-      this.router.navigate(['roles']);
+      } else {
+        this.rS.insert(this.Rol).subscribe(() => {
+          this.rS.list().subscribe((d) => {
+            this.rS.setList(d);
+          });
+        });
+      }
+       
     }
+    this.router.navigate(['roles']);
   }
+
   init() {
     if (this.edicion) {
       this.rS.listId(this.id).subscribe((data) => {

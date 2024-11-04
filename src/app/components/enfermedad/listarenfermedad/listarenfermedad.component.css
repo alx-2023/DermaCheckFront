@@ -1,0 +1,6 @@
+.no-outline-button {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  

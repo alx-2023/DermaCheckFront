@@ -1,0 +1,70 @@
+<div class="container" style="text-align: center;">
+    <div style="margin: 5%">
+      <h1>Registro de Recuperaciones</h1>
+    </div>
+    <div>
+      <form [formGroup]="form" (submit)="aceptar()">
+        
+        <!-- Campo Id solo si es edición -->
+        <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
+          <mat-label>Id</mat-label>
+          <input matInput formControlName="hidRecuperacion" [readonly]="isReadonly" />
+        </mat-form-field>
+
+        
+        
+        <!-- Campo Codigo de recuperacion -->
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+            <mat-label>Codigo de Recuperación</mat-label>
+            <input
+              matInput
+              placeholder="Ejem. 12342321"
+              formControlName="hcodigorecuperacion"
+            />
+          </mat-form-field>
+        
+        <!-- Campo Fecha de Solicitud -->
+        <mat-form-field>
+            <mat-label>Fecha Solicitud</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="hfechasolicitud" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+
+        
+        <!-- Campo Fecha de Expiración -->
+        <mat-form-field>
+            <mat-label>Fecha Expiracion</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="hfechaexpiracion" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker1"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+        <!-- Campo Usuario -->
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="hidUsuario">
+            <mat-option *ngFor="let food of listaUsuarios" [value]="food.idUsuario">
+              {{ food.username }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-checkbox formControlName="hstate" style="width: 100%; margin-bottom: 20px; text-align: start;">
+            Estado
+          
+        </mat-checkbox>
+        <!-- Botón de Registrar -->
+        <div>
+          <button mat-button class="custom-button">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
