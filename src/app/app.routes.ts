@@ -14,6 +14,8 @@ import { LoginComponent } from './components/login/login.component';
 import { CreaeditausuariosComponent } from './components/usuario/creaeditausuarios/creaeditausuarios.component';
 import { CreaeditadiagnosticoxtratamientoComponent } from './components/diagnosticoxtratamiento/creaeditadiagnosticoxtratamiento/creaeditadiagnosticoxtratamiento.component';
 import { CreaeditarolComponent } from './components/rol/creaeditarol/creaeditarol.component';
+import { CreaeditarecuperacionComponent } from './components/recuperacion/creaeditarecuperacion/creaeditarecuperacion.component';
+import { CreaeditaenfermedadComponent } from './components/enfermedad/creaeditaenfermedad/creaeditaenfermedad.component';
 
 export const routes: Routes = [
   {
@@ -31,7 +33,7 @@ export const routes: Routes = [
     children: 
     [
       {
-        path: 'insertar',component: CreaeditaenfermedadComponent,
+        path: 'insertar',component: CreaeditaenfermedadComponent ,
       },
       {
         path: 'ediciones/:id',component: CreaeditaenfermedadComponent,
@@ -64,7 +66,7 @@ export const routes: Routes = [
     children: [
       {
         path: 'insertar',
-        component: CreaeditarecuperacionComponent,
+        component:  CreaeditarecuperacionComponent ,
       },
       {
         path: 'ediciones/:id',
