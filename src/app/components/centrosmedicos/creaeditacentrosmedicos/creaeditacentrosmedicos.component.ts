@@ -95,7 +95,6 @@ export class CreaeditacentrosmedicosComponent implements OnInit {
           htelefono: new FormControl(data.telefono),
           hdireccion: new FormControl(data.direccion),
           hespecialidades: new FormControl(data.especialidades),
-          
         });
       });
     }

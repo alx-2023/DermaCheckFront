@@ -14,21 +14,16 @@ import { LoginComponent } from './components/login/login.component';
 import { CreaeditausuariosComponent } from './components/usuario/creaeditausuarios/creaeditausuarios.component';
 import { CreaeditadiagnosticoxtratamientoComponent } from './components/diagnosticoxtratamiento/creaeditadiagnosticoxtratamiento/creaeditadiagnosticoxtratamiento.component';
 import { CreaeditarolComponent } from './components/rol/creaeditarol/creaeditarol.component';
-import { CreaeditarecuperacionComponent } from './components/recuperacion/creaeditarecuperacion/creaeditarecuperacion.component';
-import { CreaeditaenfermedadComponent } from './components/enfermedad/creaeditaenfermedad/creaeditaenfermedad.component';
 
 export const routes: Routes = [
   {
-    path: 'centros-medicos',
-    component: CentrosmedicosComponent,
+    path: 'centros-medicos',component: CentrosmedicosComponent,
     children: [
       {
-        path: 'insertar',
-        component: CreaeditacentrosmedicosComponent,
+        path: 'insertar',component: CreaeditacentrosmedicosComponent,
       },
       {
-        path: 'ediciones/:id',
-        component: CreaeditacentrosmedicosComponent,
+        path: 'ediciones/:id',component: CreaeditacentrosmedicosComponent,
       },
     ],
   },
@@ -36,13 +31,14 @@ export const routes: Routes = [
     children: 
     [
       {
-        path: 'insertar',component:  CreaeditaenfermedadComponent,
+        path: 'insertar',component: CreaeditaenfermedadComponent,
       },
       {
         path: 'ediciones/:id',component: CreaeditaenfermedadComponent,
       },
     ],
   },
+  { path: 'enfermedades', component: EnfermedadComponent },
   { path: 'tratamientos', component: TratamientoComponent },
   {
     path: 'usuarios',

@@ -33,6 +33,6 @@ export class EnfermedadService {
     return this.http.get<Enfermedad>(`${this.url}/${id}`);
   }
   update(enfermedad: Enfermedad) {
-    return this.http.patch(this.url, enfermedad);
+    return this.http.put(this.url, enfermedad);
   }
 }
