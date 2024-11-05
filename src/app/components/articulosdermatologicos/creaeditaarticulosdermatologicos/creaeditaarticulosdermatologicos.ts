@@ -26,8 +26,8 @@ import { UsuarioService } from '../../../services/usuario.service';
     MatFormFieldModule,
 
   ],
-  templateUrl: './creaeditaarticulosdermatologicos.component.html',
-  styleUrl: './creaeditaarticulosdermatologicos.component.css',
+  templateUrl: './creaeditaarticulosdermatologicos.html',
+  styleUrl: './creaeditaarticulosdermatologicos.css',
 })
 
 export class CreaeditaarticulosdermatologicosComponent implements OnInit {

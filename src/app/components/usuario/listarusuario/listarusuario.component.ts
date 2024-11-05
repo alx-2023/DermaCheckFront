@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Usuario } from '../../../models/Usuario';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { UsuarioService } from '../../../services/usuario.service';

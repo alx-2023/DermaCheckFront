@@ -22,7 +22,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CommonModule,
     MatCheckboxModule,
     MatFormFieldModule,
-
   ],
   templateUrl: './creaeditacentrosmedicos.component.html',
   styleUrl: './creaeditacentrosmedicos.component.css',

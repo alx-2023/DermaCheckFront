@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute,Params,Router } from '@angular/router';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Rol } from '../../../models/Rol';
 import { Usuario } from '../../../models/Usuario';
 import { RolService } from '../../../services/rol.service';
@@ -10,23 +16,24 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
- 
 
 @Component({
   selector: 'app-creaeditarol',
   standalone: true,
-  imports: [ ReactiveFormsModule ,
+  imports: [
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule,  
+    MatSelectModule,
     MatButtonModule,
-  CommonModule],
+    CommonModule,
+  ],
   templateUrl: './creaeditarol.component.html',
-  styleUrl: './creaeditarol.component.css'
+  styleUrl: './creaeditarol.component.css',
 })
 export class CreaeditarolComponent implements OnInit {
-  form: FormGroup  = new FormGroup({});
-  Rol: Rol = new Rol();
+  form: FormGroup = new FormGroup({});
+  rol: Rol = new Rol();
   id: number = 0;
   edicion: boolean = false;
   isReadonly: boolean = false;
@@ -41,49 +48,47 @@ export class CreaeditarolComponent implements OnInit {
   listaUsuarios: Usuario[] = [];
 
   constructor(
-    private formBuilder: FormBuilder ,
-    private rS: RolService ,
+    private formBuilder: FormBuilder,
+    private rS: RolService,
     private router: Router,
     private route: ActivatedRoute,
-    private uS:UsuarioService
+    private uS: UsuarioService
   ) {}
-  
+
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.init(); //Inicializar el init
       this.isReadonly = true;
-    }); 
+    });
     this.form = this.formBuilder.group({
-      hnombreRol: ['', Validators .required],
+      hnombreRol: ['', Validators.required],
       hcodigo: [''],
       huser: ['', Validators.required],
-      });
-    this.uS.list().subscribe(data=>{
-      this.listaUsuarios=data
-    })
-    
+    });
+    this.uS.list().subscribe((data) => {
+      this.listaUsuarios = data;
+    });
   }
   aceptar(): void {
     if (this.form.valid) {
-      this.Rol.nombreRol = this.form.value.hnombreRol;
-      this.Rol.idRol = this.form.value.hcodigo;
-      this.Rol.user.idUsuario = this.form.value.huser;
+      this.rol.nombreRol = this.form.value.hnombreRol;
+      this.rol.idRol = this.form.value.hcodigo;
+      this.rol.user.idUsuario = this.form.value.huser;
       if (this.edicion) {
-        this.rS.update(this.Rol).subscribe((data) => {
+        this.rS.update(this.rol).subscribe((data) => {
           this.rS.list().subscribe((data) => {
             this.rS.setList(data);
           });
         });
       } else {
-        this.rS.insert(this.Rol).subscribe(() => {
+        this.rS.insert(this.rol).subscribe((d) => {
           this.rS.list().subscribe((d) => {
             this.rS.setList(d);
           });
         });
       }
-       
     }
     this.router.navigate(['roles']);
   }
@@ -91,12 +96,11 @@ export class CreaeditarolComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.rS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          hcodigo: new FormControl(data.idRol),
-          hnombreRol: new FormControl(data.nombreRol),
-          huser: new FormControl(data.user)
-        });
+        this.form.get('hcodigo')?.setValue(data.idRol);
+        this.form.get('hnombreRol')?.setValue(data.nombreRol);
+        this.form.get('huser')?.setValue(data.user.idUsuario);
       });
     }
   }
+  
 }
