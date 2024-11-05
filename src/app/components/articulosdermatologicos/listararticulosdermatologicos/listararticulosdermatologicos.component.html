@@ -7,11 +7,34 @@
           <mat-card-title>{{ element.nombreRevista }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <p><strong>Tipo: </strong> {{ element.tipoRevista }}</p>
+          <p><strong>Id: </strong> {{ element.idArticuloDermatologico }}</p>
+          <p><strong>Nombre: </strong> {{ element.nombreRevista }}</p>
+          <p><strong>Tipo: </strong> {{ element.tipo_revista }}</p>
           <p><strong>Descripción: </strong> {{ element.descripcion }}</p>
-          <p><strong>Url: </strong> <a href="{{ element.url }}" target="_blank">{{ element.url }}</a></p>
+          <p><strong>Url: </strong> <a href= "{{ element.url }}" target="_blank">{{ element.url }}</a></p>
+          <p><strong>Usuario: </strong> {{ element.usuario.idUsuario }}</p>
+
+          <p>
+            <button mat-raised-button [routerLink]="['ediciones', element.idArticuloDermatologico]">
+              <mat-icon>edit</mat-icon> Editar
+            </button>
+          </p>
+          <p>
+            <button mat-button (click)="eliminar(element.idArticuloDermatologico)">
+              <mat-icon>delete</mat-icon> Eliminar
+            </button>
+          </p>
         </mat-card-content>
       </mat-card>
     </ng-container>
+  </div>
+  <div class="paginator-container">
+    <mat-paginator [length]="dataSource.length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[3, 6]"
+                   (page)="onPageChange($event)"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
   </div>
 </div>
