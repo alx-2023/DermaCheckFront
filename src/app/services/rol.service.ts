@@ -31,7 +31,7 @@ export class RolService {
     return this.http.get<Rol>(`${this.url}/${id}`);
   }
 
-  update(rol: Rol): Observable<Rol> {
+  update(rol: Rol) {
     return this.http.patch<Rol>(this.url, rol);
   }
 }
