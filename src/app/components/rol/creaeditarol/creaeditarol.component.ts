@@ -94,7 +94,7 @@ export class CreaeditarolComponent implements OnInit {
         this.form = new FormGroup({
           hcodigo: new FormControl(data.idRol),
           hnombreRol: new FormControl(data.nombreRol),
-          huser: new FormControl(data.user)
+          huser: new FormControl(data.user.username)
         });
       });
     }

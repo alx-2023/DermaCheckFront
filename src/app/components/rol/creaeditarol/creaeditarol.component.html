@@ -24,7 +24,7 @@
           <mat-label>Usuario</mat-label>
           <mat-select formControlName="huser">
             @for (food of listaUsuarios; track food) {
-            <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+            <mat-option [value]="food.username">{{ food.username }}</mat-option>
             }
           </mat-select>
         </mat-form-field>

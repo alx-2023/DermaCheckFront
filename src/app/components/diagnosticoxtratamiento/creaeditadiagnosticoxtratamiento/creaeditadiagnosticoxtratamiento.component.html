@@ -1,1 +1,31 @@
-<p>creaeditadiagnosticoxtratamiento works!</p>
+<div class="container" style="text-align: center;">
+  <div style="margin: 2%"><h1>Registro de Ambientes</h1></div>
+  <div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <mat-form-field>
+        <mat-label>Diagnosticos</mat-label>
+        <mat-select formControlName="hidDiagnostico">
+          @for (food of listaDiagnosticos; track food) {
+          <mat-option [value]="food.idDiagnostico">{{ food.idDiagnostico }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <mat-form-field>
+          <mat-label>Tratamientos</mat-label>
+          <mat-select formControlName="hidTratamiento">
+            @for (food of listaTratamientos; track food) {
+            <mat-option [value]="food.idTratamiento">{{ food.idTratamiento }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <br />
+
+      <div>
+        <button mat-button class="custom-button">Registrar</button>
+      </div>
+      
+    </form>
+  </div>
+</div>

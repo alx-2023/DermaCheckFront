@@ -96,6 +96,10 @@ export const routes: Routes = [
         path: 'insertar',
         component: CreaeditadiagnosticoxtratamientoComponent,
       },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditadiagnosticoxtratamientoComponent,
+      },
     ],
   },
 ];
