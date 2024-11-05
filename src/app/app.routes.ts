@@ -16,6 +16,8 @@ import { CreaeditadiagnosticoxtratamientoComponent } from './components/diagnost
 import { CreaeditarolComponent } from './components/rol/creaeditarol/creaeditarol.component';
 import { CreaeditarecuperacionComponent } from './components/recuperacion/creaeditarecuperacion/creaeditarecuperacion.component';
 import { CreaeditaenfermedadComponent } from './components/enfermedad/creaeditaenfermedad/creaeditaenfermedad.component';
+import { CreaeditaanuncioComponent } from './components/anuncio/creaeditaanuncio/creaeditaanuncio.component';
+import { CreaeditaarticulosdermatologicosComponent } from './components/articulosdermatologicos/creaeditaarticulosdermatologicos/creaeditaarticulosdermatologicos';
 
 export const routes: Routes = [
   {
@@ -56,10 +58,29 @@ export const routes: Routes = [
       },
     ],
   },
-  { path: 'anuncios', component: AnuncioComponent },
+  { path: 'anuncios', component: AnuncioComponent,
+    children: [
+      {path: 'insertar',
+        component: CreaeditaanuncioComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditaanuncioComponent,
+      },
+    ]
+   },
   {
     path: 'articulos-dermatologicos',
     component: ArticulosdermatologicosComponent,
+    children: [
+      {path: 'insertar',
+        component: CreaeditaarticulosdermatologicosComponent,
+      },
+      {
+        path: 'ediciones/:id',
+        component: CreaeditaarticulosdermatologicosComponent,
+      },
+    ]
   },
   { path: 'recuperaciones', component: RecuperacionComponent, 
 

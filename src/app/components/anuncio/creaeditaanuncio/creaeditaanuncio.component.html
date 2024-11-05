@@ -1,0 +1,68 @@
+<div class="container" style="text-align: center; margin: 10%">
+    <div style="margin: 5%">
+      <h1>Registro de Anuncios</h1>
+    </div>
+    <div>
+      <form [formGroup]="form" (submit)="aceptar()" style="display: flex; flex-direction: column; align-items: center;">
+        <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
+          <mat-label>Id</mat-label>
+          <input matInput formControlName="hcodigo" [readonly]="isReadonly" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+          <mat-label>URL</mat-label>
+          <input
+            matInput
+            placeholder="Ejem. https://www.youtube.com/"
+            formControlName="hurl"
+          />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+          <mat-label>Descripcion</mat-label>
+          <input
+            matInput
+            placeholder="Ej. Anuncio en el que se exponen enfermedades"
+            formControlName="hdescripcion"
+          />
+        </mat-form-field>
+  
+      
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+          <mat-label>Crédito</mat-label>
+          <input matInput placeholder="Ej. 10" formControlName="hcredito" />
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+          <mat-label>Ingresos por Anuncio</mat-label>
+          <input
+            matInput
+            placeholder="Ej: 100"
+            formControlName="hingresos"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+            <mat-label>Duración (en minutos)</mat-label>
+            <input
+              matInput
+              placeholder="Ej: 3"
+              formControlName="hduracion"
+            />
+        </mat-form-field>
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+          <mat-label>Usuario</mat-label>
+          <mat-select formControlName="hidUsuario">
+            <mat-option *ngFor="let food of listaUsuarios" [value]="food.idUsuario">
+              {{ food.username }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+      
+        <div style="width: 100%; display: flex; justify-content: center;">
+          <button mat-button class="custom-button" style="margin-top: 20px;">Registrar</button>
+        </div>
+      </form>
+    </div>
+  </div>
