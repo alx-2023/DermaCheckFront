@@ -1,25 +1,25 @@
 <div class="container my-4">
     <h1 class="text-center">Artículos dermatológicos</h1>
     <div class="row">
-      <ng-container *ngFor="let element of dataSource.data"> 
+      <ng-container *ngFor="let element of dataSource"> 
         <mat-card class="col-md-4 mb-4" style="margin: 0 20px;">
             <mat-card-header>
                 <mat-card-title>{{ element.nombreRevista }}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <p><strong>Id: </strong> {{ element.idArticuloDermatologico }}</p>
+                <p><strong>Id: </strong> {{ element.idArticulosDermatologico }}</p>
                 <p><strong>Nombre: </strong> {{ element.nombreRevista }}</p>
-                <p><strong>Tipo: </strong> {{ element.tipo_revista }}</p>
+                <p><strong>Tipo: </strong> {{ element.tipoRevista }}</p>
                 <p><strong>Descripción: </strong> {{ element.descripcion }}</p>
                 <p><strong>Url: </strong> <a href= "{{ element.url }}" target="_blank">{{ element.url }}</a></p>
                 <p><strong>Usuario: </strong> {{ element.usuario.idUsuario }}</p>
                 <p>
-                    <button mat-raised-button [routerLink]="['ediciones', element.idArticuloDermatologico]">
+                    <button mat-raised-button [routerLink]="['ediciones', element.idArticulosDermatologico]">
                         <mat-icon>edit</mat-icon> Editar
                     </button>
                 </p>
                 <p>
-                    <button mat-button (click)="eliminar(element.idArticuloDermatologico)">
+                    <button mat-button (click)="eliminar(element.idArticulosDermatologico)">
                         <mat-icon>delete</mat-icon> Eliminar
                     </button>
                 </p>
