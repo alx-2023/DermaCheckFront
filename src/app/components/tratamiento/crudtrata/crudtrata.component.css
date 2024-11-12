@@ -1,0 +1,22 @@
+.container {
+    margin-top: 2rem;
+    text-align: center;
+  }
+  
+  .form-card {
+    padding: 1.5rem;
+    max-width: 600px;
+    margin: auto;
+    border-radius: 8px;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  .button-container {
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  

@@ -1,0 +1,60 @@
+/* Contenedor principal */
+.main-container {
+    padding: 20px;
+    min-height: 100vh;
+    position: relative; /* Necesario para que el paginador se posicione respecto al contenedor */
+  }
+  
+  /* Estilo del encabezado */
+  .header {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+  }
+  
+  /* Contenedor de las tarjetas */
+  .card-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Estilo de cada tarjeta */
+  .card-item {
+    max-width: 400px;
+  }
+  
+  /* Estilo para las tarjetas */
+  .mat-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+  }
+  
+  /* Estilo para las acciones de la tarjeta */
+  .card-actions {
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  /* Estilos para los iconos de las acciones */
+  .edit-icon {
+    color: blueviolet;
+  }
+  
+  .delete-icon {
+    color: red;
+  }
+  
+  /* Contenedor para el paginador con fondo blanco ajustado al contenido */
+  .paginator-container {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    display: inline-block;
+    position: absolute; /* Posiciona el paginador respecto al contenedor principal */
+    bottom: 20px; /* Alinea el paginador en la parte inferior */
+    right: 20px; /* Alinea el paginador en la parte derecha */
+  }
+  

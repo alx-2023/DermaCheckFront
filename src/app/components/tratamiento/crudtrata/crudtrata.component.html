@@ -1,0 +1,58 @@
+<div class="container" style="text-align: center">
+ 
+  <mat-card class="form-card">
+    <form [formGroup]="form" (submit)="aceptar()">
+      <h1 style="color: blue;">Registro de Tratamientos</h1>
+      <mat-form-field class="full-width" *ngIf="edicion">
+        <mat-label>Código</mat-label>
+        <input matInput formControlName="hcodigo" />
+      </mat-form-field>
+      
+      <mat-form-field class="full-width">
+        <mat-label>Nombre de Tratamiento</mat-label>
+        <input matInput placeholder="Ejem. TV" formControlName="hnombre" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput placeholder="..." formControlName="hdescripcion"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Material Medicinal</mat-label>
+        <input matInput placeholder="..." formControlName="hmaterial" />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Comentario</mat-label>
+        <textarea matInput placeholder="..." formControlName="hcomentario"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Fecha Inicial</mat-label>
+        <input matInput [matDatepicker]="pickerInicio" formControlName="hfechaInicio" />
+        <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
+        <mat-datepicker #pickerInicio></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field>
+        <mat-label>Fecha Final</mat-label>
+        <input matInput [matDatepicker]="pickerFinal" formControlName="hfechaFinal" />
+        <mat-datepicker-toggle matSuffix [for]="pickerFinal"></mat-datepicker-toggle>
+        <mat-datepicker #pickerFinal></mat-datepicker>
+      </mat-form-field>
+      
+     
+      <mat-error *ngIf="form.hasError('fechaInvalida')">
+        La fecha final no puede ser menor que la fecha inicial.
+      </mat-error>
+      
+
+      <mat-checkbox formControlName="hestado">Estado</mat-checkbox>
+
+      <div class="button-container">
+        <button mat-raised-button color="primary">Registrar Tratamiento</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -18,6 +18,7 @@ import { CreaeditarecuperacionComponent } from './components/recuperacion/creaed
 import { CreaeditaenfermedadComponent } from './components/enfermedad/creaeditaenfermedad/creaeditaenfermedad.component';
 import { CreaeditaanuncioComponent } from './components/anuncio/creaeditaanuncio/creaeditaanuncio.component';
 import { CreaeditaarticulosdermatologicosComponent } from './components/articulosdermatologicos/creaeditaarticulosdermatologicos/creaeditaarticulosdermatologicos';
+import { CRUDtrataComponent } from './components/tratamiento/crudtrata/crudtrata.component';
 
 export const routes: Routes = [
   {
@@ -43,7 +44,19 @@ export const routes: Routes = [
     ],
   },
   { path: 'enfermedades', component: EnfermedadComponent },
-  { path: 'tratamientos', component: TratamientoComponent },
+  {
+    path: 'tratamientos',
+    component: TratamientoComponent,
+    children: [
+      {
+        path: 'registrar',
+        component: CRUDtrataComponent,
+      },
+      {
+        path:'ediciones/:id', component: CRUDtrataComponent
+      }
+    ],
+  },
   {
     path: 'usuarios',
     component: UsuarioComponent,
