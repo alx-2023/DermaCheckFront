@@ -1,46 +1,37 @@
-<div class="container">
-  <div style="text-align: center; margin: 5%">
-    <h1>Lista de Enfermedades</h1></div>
-  <div>
-    <table mat-table [dataSource]= "dataSource" class="mat-elevation-z8">
-      <ng-container matColumnDef="ID">
-        <th mat-header-cell *matHeaderCellDef>No.</th>
-        <td mat-cell *matCellDef="let element">{{ element.idEnfermedad }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c2">
-        <th mat-header-cell *matHeaderCellDef>Nombre Enfer.</th>
-        <td mat-cell *matCellDef="let element">{{ element.nombreEnfermedad }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c3">
-        <th mat-header-cell *matHeaderCellDef>Descripción</th>
-        <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="c4">
-        <th mat-header-cell *matHeaderCellDef>Sintomas</th>
-        <td mat-cell *matCellDef="let element">{{ element.sintomas }}</td>
-      </ng-container>
-
-      <ng-container matColumnDef="accion01">
-        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
-        <td mat-cell *matCellDef="let element" (click)= "eliminar(element.idEnfermedad)">
-          <mat-icon style="color: #3b1d9e">delete</mat-icon>
-        </td>
-      </ng-container>
-
-      <ng-container matColumnDef="accion02">
-        <th mat-header-cell *matHeaderCellDef>Actualizar</th>
-        <td mat-cell *matCellDef="let element">
-          <button mat-icon-button class="no-outline-button" [routerLink]= "['ediciones', element.idEnfermedad]">
-            <mat-icon style="color: #3b1d9e">edit</mat-icon>
-          </button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef= "displayedColumns"></tr>
-      <tr mat-row *matRowDef= "let row; columns: displayedColumns"></tr>
-    </table>
+<div class="container my-4">
+  <h1 class="text-center">Enfermedades</h1>
+  <div class="row justify-content-center align-items-center">
+    <ng-container *ngFor="let element of pagedData">
+      <mat-card class="col-md-4 mb-4" style="margin: 0 20px">
+        <mat-card-header>
+          <mat-card-title>Nombre: {{ element.nombreEnfermedad }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p><strong>Id: </strong> {{ element.idEnfermedad }}</p>
+          <p><strong>Nombre: </strong> {{ element.nombreEnfermedad }}</p>
+          <p><strong>Descripcion: </strong> {{ element.descripcion }}</p>
+          <p><strong>Sintomas: </strong> {{ element.sintomas }}</p>
+          <p>
+            <button mat-raised-button [routerLink]="['ediciones', element.idEnfermedad]">
+              <mat-icon>edit</mat-icon> Editar
+            </button>
+          </p>
+          <p>
+            <button mat-button (click)="eliminar(element.idEnfermedad)">
+              <mat-icon>delete</mat-icon> Eliminar
+            </button>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
   </div>
-</div>
+
+  <div class="paginator-container">
+    <mat-paginator [length]="dataSource.length"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="[3, 6]"
+                   (page)="onPageChange($event)"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+  </div>

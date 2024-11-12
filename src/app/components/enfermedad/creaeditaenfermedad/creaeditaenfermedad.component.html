@@ -1,35 +1,44 @@
-<div class="container" style="text-align: center; margin: 10%">
-    <div style="margin: 5%"><h1>Registro de Enfermedades</h1></div>
-    <div>
-      <form [formGroup]= "form" (submit)="aceptar()">
-
-        <mat-form-field class="example-full-width" *ngIf= "edicion">
-          <mat-label>ID</mat-label>
-          <input matInput formControlName="idEnfermedad" />
-        </mat-form-field>
-        <br/>
-
-        <mat-form-field class="example-full-width">
-          <mat-label>Nombre de la Enfermedad</mat-label>
-          <input matInput placeholder="Ej. Gripe" formControlName="nombreEnfermedad" />
-        </mat-form-field>
-        <br/>
-  
-        <mat-form-field class="example-full-width">
-          <mat-label>Descripción</mat-label>
-          <input matInput placeholder="Ej. Temperatura Alta" formControlName="descripcion" />
-        </mat-form-field>
-        <br/>
-  
-        <mat-form-field class="example-full-width">
-          <mat-label>Síntomas</mat-label>
-          <input matInput placeholder="Ej. Cansancio" formControlName="sintomas"/>
-        </mat-form-field>
-  
-        <div>
-          <button mat-button class="custom-button">Registrar</button>
-        </div>
-      </form>
-    </div>
+<div class="container" style="text-align: center">
+  <div style="margin: 5%">
+    <h1>Registro de Enfermedades</h1>
   </div>
-  
+  <div>
+    <form [formGroup]="form" (submit)="aceptar()" style="display: flex; flex-direction: column; align-items: center;">
+      <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
+        <mat-label>ID</mat-label>
+        <input matInput formControlName="idEnfermedad" [readonly]= "isReadonly" />
+      </mat-form-field>
+            
+      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+        <mat-label>Nombre de la Enfermedad</mat-label>
+        <input 
+          matInput 
+          placeholder="Ej. Gripe" 
+          formControlName="nombreEnfermedad" 
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+        <mat-label>Descripción</mat-label>
+        <input 
+          matInput 
+          placeholder="Ej. Temperatura Alta" 
+          formControlName="descripcion" 
+        />
+      </mat-form-field>
+      <br/>
+
+      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+        <mat-label>Síntomas</mat-label>
+        <input 
+          matInput 
+          placeholder="Ej. Cansancio" 
+          formControlName="sintomas"/>
+      </mat-form-field>
+
+      <div style="width: 100%; display: flex; justify-content: center;">
+        <button mat-button class="custom-button" style="margin-top: 20px;">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>

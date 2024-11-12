@@ -14,16 +14,20 @@ import { Enfermedad } from '../../../models/Enfermedad';
 import { EnfermedadService } from '../../../services/enfermedad.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-creaeditaenfermedad',
   standalone: true,
   imports: [
-    MatInputModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule,
     MatButtonModule,
+    ReactiveFormsModule,
     CommonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
   ],
   templateUrl: './creaeditaenfermedad.component.html',
   styleUrls: ['./creaeditaenfermedad.component.css'],
@@ -33,6 +37,7 @@ export class CreaeditaenfermedadComponent implements OnInit {
   enfermedad: Enfermedad = new Enfermedad();
   id: number = 0;
   edicion: boolean = false;
+  isReadonly: boolean = false;
 
   constructor(
     private eS: EnfermedadService,
@@ -46,7 +51,9 @@ export class CreaeditaenfermedadComponent implements OnInit {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.init()
+      this.isReadonly = true;
     }); 
+
     this.form = this.formBuilder.group({
       idEnfermedad: [''],
       nombreEnfermedad: ['', Validators.required],
@@ -74,8 +81,9 @@ export class CreaeditaenfermedadComponent implements OnInit {
           });
         });
       }
-      this.router.navigate(['enfermedades']);
+      
     }
+    this.router.navigate(['enfermedades']);
   }
 
   init() {
