@@ -53,17 +53,14 @@ export class ListarusuarioComponent implements OnInit {
   constructor(private uS: UsuarioService, private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
-    this.uS.list().subscribe((data) => {
+    this.uS.getList().subscribe((data) => {
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.matSort;
-      this.dataSource.filterPredicate = (data: Usuario, filter: string) => {
-        return data.username.toLowerCase().includes(filter);
-      };
       this.updatePagedData();
     });
-    this.uS.getList().subscribe((data) => {
-      this.dataSource = new MatTableDataSource(data);
+    this.uS.list().subscribe((data) => {
+      this.uS.setList(data);
     });
   }
 
@@ -87,6 +84,7 @@ export class ListarusuarioComponent implements OnInit {
     this.uS.delete(id).subscribe({
       next: () => {
         this.uS.list().subscribe((data) => {
+          this.uS.setList(data);
           this.dataSource.data = data;
           this.updatePagedData();
         });
@@ -94,7 +92,7 @@ export class ListarusuarioComponent implements OnInit {
       error: (err) => {
         if (err.status === 500) {
           this.snackBar.open(
-            'No se puede eliminar porque depende este registro depende de otro',
+            'No se puede eliminar porque este registro depende de otro',
             'Cerrar',
             {
               duration: 2000,

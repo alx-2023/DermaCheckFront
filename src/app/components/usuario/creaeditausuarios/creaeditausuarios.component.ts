@@ -95,11 +95,17 @@ export class CreaeditausuariosComponent implements OnInit {
         this.uS.list().subscribe((data) => {
           this.uS.setList(data);
         });
+        this.snackBar.open('Usuario actualizado exitosamente.', 'Cerrar', {
+          duration: 3000,
+        });
       });
     } else {
       this.uS.insert(this.usuario).subscribe(() => {
         this.uS.list().subscribe((d) => {
           this.uS.setList(d);
+        });
+        this.snackBar.open('Registro exitoso.', 'Cerrar', {
+          duration: 3000,
         });
       });
     }
