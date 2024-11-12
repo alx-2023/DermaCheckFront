@@ -47,3 +47,69 @@ body {
   margin-right: 8px;  
   vertical-align: middle;
 }
+
+
+/*hola*/
+/* Fondo de degradado sutil */
+body {
+  background: linear-gradient(to bottom, #1e3c72, #2a5298);
+  color: #fff;
+}
+
+/* Barra de navegación */
+.navbar {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+  width: 40px;
+  height: auto;
+}
+
+.nav-link {
+  color: #f8f9fa !important;
+}
+
+.nav-link:hover {
+  color: #c8d6e5 !important;
+  text-decoration: underline;
+}
+
+/* Footer */
+.footer-container {
+  background: #ffffff;
+  color: #2a5298;
+  padding: 1.5rem 0;
+}
+
+.footer-container a {
+  color: #2a5298;
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.footer-container a:hover {
+  color: #1e3c72;
+}
+
+.footer-container .footer-brand img {
+  width: 30px;
+}
+
+.footer-container mat-icon {
+  font-size: 1.5rem;
+  color: #2a5298;
+}
+ 
+.footer-container {
+  background-color: #fff;
+  color: #000;
+  padding: 15px 0;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #ccc;
+}
+
