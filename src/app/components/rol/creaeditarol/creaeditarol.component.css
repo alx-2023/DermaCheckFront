@@ -5,6 +5,14 @@
     font-size: 2.5em;
     margin-bottom: 25px;
 }
+.container {
+    max-width: 800px;
+    margin: 5% auto;
+    padding: 65px;
+    background: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #fff;}
 
  
 mat-form-field {
@@ -36,14 +44,3 @@ mat-form-field {
 .custom-button:hover {
     background-color: #ffffff;
 }
- 
-.mat-form-field {
-    margin-bottom: 20px;  
-  }
-  
-  
-  @media (max-width: 768px) {
-    .col-md-6 {
-      width: 100%;  
-    }
-  }
