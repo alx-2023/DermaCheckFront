@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -38,6 +38,7 @@ export class CreaeditarecuperacionComponent implements OnInit{
   id: number = 0;
   edicion: boolean = false;
   isReadonly: boolean = false;
+
  
   listaUsuarios: Usuario[] = [];
 
@@ -61,14 +62,34 @@ export class CreaeditarecuperacionComponent implements OnInit{
       hidRecuperacion: [''],
       hfechaexpiracion: ['', Validators  .required],
       hfechasolicitud: ['', Validators  .required],
-      hidUsuario: ['', Validators.required],
+      hUsuario: ['', Validators.required],
       hstate: [true],
-      });
+    },
+    { validators: this.fechaValidator } 
+  );
+
     this.uS.list().subscribe(data=>{
       this.listaUsuarios=data
     })
-    
+    this.form.get('hfechasolicitud')?.valueChanges.subscribe(() => {
+      this.form.updateValueAndValidity({ onlySelf: false, emitEvent: true });
+    });
+
+    this.form.get('hfechaexpiracion')?.valueChanges.subscribe(() => {
+      this.form.updateValueAndValidity({ onlySelf: false, emitEvent: true });
+    });
   }
+  
+  fechaValidator: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    const fechaInicio = group.get('hfechasolicitud')?.value;
+    const fechaFinal = group.get('hfechaexpiracion')?.value;
+
+    
+    if (fechaInicio && fechaFinal && new Date(fechaFinal) < new Date(fechaInicio)) {
+      return { fechaInvalida: true };
+    }
+    return null; 
+  };
   aceptar(): void {
     if (this.form.valid) {
       this.Recuperacion.idRecuperacion = this.form.value.hidRecuperacion;
@@ -76,7 +97,7 @@ export class CreaeditarecuperacionComponent implements OnInit{
       this.Recuperacion.estadoRecuperacion = this.form.value.hstate;
       this.Recuperacion.fechaExpiracion = this.form.value.hfechaexpiracion ;
       this.Recuperacion.fechaSolicitud = this.form.value.hfechasolicitud;
-      this.Recuperacion.usuario.idUsuario = this.form.value.hidUsuario;
+      this.Recuperacion.usuario.idUsuario = this.form.value.hUsuario;
       if (this.edicion) {
         this.rS.update(this.Recuperacion).subscribe((data) => {
           this.rS.list().subscribe((data) => {
@@ -95,6 +116,7 @@ export class CreaeditarecuperacionComponent implements OnInit{
     this.router.navigate(['recuperaciones']);
   }
 
+  
   init() {
     if (this.edicion) {
       this.rS.listId(this.id).subscribe((data) => {
@@ -104,9 +126,10 @@ export class CreaeditarecuperacionComponent implements OnInit{
           hstate: new FormControl(data.estadoRecuperacion),
           hfechaexpiracion: new FormControl(data.fechaExpiracion),
           hfechasolicitud: new FormControl(data.fechaSolicitud),
-          hidUsuario: new FormControl(data.usuario)
-        });
+          hUsuario: new FormControl(data.usuario.idUsuario)
+        }, { validators: this.fechaValidator }); 
       });
     }
   }
+  
 }

@@ -43,15 +43,20 @@
                 <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
               </mat-form-field>
+              <mat-error *ngIf="form.hasError('fechaInvalida')">
+                La fecha final no puede ser menor que la fecha inicial.
+              </mat-error>
             </div>
           </div>
+          
+          
         <!-- Campo Usuario -->
-        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+        <mat-form-field>
           <mat-label>Usuario</mat-label>
-          <mat-select formControlName="hidUsuario">
-            <mat-option *ngFor="let food of listaUsuarios" [value]="food.idUsuario">
-              {{ food.username }}
-            </mat-option>
+          <mat-select formControlName="hUsuario">
+            @for (food of listaUsuarios; track food) {
+            <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+            }
           </mat-select>
         </mat-form-field>
         <mat-checkbox formControlName="hstate" style="width: 100%; margin-bottom: 20px; text-align: start;">

@@ -96,9 +96,12 @@ export class CreaeditarolComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.rS.listId(this.id).subscribe((data) => {
-        this.form.get('hcodigo')?.setValue(data.idRol);
-        this.form.get('hnombreRol')?.setValue(data.nombreRol);
-        this.form.get('huser')?.setValue(data.user.idUsuario);
+        this.form = new FormGroup({
+          hnombreRol: new FormControl(data.nombreRol),
+          hcodigo: new FormControl(data.idRol),
+          huser: new FormControl(data.user.idUsuario),
+         
+        });
       });
     }
   }
