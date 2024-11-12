@@ -5,7 +5,7 @@ import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterModule,MatIcon],
+  imports: [RouterOutlet, RouterLink, RouterModule, MatIcon],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

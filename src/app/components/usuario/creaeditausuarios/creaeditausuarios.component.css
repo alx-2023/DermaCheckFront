@@ -16,17 +16,37 @@ form {
 
 mat-form-field {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px; 
 }
 
-@media (max-width: 768px) {
-  .container {
-    width: 90%;
-  }
-  .mat-form-field {
-    width: 100%;
-  }
+mat-form-field .mat-form-field-wrapper {
+  display: flex;
+  flex-direction: column;
 }
+
+mat-form-field .mat-form-field-infix {
+  margin-bottom: 0; 
+}
+
+mat-form-field .mat-form-field-label {
+  margin-bottom: 5px; 
+}
+
+mat-form-field .mat-error {
+  margin-top: 0; 
+  font-size: 0.9em; 
+}
+
+mat-form-field .mat-form-field-underline {
+  bottom: 0;
+}
+
+.error {
+  color: red;
+  margin-top: 0; 
+  font-size: 0.9em; 
+}
+
 
 .custom-button {
   background-color: #64ff98;
@@ -47,4 +67,3 @@ mat-form-field {
 mat-form-field:hover {
   background-color: #f0f8ff;
 }
-

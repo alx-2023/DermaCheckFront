@@ -42,3 +42,8 @@ body {
 .content {
   padding: 20px;
 }
+
+.iconos {
+  margin-right: 8px;  
+  vertical-align: middle;
+}
