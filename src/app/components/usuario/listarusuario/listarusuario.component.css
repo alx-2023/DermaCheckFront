@@ -19,7 +19,7 @@ mat-card:hover {
 }
 
 mat-card:hover .card-header {
-  background-color: #f1f1f1; /* Change the header background on hover */
+  background-color: #f1f1f1; 
 }
 
 mat-card-title {

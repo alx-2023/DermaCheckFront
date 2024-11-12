@@ -52,17 +52,26 @@ export class CreaeditausuariosComponent implements OnInit {
       this.edicion = data['id'] != null;
       this.init(); //Inicializar el init
       this.isReadonly = true;
-    }); 
+    });
     this.form = this.formBuilder.group({
       hcodigo: [''],
       husername: ['', Validators.required],
-      hpassword: ['', Validators.required],
+      hpassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(
+            '^(?=.*[A-Z])(?=.*[\\*\\_\\-\\#\\$])[A-Za-z\\*\\_\\-\\#\\$]{8,}$'
+          ),
+        ],
+      ],
       henabled: [true],
       hnombres: ['', Validators.required],
       hapellidos: ['', Validators.required],
-      hcorreo: ['', Validators.required],
+      hcorreo: ['', [Validators.required, Validators.email]],
       hsitioWeb: [''],
-      htelefono: ['', Validators.required],
+      htelefono: ['', [Validators.required, Validators.pattern('^9\\d{8}$')]],
       hnombreEmpresa: [''],
       hesPremium: [''],
     });
