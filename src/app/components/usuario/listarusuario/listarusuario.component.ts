@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Usuario } from '../../../models/Usuario';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { UsuarioService } from '../../../services/usuario.service';
-import { MatSnackBar } from '@angular/material/snack-bar';  
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -54,12 +54,12 @@ export class ListarusuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.uS.list().subscribe((data) => {
-      this.dataSource.data = data; 
+      this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.matSort;
       this.dataSource.filterPredicate = (data: Usuario, filter: string) => {
-        return data.username.toLowerCase().includes(filter); 
-      }; 
+        return data.username.toLowerCase().includes(filter);
+      };
       this.updatePagedData();
     });
     this.uS.getList().subscribe((data) => {
@@ -68,7 +68,7 @@ export class ListarusuarioComponent implements OnInit {
   }
 
   filter(e: any) {
-    this.dataSource.filter = e.target.value.trim().toLowerCase(); 
+    this.dataSource.filter = e.target.value.trim().toLowerCase();
   }
 
   updatePagedData(): void {
@@ -94,19 +94,18 @@ export class ListarusuarioComponent implements OnInit {
       error: (err) => {
         if (err.status === 500) {
           this.snackBar.open(
-            'No se puede eliminar porque depende de otra tabla',
+            'No se puede eliminar porque depende este registro depende de otro',
             'Cerrar',
             {
-              duration: 2000, 
-              verticalPosition: 'bottom',  
-              horizontalPosition: 'center',  
+              duration: 2000,
+              verticalPosition: 'bottom',
+              horizontalPosition: 'center',
             }
           );
         }
-      }
+      },
     });
   }
-  
 
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;

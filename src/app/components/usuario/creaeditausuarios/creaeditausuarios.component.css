@@ -16,7 +16,7 @@ form {
 
 mat-form-field {
   width: 100%;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 mat-form-field .mat-form-field-wrapper {
@@ -25,16 +25,16 @@ mat-form-field .mat-form-field-wrapper {
 }
 
 mat-form-field .mat-form-field-infix {
-  margin-bottom: 0; 
+  margin-bottom: 0;
 }
 
 mat-form-field .mat-form-field-label {
-  margin-bottom: 5px; 
+  margin-bottom: 5px;
 }
 
 mat-form-field .mat-error {
-  margin-top: 0; 
-  font-size: 0.9em; 
+  margin-top: 0;
+  font-size: 0.9em;
 }
 
 mat-form-field .mat-form-field-underline {
@@ -43,26 +43,25 @@ mat-form-field .mat-form-field-underline {
 
 .error {
   color: red;
-  margin-top: 0; 
-  font-size: 0.9em; 
+  margin-top: 0;
+  font-size: 0.9em;
 }
-
 
 .custom-button {
-  background-color: #64ff98;
-  color: blue;
-  padding: 10px 20px;
+  color: #ffffff;
+  background: linear-gradient(
+    to bottom,
+    #255ea8 0%,
+    #1d3d9b 50%,
+    #151b8d 100%
+  ) !important;
   border: none;
+  font-family: "Merriweather", sans-serif;
+  padding: 10px 20px;
   border-radius: 5px;
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
 }
 
-.custom-button:hover {
-  background-color: #4cc877;
-  color: #ffffff;
-}
 
 mat-form-field:hover {
   background-color: #f0f8ff;
