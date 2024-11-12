@@ -16,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-creaeditarol',
@@ -52,8 +54,9 @@ export class CreaeditarolComponent implements OnInit {
     private rS: RolService,
     private router: Router,
     private route: ActivatedRoute,
-    private uS: UsuarioService
-  ) {}
+    private uS: UsuarioService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((data: Params) => {
@@ -86,13 +89,34 @@ export class CreaeditarolComponent implements OnInit {
         this.rS.insert(this.rol).subscribe((d) => {
           this.rS.list().subscribe((d) => {
             this.rS.setList(d);
-          });
-        });
-      }
-    }
-    this.router.navigate(['roles']);
-  }
+            this.snackBar.open('Recuperación registrada correctamente', 'Cerrar', {
+              duration: 3000,
+            }).afterOpened().subscribe(() => {
+              this.form.reset();
+            });
 
+
+            setTimeout(() => {
+              window.location.reload();
+            }, 1600);
+          })
+
+
+        });
+
+      }
+
+    }
+    else {
+      this.snackBar.open('Error al registrar. Por favor, revise todos los campos.', 'Cerrar', {
+        duration: 3000,
+        panelClass: ['error-snackbar']
+      });
+
+    }
+    this.router.navigate(['roles/insertar']);
+
+  }
   init() {
     if (this.edicion) {
       this.rS.listId(this.id).subscribe((data) => {
@@ -100,10 +124,10 @@ export class CreaeditarolComponent implements OnInit {
           hnombreRol: new FormControl(data.nombreRol),
           hcodigo: new FormControl(data.idRol),
           huser: new FormControl(data.user.idUsuario),
-         
+
         });
       });
     }
   }
-  
+
 }

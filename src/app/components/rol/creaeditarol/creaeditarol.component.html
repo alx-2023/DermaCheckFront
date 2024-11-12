@@ -15,7 +15,11 @@
           @for (food of listanombreRol; track food) {
           <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
           }
+          
         </mat-select>
+        <mat-error *ngIf="form.controls['hnombreRol']?.hasError('required')">
+          El nombre del rol es obligatorio
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -24,7 +28,11 @@
           @for (food of listaUsuarios; track food) {
           <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
           }
+           
         </mat-select>
+        <mat-error *ngIf="form.controls['huser']?.hasError('required')">
+          El nombre de usuario es obligatorio
+        </mat-error>
       </mat-form-field>
       
       <div>

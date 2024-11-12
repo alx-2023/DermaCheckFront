@@ -13,6 +13,7 @@ import { ActivatedRoute,Router,Params } from '@angular/router';
 import { UsuarioService } from '../../../services/usuario.service';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
  
 @Component({
   selector: 'app-creaeditarecuperacion',
@@ -45,12 +46,13 @@ export class CreaeditarecuperacionComponent implements OnInit{
   constructor(
     private formBuilder: FormBuilder  ,
     private rS: RecuperacionService ,
+    private snackBar: MatSnackBar,
     private router: Router,
     private route: ActivatedRoute,
     private uS:UsuarioService
   ) {}
   
-  ngOnInit(): void {
+  ngOnInit(): void  {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
@@ -58,7 +60,7 @@ export class CreaeditarecuperacionComponent implements OnInit{
       this.isReadonly = true;
     }); 
     this.form = this.formBuilder.group({
-      hcodigorecuperacion: ['', Validators  .required],
+      hcodigorecuperacion: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       hidRecuperacion: [''],
       hfechaexpiracion: ['', Validators  .required],
       hfechasolicitud: ['', Validators  .required],
@@ -106,14 +108,36 @@ export class CreaeditarecuperacionComponent implements OnInit{
         });
       } else {
         this.rS.insert(this.Recuperacion).subscribe(() => {
-          this.rS.list().subscribe((d) => {
-            this.rS.setList(d);
-          });
-        });
+          this.rS.list().subscribe((d) => {         
+             
+            
+            this.snackBar.open('Recuperación registrada correctamente', 'Cerrar', {
+              duration: 3000,
+            }).afterOpened().subscribe(() => {
+              this.form.reset();
+            });
+      
+            
+            setTimeout(() => {
+              window.location.reload();
+            }, 1600);
+            })
+                      
+
+       });
+      
       }
        
     }
-    this.router.navigate(['recuperaciones']);
+    else{
+        this.snackBar.open('Error al registrar. Por favor, revise todos los campos.', 'Cerrar', {
+          duration: 3000,  
+          panelClass: ['error-snackbar']  
+        });
+
+    }
+    this.router.navigate(['recuperaciones/insertar']);
+     
   }
 
   
@@ -127,7 +151,7 @@ export class CreaeditarecuperacionComponent implements OnInit{
           hfechaexpiracion: new FormControl(data.fechaExpiracion),
           hfechasolicitud: new FormControl(data.fechaSolicitud),
           hUsuario: new FormControl(data.usuario.idUsuario)
-        }, { validators: this.fechaValidator }); 
+        }, { validators: this.fechaValidator });
       });
     }
   }

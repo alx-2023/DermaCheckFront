@@ -1,73 +1,86 @@
 <div class="container" style="text-align: center;">
-    <div style="margin: 5%">
-      <h1>Recuperaciones</h1>
-    </div>
-    <div>
-      <form [formGroup]="form" (submit)="aceptar()">
-        
-        <!-- Campo Id solo si es edición -->
-        <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
-          <mat-label>Id</mat-label>
-          <input matInput formControlName="hidRecuperacion" [readonly]="isReadonly" />
-        </mat-form-field>
-
-        
-        
-        <!-- Campo Codigo de recuperacion -->
-        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
-            <mat-label>Codigo de Recuperación</mat-label>
-            <input
-              matInput
-              placeholder="Ejem. 12342321"
-              formControlName="hcodigorecuperacion"
-            />
-          </mat-form-field>
-          <div class="row">
-            <!-- Campo Fecha de Solicitud -->
-            <div class="col-md-6">
-              <mat-form-field style="width: 100%;">
-                <mat-label>Fecha Solicitud</mat-label>
-                <input matInput [matDatepicker]="picker2" formControlName="hfechasolicitud" />
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-              </mat-form-field>
-            </div>
-          
-            <!-- Campo Fecha de Expiración -->
-            <div class="col-md-6">
-              <mat-form-field style="width: 100%;">
-                <mat-label>Fecha Expiración</mat-label>
-                <input matInput [matDatepicker]="picker1" formControlName="hfechaexpiracion" />
-                <mat-hint>MM/DD/YYYY</mat-hint>
-                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-              </mat-form-field>
-              <mat-error *ngIf="form.hasError('fechaInvalida')">
-                La fecha final no puede ser menor que la fecha inicial.
-              </mat-error>
-            </div>
-          </div>
-          
-          
-        <!-- Campo Usuario -->
-        <mat-form-field>
-          <mat-label>Usuario</mat-label>
-          <mat-select formControlName="hUsuario">
-            @for (food of listaUsuarios; track food) {
-            <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-        <mat-checkbox formControlName="hstate" style="width: 100%; margin-bottom: 20px; text-align: start;">
-            Estado
-          
-        </mat-checkbox>
-        <!-- Botón de Registrar -->
-        <div>
-          <button mat-button class="custom-button">Registrar Recuperación </button>
-        </div>
-      </form>
-    </div>
+  <div style="margin: 5%">
+    <h1>Recuperaciones</h1>
   </div>
-  
+  <div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <!-- Campo Id solo si es edición -->
+      <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
+        <mat-label>Id</mat-label>
+        <input matInput formControlName="hidRecuperacion" [readonly]="isReadonly" />
+      </mat-form-field>
+
+
+
+      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+        <mat-label>Código de Recuperación</mat-label>
+        <input matInput placeholder="Ejem. 12342321" formControlName="hcodigorecuperacion" />
+        
+        <mat-error *ngIf="form.controls['hcodigorecuperacion']?.hasError('pattern')">
+          Solo se permiten números
+        </mat-error>
+    
+        <mat-error *ngIf="form.controls['hcodigorecuperacion']?.hasError('required')">
+          El código de recuperación es obligatorio
+        </mat-error>
+      </mat-form-field>
+      
+      
+
+
+      <div class="row">
+
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Fecha Solicitud</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="hfechasolicitud" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+            <mat-error *ngIf="form.controls['hfechasolicitud']?.hasError('required')">
+              La fecha de Solicitud es obligatoria
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <div class="col-md-6">
+          <mat-form-field style="width: 100%;">
+            <mat-label>Fecha Expiración</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="hfechaexpiracion" />
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+            <mat-error *ngIf="form.controls['hfechaexpiracion']?.hasError('required')">
+              La fecha de expiracion es obligatoria
+             </mat-error>
+          </mat-form-field> 
+          <mat-error *ngIf="form.hasError('fechaInvalida')">
+            La fecha final no puede ser menor que la fecha inicial.
+          </mat-error>
+        </div>
+      </div>
+
+      <mat-form-field>
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="hUsuario">
+          @for (food of listaUsuarios; track food) {
+          <mat-option [value]="food.idUsuario">{{ food.username }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="form.controls['hUsuario']?.hasError('required')">
+          El usuario es obligatorio
+        </mat-error>
+      </mat-form-field>
+      <mat-checkbox formControlName="hstate" style="width: 100%; margin-bottom: 20px; text-align: start;">
+        Estado
+
+      </mat-checkbox>
+      <!-- Botón de Registrar -->
+      <div>
+        <button mat-button class="custom-button">Registrar Recuperación </button>
+      </div>
+    </form>
+  </div>
+</div>
