@@ -1,22 +1,33 @@
 .container {
-    margin-top: 2rem;
-    text-align: center;
-  }
-  
-  .form-card {
-    padding: 1.5rem;
-    max-width: 600px;
-    margin: auto;
-    border-radius: 8px;
-  }
-  
-  .full-width {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  
-  .button-container {
-    text-align: center;
-    margin-top: 1.5rem;
-  }
-  
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.form-card {
+  padding: 1.5rem;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 8px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.container .custom-button {
+  background-color: #00416a !important;
+  color: white !important;
+  border: none;
+  color: #ffffff;
+  font-family: "Merriweather", sans-serif;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}

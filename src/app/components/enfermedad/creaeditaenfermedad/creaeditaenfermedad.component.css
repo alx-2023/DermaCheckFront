@@ -18,19 +18,13 @@
 
 mat-form-field {
   width: 100%;
-  
+
   border-radius: 5px;
 }
 
-
-.custom-button {
-
-  background: linear-gradient(
-      to bottom,
-      #255EA8 0%,
-      #1D3D9B 50%,
-      #151B8D 100%
-  ) !important;
+.container .custom-button {
+  background-color: #00416A !important;
+  color: white !important;
   border: none;
   color: #ffffff;
   font-family: 'Merriweather', sans-serif;
@@ -38,10 +32,4 @@ mat-form-field {
   border-radius: 5px;
   font-weight: bold;
   transition: background-color 0.3s;
-
-
-}
-
-.custom-button:hover {
-  background-color: #ffffff;
 }

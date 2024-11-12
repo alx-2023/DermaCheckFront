@@ -47,21 +47,17 @@ mat-form-field .mat-form-field-underline {
   font-size: 0.9em;
 }
 
-.custom-button {
-  color: #ffffff;
-  background: linear-gradient(
-    to bottom,
-    #255ea8 0%,
-    #1d3d9b 50%,
-    #151b8d 100%
-  ) !important;
+.container .custom-button {
+  background-color: #00416a !important;
+  color: white !important;
   border: none;
+  color: #ffffff;
   font-family: "Merriweather", sans-serif;
   padding: 10px 20px;
   border-radius: 5px;
   font-weight: bold;
+  transition: background-color 0.3s;
 }
-
 
 mat-form-field:hover {
   background-color: #f0f8ff;
