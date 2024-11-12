@@ -1,6 +1,6 @@
 <div class="container" style="text-align: center;">
     <div style="margin: 5%">
-      <h1>Registro de Recuperaciones</h1>
+      <h1>Recuperaciones</h1>
     </div>
     <div>
       <form [formGroup]="form" (submit)="aceptar()">
@@ -22,31 +22,29 @@
               formControlName="hcodigorecuperacion"
             />
           </mat-form-field>
-        
-        <!-- Campo Fecha de Solicitud -->
-        <mat-form-field>
-            <mat-label>Fecha Solicitud</mat-label>
-            <input matInput [matDatepicker]="picker2" formControlName="hfechasolicitud" />
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle
-              matIconSuffix
-              [for]="picker2"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-          </mat-form-field>
-
-        
-        <!-- Campo Fecha de Expiración -->
-        <mat-form-field>
-            <mat-label>Fecha Expiracion</mat-label>
-            <input matInput [matDatepicker]="picker1" formControlName="hfechaexpiracion" />
-            <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle
-              matIconSuffix
-              [for]="picker1"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
-          </mat-form-field>
+          <div class="row">
+            <!-- Campo Fecha de Solicitud -->
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%;">
+                <mat-label>Fecha Solicitud</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="hfechasolicitud" />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+              </mat-form-field>
+            </div>
+          
+            <!-- Campo Fecha de Expiración -->
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%;">
+                <mat-label>Fecha Expiración</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="hfechaexpiracion" />
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
         <!-- Campo Usuario -->
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
           <mat-label>Usuario</mat-label>
@@ -62,7 +60,7 @@
         </mat-checkbox>
         <!-- Botón de Registrar -->
         <div>
-          <button mat-button class="custom-button">Registrar</button>
+          <button mat-button class="custom-button">Registrar Recuperación </button>
         </div>
       </form>
     </div>

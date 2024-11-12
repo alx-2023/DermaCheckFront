@@ -36,9 +36,14 @@ body {
 }
 
 .dropdown-menu .dropdown-item {
-  color: #ffffff !important;
+  color: #fff9f9 !important;
 }
 
 .content {
   padding: 20px;
+}
+
+.iconos {
+  margin-right: 8px;  
+  vertical-align: middle;
 }

@@ -64,12 +64,14 @@
 
   <div class="paginator-container">
     <mat-paginator
-      [pageSize]="pageSize"
-      [pageSizeOptions]="[2, 4, 6]"
-      (page)="onPageChange($event)"
-      showFirstLastButtons
-      aria-label="Select page of periodic elements"
-    >
-    </mat-paginator>
+    [length]="dataSource.data.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[2, 4, 6]"
+    (page)="onPageChange($event)"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements"
+  >
+  </mat-paginator>
+  
   </div>
 </div>
