@@ -61,9 +61,6 @@ export class CreaeditausuariosComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.pattern(
-            '^(?=.*[A-Z])(?=.*[\\*\\_\\-\\#\\$])[A-Za-z\\*\\_\\-\\#\\$]{8,}$'
-          ),
         ],
       ],
       henabled: [true],

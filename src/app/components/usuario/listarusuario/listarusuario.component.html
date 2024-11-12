@@ -21,41 +21,39 @@
           <p><strong>Apellidos: </strong> {{ element.apellidos }}</p>
 
           <div *ngIf="showDetails[element.idUsuario]">
-            <p>
-              <strong>Correo: </strong> {{ element.correo }}
-            </p>
-            <div *ngIf="element.sitioWeb != ''"> 
-            <p>
-              <strong>Sitio Web: </strong>
-              <a href="{{ element.sitioWeb }}" target="_blank">
-                {{ element.sitioWeb }}
-              </a>
-            </p>
-            </div>
-            <p><strong>Teléfono: </strong> {{ element.telefono }}</p>
-            <div *ngIf="element.nombreEmpresa != ''"> 
+            <p><strong>Correo: </strong> {{ element.correo }}</p>
+            <div *ngIf="element.sitioWeb != ''">
               <p>
-                <strong>Nombre de Empresa: </strong> {{ element.nombreEmpresa }}
+                <strong>Sitio Web: </strong>
+                <a href="{{ element.sitioWeb }}" target="_blank">{{ element.sitioWeb }}</a>
               </p>
             </div>
-            <div *ngIf="element.esPremium == true">
-              <p><strong>Plan: </strong> Premiun</p>
+            <p><strong>Teléfono: </strong> {{ element.telefono }}</p>
+            <div *ngIf="element.nombreEmpresa != ''">
+              <p><strong>Nombre de Empresa: </strong> {{ element.nombreEmpresa }}</p>
             </div>
-            <div *ngIf="element.esPremium == false">
-              <p><strong>Plan: </strong> No premiun</p>
-            </div>
+            <p><strong>Plan: </strong> {{ element.esPremium ? 'Premium' : 'No Premium' }}</p>
           </div>
 
           <div class="btn-details-container">
             <button
               mat-raised-button
-              (click)="
-                showDetails[element.idUsuario] = !showDetails[element.idUsuario]
-              "
+              (click)="showDetails[element.idUsuario] = !showDetails[element.idUsuario]"
               class="btn-details"
             >
               {{ showDetails[element.idUsuario] ? "Ocultar" : "Ver" }} detalles
             </button>
+          </div>
+
+          <div class="btn-actions">
+            <button mat-raised-button [routerLink]="['ediciones', element.idUsuario]">
+              <mat-icon>edit</mat-icon> 
+            </button>
+
+            <button mat-button (click)="eliminar(element.idUsuario)">
+              <mat-icon>delete</mat-icon> 
+            </button>
+              
           </div>
         </mat-card-content>
       </mat-card>
@@ -64,14 +62,13 @@
 
   <div class="paginator-container">
     <mat-paginator
-    [length]="dataSource.data.length"
-    [pageSize]="pageSize"
-    [pageSizeOptions]="[2, 4, 6]"
-    (page)="onPageChange($event)"
-    showFirstLastButtons
-    aria-label="Select page of periodic elements"
-  >
-  </mat-paginator>
-  
+      [length]="dataSource.data.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[2, 4, 6]"
+      (page)="onPageChange($event)"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
   </div>
 </div>

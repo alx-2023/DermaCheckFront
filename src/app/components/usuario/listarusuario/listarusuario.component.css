@@ -145,3 +145,24 @@ mat-icon {
 .white-text-input::placeholder {
   color: white !important;
 }
+
+.btn-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px; 
+  margin-top: 20px; 
+}
+
+.btn-actions button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-actions mat-icon {
+  font-size: 24px; 
+  color: black;
+}
+
