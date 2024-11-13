@@ -66,11 +66,11 @@ export class CreaeditaanuncioComponent implements OnInit {
       hingresos: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       hduracion: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       hidUsuario: ['', Validators.required]
-    }, { updateOn: 'blur' });
+    });
     this.uS.list().subscribe(data=>{
-    this.listaUsuarios=data
+      this.listaUsuarios=data
     })
-  }
+  };
 
   aceptar (): void {
     if (this.form.valid) {
@@ -85,6 +85,7 @@ export class CreaeditaanuncioComponent implements OnInit {
         this.cS.update(this.Anuncio).subscribe(() => {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
+            this.router.navigate(['anuncios']);
           });
           this.snackBar.open('Anuncio actualizado exitosamente.', 'Cerrar', {
             duration: 3000,
@@ -94,6 +95,7 @@ export class CreaeditaanuncioComponent implements OnInit {
         this.cS.insert(this.Anuncio).subscribe(() => {
           this.cS.list().subscribe((d) => {
             this.cS.setList(d);
+            this.router.navigate(['anuncios']);
           });
           this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
             duration: 3000,
@@ -106,7 +108,6 @@ export class CreaeditaanuncioComponent implements OnInit {
         panelClass: ['error-snackbar']
       });
     }
-    this.router.navigate(['anuncios/insertar']);
 
   }
 
