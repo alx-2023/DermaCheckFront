@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-creaeditausuarios',
@@ -77,41 +78,55 @@ export class CreaeditausuariosComponent implements OnInit {
       });
       return; 
     }
-
-    this.usuario.idUsuario = this.form.value.hcodigo;
-    this.usuario.username = this.form.value.husername;
-    this.usuario.password = this.form.value.hpassword;
-    this.usuario.enabled = this.form.value.henabled;
-    this.usuario.nombres = this.form.value.hnombres;
-    this.usuario.apellidos = this.form.value.hapellidos;
-    this.usuario.correo = this.form.value.hcorreo;
-    this.usuario.sitioWeb = this.form.value.hsitioWeb;
-    this.usuario.telefono = this.form.value.htelefono;
-    this.usuario.nombreEmpresa = this.form.value.hnombreEmpresa;
-    this.usuario.esPremium = this.form.value.hesPremium;
-
-    if (this.edicion) {
-      this.uS.update(this.usuario).subscribe((data) => {
-        this.uS.list().subscribe((data) => {
-          this.uS.setList(data);
-        });
-        this.snackBar.open('Usuario actualizado exitosamente.', 'Cerrar', {
+  
+    const username = this.form.value.husername;
+    
+    // Verificar si el nombre de usuario ya existe
+    this.uS.checkUsernameExists(username).subscribe((exists) => {
+      if (exists) {
+        this.snackBar.open('El nombre de usuario ya está en uso. Por favor elija otro.', 'Cerrar', {
           duration: 3000,
         });
-      });
-    } else {
-      this.uS.insert(this.usuario).subscribe(() => {
-        this.uS.list().subscribe((d) => {
-          this.uS.setList(d);
+        return; // Detener el proceso si el username ya existe
+      }
+  
+      // Continuar con el proceso de inserción o actualización
+      this.usuario.idUsuario = this.form.value.hcodigo;
+      this.usuario.username = username;
+      this.usuario.password = this.form.value.hpassword;
+      this.usuario.enabled = this.form.value.henabled;
+      this.usuario.nombres = this.form.value.hnombres;
+      this.usuario.apellidos = this.form.value.hapellidos;
+      this.usuario.correo = this.form.value.hcorreo;
+      this.usuario.sitioWeb = this.form.value.hsitioWeb;
+      this.usuario.telefono = this.form.value.htelefono;
+      this.usuario.nombreEmpresa = this.form.value.hnombreEmpresa;
+      this.usuario.esPremium = this.form.value.hesPremium;
+  
+      if (this.edicion) {
+        this.uS.update(this.usuario).subscribe((data) => {
+          this.uS.list().subscribe((data) => {
+            this.uS.setList(data);
+          });
+          this.snackBar.open('Usuario actualizado exitosamente.', 'Cerrar', {
+            duration: 3000,
+          });
         });
-        this.snackBar.open('Registro exitoso.', 'Cerrar', {
-          duration: 3000,
+      } else {
+        this.uS.insert(this.usuario).subscribe(() => {
+          this.uS.list().subscribe((d) => {
+            this.uS.setList(d);
+          });
+          this.snackBar.open('Registro exitoso.', 'Cerrar', {
+            duration: 3000,
+          });
         });
-      });
-    }
-
-    this.router.navigate(['usuarios']);
+      }
+  
+      this.router.navigate(['usuarios']);
+    });
   }
+  
 
   init() {
     if (this.edicion) {

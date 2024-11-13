@@ -47,9 +47,10 @@ a:hover {
 mat-paginator {
   position: fixed;
   border-radius: 20px;
+  size: 10px;
   bottom: 100px; 
   right: 20px;
-  width: 26%;
+  width: 495px;
   z-index: 1000;
   border: 2px solid #ccc; 
 }

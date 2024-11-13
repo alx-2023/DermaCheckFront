@@ -32,4 +32,9 @@ export class UsuarioService {
   update(usuario: Usuario) {
     return this.http.patch(this.url, usuario);
   }
+  
+  checkUsernameExists(username: string) {
+    return this.http.get<boolean>(`${this.url}/exists/${username}`);
+  }
+  
 }

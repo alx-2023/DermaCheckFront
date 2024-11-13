@@ -59,7 +59,7 @@ mat-form-field .mat-form-field-underline {
   transition: background-color 0.3s;
 }
 .container {
-  margin-bottom: 50px; /* Ajusta este valor según sea necesario */
+  margin-bottom: 50px;
 }
 mat-form-field:hover {
   background-color: #f0f8ff;
