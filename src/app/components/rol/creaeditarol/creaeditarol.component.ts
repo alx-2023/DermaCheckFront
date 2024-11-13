@@ -42,7 +42,7 @@ export class CreaeditarolComponent implements OnInit {
 
   listanombreRol: { value: string; viewValue: string }[] = [
     { value: 'ADMIN', viewValue: 'ADMIN' },
-    { value: 'Usuario', viewValue: 'Usuario' },
+    { value: 'Cliente', viewValue: 'Cliente' },
     { value: 'Especialista', viewValue: 'Especialista' },
     { value: 'Empresas anunciantes', viewValue: 'Empresas anunciantes' },
   ];
