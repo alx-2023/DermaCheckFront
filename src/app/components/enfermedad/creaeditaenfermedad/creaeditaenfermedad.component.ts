@@ -15,6 +15,7 @@ import { EnfermedadService } from '../../../services/enfermedad.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-creaeditaenfermedad',
@@ -43,7 +44,8 @@ export class CreaeditaenfermedadComponent implements OnInit {
     private eS: EnfermedadService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class CreaeditaenfermedadComponent implements OnInit {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.init();
-      this.isReadonly = this.edicion;
+      this.isReadonly = true;
     });
   
     this.form = this.formBuilder.group({
@@ -64,15 +66,24 @@ export class CreaeditaenfermedadComponent implements OnInit {
   }
 
   aceptar(): void {
-    if (this.form.valid) {
+    if (!this.form.valid) {
+      this.snackBar.open('Por favor complete todos los campos obligatorios.', 'Cerrar', {
+        duration: 3000,
+      });
+      return; 
+    }
       this.enfermedad.idEnfermedad = this.form.value.idEnfermedad;
       this.enfermedad.nombreEnfermedad = this.form.value.nombreEnfermedad;
       this.enfermedad.descripcion = this.form.value.descripcion;
       this.enfermedad.sintomas = this.form.value.sintomas;
+
       if (this.edicion) {
         this.eS.update(this.enfermedad).subscribe(() => {
           this.eS.list().subscribe((data) => {
             this.eS.setList(data);
+          });
+          this.snackBar.open('Enfermedad actualizado exitosamente.', 'Cerrar', {
+            duration: 3000,
           });
         });
       } else {
@@ -80,10 +91,12 @@ export class CreaeditaenfermedadComponent implements OnInit {
           this.eS.list().subscribe((data) => {
             this.eS.setList(data);
           });
+          this.snackBar.open('Registro exitoso.', 'Cerrar', {
+            duration: 3000,
+          });
         });
       }
-      
-    }
+
     this.router.navigate(['enfermedades']);
   }
 
