@@ -43,7 +43,7 @@ export class CRUDtrataComponent implements OnInit {
   tratamiento: Tratamiento = new Tratamiento();
   id: number = 0;
   edicion: boolean = false;
-
+  isReadonly: boolean = false;
   constructor(
     private tS: TratamientoService,
     private formBuilder: FormBuilder,
@@ -57,7 +57,6 @@ export class CRUDtrataComponent implements OnInit {
       this.edicion = data['id'] != null;
       this.init();
     });
-
     this.form = this.formBuilder.group(
       {
         hcodigo: [''],
@@ -67,12 +66,11 @@ export class CRUDtrataComponent implements OnInit {
         hcomentario: ['', Validators.required],
         hfechaInicio: ['', Validators.required],
         hfechaFinal: ['', Validators.required],
-        hestado: [false, Validators.requiredTrue], 
+        hestado: [false, Validators.requiredTrue],
       },
-      { validators: this.fechaValidator } 
+      { validators: this.fechaValidator }
     );
 
-    
     this.form.get('hfechaInicio')?.valueChanges.subscribe(() => {
       this.form.updateValueAndValidity({ onlySelf: false, emitEvent: true });
     });
@@ -82,48 +80,46 @@ export class CRUDtrataComponent implements OnInit {
     });
   }
 
-  fechaValidator: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+  fechaValidator: ValidatorFn = (
+    group: AbstractControl
+  ): ValidationErrors | null => {
     const fechaInicio = group.get('hfechaInicio')?.value;
     const fechaFinal = group.get('hfechaFinal')?.value;
 
-    
-    if (fechaInicio && fechaFinal && new Date(fechaFinal) < new Date(fechaInicio)) {
+    if (
+      fechaInicio &&
+      fechaFinal &&
+      new Date(fechaFinal) < new Date(fechaInicio)
+    ) {
       return { fechaInvalida: true };
     }
-    return null; 
+    return null;
   };
 
   aceptar(): void {
-    if (this.form.invalid) {
-      console.log('Formulario inválido');
-      this.form.markAllAsTouched(); 
-      return;
-    }
-
-    
-    this.tratamiento.idTratamiento = this.form.value.hcodigo;
-    this.tratamiento.nombreTratamiento = this.form.value.hnombre;
-    this.tratamiento.descripcionTratamiento = this.form.value.hdescripcion;
-    this.tratamiento.materialMedicinal = this.form.value.hmaterial;
-    this.tratamiento.comentario = this.form.value.hcomentario;
-    this.tratamiento.fechaInicio = this.form.value.hfechaInicio;
-    this.tratamiento.fechaFinal = this.form.value.hfechaFinal;
-    this.tratamiento.estado = this.form.value.hestado;
-
-    if (this.edicion) {
-      this.tS.update(this.tratamiento).subscribe(() => {
-        this.tS.list().subscribe((data) => {
-          this.tS.setList(data);
+    if (this.form.valid) {
+      this.tratamiento.idTratamiento = this.form.value.hcodigo;
+      this.tratamiento.nombreTratamiento = this.form.value.hnombre;
+      this.tratamiento.descripcionTratamiento = this.form.value.hdescripcion;
+      this.tratamiento.materialMedicinal = this.form.value.hmaterial;
+      this.tratamiento.comentario = this.form.value.hcomentario;
+      this.tratamiento.fechaInicio = this.form.value.hfechaInicio;
+      this.tratamiento.fechaFinal = this.form.value.hfechaFinal;
+      this.tratamiento.estado = this.form.value.hestado;
+      if (this.edicion) {
+        this.tS.update(this.tratamiento).subscribe((data) => {
+          this.tS.list().subscribe((data) => {
+            this.tS.setList(data);
+          });
         });
-      });
-    } else {
-      this.tS.insert(this.tratamiento).subscribe(() => {
-        this.tS.list().subscribe((data) => {
-          this.tS.setList(data);
+      } else {
+        this.tS.insert(this.tratamiento).subscribe((d) => {
+          this.tS.list().subscribe((d) => {
+            this.tS.setList(d);
+          });
         });
-      });
+      }
     }
-
     this.router.navigate(['tratamientos']);
   }
 
@@ -132,22 +128,20 @@ export class CRUDtrataComponent implements OnInit {
       this.tS.listId(this.id).subscribe((data) => {
         this.form = this.formBuilder.group(
           {
-            hcodigo: [data.idTratamiento],
-            hnombre: [data.nombreTratamiento, Validators.required],
-            hmaterial: [data.materialMedicinal, Validators.required],
-            hdescripcion: [data.descripcionTratamiento, Validators.required],
-            hfechaInicio: [data.fechaInicio, Validators.required],
-            hcomentario: [data.comentario, Validators.required],
-            hestado: [data.estado, Validators.requiredTrue],
-            hfechaFinal: [data.fechaFinal, Validators.required],
+            hcodigo: new FormControl(data.idTratamiento),
+            hnombre: new FormControl(data.nombreTratamiento),
+            hmaterial: new FormControl(data.materialMedicinal),
+            hdescripcion: new FormControl(data.descripcionTratamiento),
+            hfechaInicio: new FormControl(data.fechaInicio),
+            hcomentario: new FormControl(data.comentario),
+            hestado: new FormControl(data.estado),
+            hfechaFinal: new FormControl(data.fechaFinal),
           },
-          { validators: this.fechaValidator } 
+          { validators: this.fechaValidator }
         );
-  
-       
+
         this.form.updateValueAndValidity();
       });
     }
   }
-  
 }

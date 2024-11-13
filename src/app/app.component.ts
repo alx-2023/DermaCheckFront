@@ -32,4 +32,7 @@ export class AppComponent {
   isEspecialista(){
     return this.role === 'Especialista';
   }
+  isCentros(){
+    return this.role === 'Empresas anunciantes';
+  }
 }

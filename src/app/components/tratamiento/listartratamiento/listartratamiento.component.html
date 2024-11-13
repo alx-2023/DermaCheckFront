@@ -4,25 +4,35 @@
   </div>
 
   <div class="card-container">
-    <div *ngFor="let element of dataSource.data" class="card-item">
+    <div *ngFor="let element of pagedData" class="card-item">
       <mat-card class="mat-elevation-z8">
-        <mat-card-header>
-          
-        </mat-card-header>
+        <mat-card-header> </mat-card-header>
         <mat-card-content>
           <p><strong>Nombre:</strong> {{ element.nombreTratamiento }}</p>
-          <p><strong>Descripción:</strong> {{ element.descripcionTratamiento }}</p>
-          <p><strong>Material Medicinal:</strong> {{ element.materialMedicinal }}</p>
+          <p>
+            <strong>Descripción:</strong> {{ element.descripcionTratamiento }}
+          </p>
+          <p>
+            <strong>Material Medicinal:</strong> {{ element.materialMedicinal }}
+          </p>
           <p><strong>Comentario:</strong> {{ element.comentario }}</p>
           <p><strong>Fecha Inicio:</strong> {{ element.fechaInicio }}</p>
           <p><strong>Fecha Final:</strong> {{ element.fechaFinal }}</p>
         </mat-card-content>
         <mat-card-actions class="card-actions">
-          <button mat-icon-button [routerLink]="['ediciones', element.idTratamiento]" aria-label="Editar">
+          <button
+            mat-icon-button
+            [routerLink]="['ediciones', element.idTratamiento]"
+            aria-label="Editar"
+          >
             <mat-icon class="edit-icon">edit</mat-icon>
           </button>
-          
-          <button mat-icon-button (click)="delete(element.idTratamiento)" aria-label="Eliminar">
+
+          <button
+            mat-icon-button
+            (click)="delete(element.idTratamiento)"
+            aria-label="Eliminar"
+          >
             <mat-icon class="delete-icon">delete</mat-icon>
           </button>
         </mat-card-actions>
@@ -31,6 +41,14 @@
   </div>
 
   <div class="paginator-container">
-    <mat-paginator [pageSizeOptions]="[1, 3, 4]" showFirstLastButtons></mat-paginator>
+    <mat-paginator
+      [length]="dataSource.length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[3, 6]"
+      (page)="onPageChange($event)"
+      showFirstLastButtons
+      aria-label="Select page of periodic elements"
+    >
+    </mat-paginator>
   </div>
 </div>

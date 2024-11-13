@@ -38,14 +38,7 @@
     justify-content: flex-end;
   }
   
-  /* Estilos para los iconos de las acciones */
-  .edit-icon {
-    color: blueviolet;
-  }
-  
-  .delete-icon {
-    color: red;
-  }
+
   
   /* Contenedor para el paginador con fondo blanco ajustado al contenido */
   .paginator-container {

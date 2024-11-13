@@ -31,6 +31,6 @@ export class TratamientoService {
     return this.http.get<Tratamiento>(`${this.url}/${id}`);
   }
   update(tratamiento: Tratamiento) {
-    return this.http.put(this.url, tratamiento);
+    return this.http.patch(this.url, tratamiento);
   }
 }
