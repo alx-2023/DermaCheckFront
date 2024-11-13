@@ -11,17 +11,15 @@
           <p><strong>Usuario: </strong> {{ element.usuario.idUsuario }}</p>
           <p><strong>Estado: </strong> {{ element.estadoRecuperacion }}</p>
            
-          <p>
-            <button mat-raised-button [routerLink]="['ediciones', element.idRecuperacion]">
-              <mat-icon>edit</mat-icon> Editar
+          <div class="btn-actions">
+            <button mat-icon-button [routerLink]="['ediciones', element.idRecuperacion]">
+              <mat-icon>edit</mat-icon>
             </button>
-          </p>
-          <p>
-            <button mat-button (click)="eliminar(element.idRecuperacion)">
-              <mat-icon>delete</mat-icon> Eliminar
+
+            <button mat-icon-button (click)="eliminar(element.idRecuperacion)">
+              <mat-icon>delete</mat-icon>
             </button>
-          </p>
-           
+          </div>
         </mat-card-content>
       </mat-card>
     </ng-container>
@@ -30,7 +28,7 @@
   <div class="paginator-container">
     <mat-paginator [length]="dataSource.length"
                    [pageSize]="pageSize"
-                   [pageSizeOptions]="[3, 6]"
+                   [pageSizeOptions]="[3, 6,9]"
                    (page)="onPageChange($event)"
                    showFirstLastButtons
                    aria-label="Select page of periodic elements">

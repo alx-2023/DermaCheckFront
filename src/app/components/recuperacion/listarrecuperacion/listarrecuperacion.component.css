@@ -5,7 +5,24 @@
     font-size: 2.5em;
     margin-bottom: 25px;
 }
-.paginator-container{
+
+.paginator-container {
     width: 500px;
-    margin-left: auto; 
+    margin-left: auto;
+}
+
+.btn-actions {
+    display: flex;
+    justify-content: right; /* Alinea los botones al extremo izquierdo y derecho */
+    margin-top: 10px;
+}
+
+button {
+    background-color: transparent; /* Remueve el fondo de los botones */
+    box-shadow: none;
+    border: none;
+}
+
+mat-icon {
+    color: black;
 }
