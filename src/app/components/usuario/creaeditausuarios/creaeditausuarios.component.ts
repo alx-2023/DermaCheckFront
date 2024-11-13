@@ -116,20 +116,22 @@ export class CreaeditausuariosComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.uS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          hcodigo: new FormControl(data.idUsuario),
-          husername: new FormControl(data.username),
-          hpassword: new FormControl(data.password),
-          henabled: new FormControl(data.enabled),
-          hnombres: new FormControl(data.nombres),
-          hapellidos: new FormControl(data.apellidos),
-          hcorreo: new FormControl(data.correo),
-          hsitioWeb: new FormControl(data.sitioWeb),
-          htelefono: new FormControl(data.telefono),
-          hnombreEmpresa: new FormControl(data.nombreEmpresa),
-          hesPremium: new FormControl(data.esPremium),
+        this.form.patchValue({
+          hcodigo: data.idUsuario,
+          husername: data.username,
+          hpassword: data.password,
+          henabled: data.enabled,
+          hnombres: data.nombres,
+          hapellidos: data.apellidos,
+          hcorreo: data.correo,
+          hsitioWeb: data.sitioWeb,
+          htelefono: data.telefono,
+          hnombreEmpresa: data.nombreEmpresa,
+          hesPremium: data.esPremium,
         });
       });
     }
   }
+  
+
 }
