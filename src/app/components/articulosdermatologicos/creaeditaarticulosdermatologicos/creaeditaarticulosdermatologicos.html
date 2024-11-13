@@ -1,9 +1,9 @@
-<div class="container" style="text-align: center; margin: 10%">
+<div class="container" style="text-align: center;">
     <div style="margin: 5%">
       <h1>Articulos Dermatologicos</h1>
     </div>
     <div>
-      <form [formGroup]="form" (submit)="aceptar()" style="display: flex; flex-direction: column; align-items: center;">
+      <form [formGroup]="form" (submit)="aceptar()">
         <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
           <mat-label>Id</mat-label>
           <input matInput formControlName="hcodigo" [readonly]="isReadonly" />
@@ -16,15 +16,21 @@
               placeholder="Ej. Informe dermatológico"
               formControlName="hnombre"
             />
+            <mat-error *ngIf="form.controls['hnombre']?.hasError('required')">
+              El nombre es obligatorio
+            </mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
-            <mat-label>Descripcion</mat-label>
+            <mat-label>Tipo</mat-label>
             <input
               matInput
               placeholder="Ej. Informativo"
               formControlName="htipo"
             />
+            <mat-error *ngIf="form.controls['htipo']?.hasError('required')">
+              El Tipo es obligatorio
+            </mat-error>
         </mat-form-field>
         
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
@@ -34,6 +40,9 @@
               placeholder="Ej. Articulo sobre enfermedades de la piel"
               formControlName="hdescripcion"
             />
+            <mat-error *ngIf="form.controls['hdescripcion']?.hasError('required')">
+              La Descripción es obligatoria
+            </mat-error>
           </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
@@ -43,6 +52,9 @@
             placeholder="Ejem. https://www.google.com/"
             formControlName="hurl"
           />
+          <mat-error *ngIf="form.controls['hurl']?.hasError('required')">
+            La URL es obligatoria
+          </mat-error>
         </mat-form-field>
   
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
@@ -52,11 +64,13 @@
               {{ food.username }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="form.controls['hidUsuario']?.hasError('required')">
+            El usuario es obligatorio
+          </mat-error>
         </mat-form-field>
-  
       
-        <div style="width: 100%; display: flex; justify-content: center;">
-          <button mat-button class="custom-button" style="margin-top: 20px;">Registrar</button>
+        <div>
+          <button mat-button class="custom-button">Registrar</button>
         </div>
       </form>
     </div>

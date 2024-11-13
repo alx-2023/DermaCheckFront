@@ -10,10 +10,13 @@ import { Router,Params,ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Usuario } from '../../../models/Usuario';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuarioService } from '../../../services/usuario.service';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-creaeditaarticulosdermatologicos',
+  providers: [provideNativeDateAdapter()],
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -43,6 +46,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
     private uS:UsuarioService
   ) {}
 
@@ -51,7 +55,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.init(); //Inicializar el init
-      this.isReadonly = true;
+      this.isReadonly = !this.edicion;
     }); 
     
       this.form = this.formBuilder.group({
@@ -79,29 +83,41 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
           });
+          this.snackBar.open('Articulo actualizado exitosamente.', 'Cerrar', {
+            duration: 3000,
+          });
+          this.router.navigate(['articulosdermatologicos/insertar']);
+
         });
       } else {
         this.aS.insert(this.articuloDermatologico).subscribe(() => {
           this.aS.list().subscribe((d) => {
-            this.aS.setList(d);
+            this.aS.setList(d);            
           });
+          this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
+            duration: 3000,
+          });
+          this.router.navigate(['articulosdermatologicos/insertar']);
         });
       }
-       
+    }else {
+      this.snackBar.open('Error al registrar. Por favor, revise todos los campos.', 'Cerrar', {
+        duration: 3000,
+        panelClass: ['error-snackbar']
+      });
     }
-    this.router.navigate(['articulosdermatologicos']);
   }
 
   init() {
     if (this.edicion) {
       this.aS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          hcodigo: new FormControl(data.idArticulosDermatologico),
-          hnombre: new FormControl(data.nombreRevista),
-          htipo: new FormControl(data.tipoRevista),
-          hdescripcion: new FormControl(data.descripcion),
-          hurl: new FormControl(data.url),
-          hidUsuario: new FormControl(data.usuario)
+        this.form.patchValue({
+          hcodigo: data.idArticulosDermatologico,
+          hnombre: data.nombreRevista,
+          htipo: data.tipoRevista,
+          hdescripcion: data.descripcion,
+          hurl: data.url,
+          hidUsuario: data.usuario
         });
       });
     }

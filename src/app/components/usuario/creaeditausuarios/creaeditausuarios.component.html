@@ -4,79 +4,81 @@
   </div>
   <div>
     <form [formGroup]="form" (submit)="aceptar()" style="display: flex; flex-direction: column; align-items: center;">
-      <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
-        <mat-label>Id</mat-label>
-        <input matInput formControlName="hcodigo" [readonly]="isReadonly" />
-      </mat-form-field>
-
+      
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Username</mat-label>
         <input matInput placeholder="Ejem. juliandiaz98" formControlName="husername" />
+        <mat-error *ngIf="form.controls['husername']?.hasError('required') && form.controls['husername'].touched">
+          Ingrese un usuario.
+        </mat-error>
       </mat-form-field>
-      <p class="error" *ngIf="form.controls['husername'].hasError('required') && form.controls['husername'].touched">
-        Ingrese un usuario.
-      </p>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Contraseña</mat-label>
-        <input matInput formControlName="hpassword" type="password"/>
+        <input matInput formControlName="hpassword" type="password" />
+        <mat-error *ngIf="form.controls['hpassword']?.hasError('required') && form.controls['hpassword'].touched">
+          La contraseña es obligatoria.
+        </mat-error>
+        <mat-error *ngIf="form.controls['hpassword']?.hasError('minlength') && form.controls['hpassword'].touched">
+          La contraseña debe tener al menos 8 caracteres.
+        </mat-error>
+        <mat-error *ngIf="form.controls['hpassword']?.hasError('pattern') && form.controls['hpassword'].touched">
+          La contraseña debe contener al menos una mayúscula y uno de los siguientes caracteres especiales: * _ - # $.
+        </mat-error>
       </mat-form-field>
-      <p class="error" *ngIf="form.controls['hpassword'].hasError('required') && form.controls['hpassword'].touched">
-        La contraseña es obligatoria.
-      </p>
-      <p class="error" *ngIf="form.controls['hpassword'].hasError('minlength') && form.controls['hpassword'].touched">
-        La contraseña debe tener al menos 8 caracteres.
-      </p>
-      <p class="error" *ngIf="form.controls['hpassword'].hasError('pattern') && form.controls['hpassword'].touched">
-        La contraseña debe contener al menos una mayúscula y uno de los siguientes caracteres especiales: * _ - # $.
-      </p>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Nombres</mat-label>
         <input matInput placeholder="Ejem. Jorge André" formControlName="hnombres" />
+        <mat-error *ngIf="form.controls['hnombres']?.hasError('required') && form.controls['hnombres'].touched">
+          El nombre es obligatorio.
+        </mat-error>
       </mat-form-field>
-      <p class="error" *ngIf="form.controls['hnombres'].hasError('required') && form.controls['hnombres'].touched">
-        El nombre es obligatorio.
-      </p>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Apellidos</mat-label>
         <input matInput placeholder="Díaz Mendez" formControlName="hapellidos" />
+        <mat-error *ngIf="form.controls['hapellidos']?.hasError('required') && form.controls['hapellidos'].touched">
+          Los apellidos son obligatorios.
+        </mat-error>
       </mat-form-field>
-      <p class="error" *ngIf="form.controls['hapellidos'].hasError('required') && form.controls['hapellidos'].touched">
-        Los apellidos son obligatorios.
-      </p>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Correo</mat-label>
         <input matInput placeholder="Ej. jorge@example.com" formControlName="hcorreo" />
+        <mat-error *ngIf="form.controls['hcorreo']?.hasError('required') && form.controls['hcorreo'].touched">
+          El correo es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.controls['hcorreo']?.hasError('email') && form.controls['hcorreo'].touched">
+          Ingrese un correo válido.
+        </mat-error>
       </mat-form-field>
-      <p class="error" *ngIf="form.controls['hcorreo'].hasError('required') && form.controls['hcorreo'].touched">
-        El correo es obligatorio.
-      </p>
-      <p class="error" *ngIf="form.controls['hcorreo'].hasError('email') && form.controls['hcorreo'].touched">
-        Ingrese un correo válido.
-      </p>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Teléfono</mat-label>
         <input matInput placeholder="Ej. 987456963" formControlName="htelefono" />
+        <mat-error *ngIf="form.controls['htelefono']?.hasError('required') && form.controls['htelefono'].touched">
+          El teléfono es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.controls['htelefono']?.hasError('pattern') && form.controls['htelefono'].touched">
+          El teléfono debe comenzar con 9 y tener 9 dígitos.
+        </mat-error>
       </mat-form-field>
-      <p class="error" style="color: red" *ngIf="form.controls['htelefono'].hasError('required') && form.controls['htelefono'].touched">
-        El teléfono es obligatorio.
-      </p>
-      <p class="error" style="color: red" *ngIf="form.controls['htelefono'].hasError('pattern') && form.controls['htelefono'].touched">
-        El teléfono debe comenzar con 9 y tener 9 dígitos.
-      </p>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Sitio Web</mat-label>
         <input matInput placeholder="Ej. UltraDerma.com" formControlName="hsitioWeb" />
+        <mat-error *ngIf="form.controls['hsitioWeb']?.hasError('required') && form.controls['hsitioWeb'].touched">
+          El sitio web es obligatorio.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Nombre Empresa</mat-label>
         <input matInput placeholder="Ej. FadricStar" formControlName="hnombreEmpresa" />
+        <mat-error *ngIf="form.controls['hnombreEmpresa']?.hasError('required') && form.controls['hnombreEmpresa'].touched">
+          El nombre de la empresa es obligatorio.
+        </mat-error>
       </mat-form-field>
 
       <mat-checkbox formControlName="hesPremium" style="width: 100%; margin-bottom: 20px; text-align: start;">

@@ -6,7 +6,9 @@
     <form [formGroup]="form" (submit)="aceptar()" style="display: flex; flex-direction: column; align-items: center;">
       <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
         <mat-label>ID</mat-label>
-        <input matInput formControlName="idEnfermedad" [readonly]= "isReadonly" />
+        <input 
+          matInput 
+          formControlName="idEnfermedad" [readonly]= "isReadonly" />
       </mat-form-field>
             
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
@@ -16,7 +18,19 @@
           placeholder="Ej. Gripe, Picazón, Sarpullido" 
           formControlName="nombreEnfermedad" 
         />
-      </mat-form-field>
+        <mat-error *ngIf="form.get('nombreEnfermedad')?.hasError('required')">
+          El nombre es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('nombreEnfermedad')?.hasError('minlength')">
+          El nombre debe tener al menos 5 caracteres.
+        </mat-error>
+        <mat-error *ngIf="form.get('nombreEnfermedad')?.hasError('maxlength')">
+          El nombre no debe exceder los 40 caracteres.
+        </mat-error>
+        <mat-error *ngIf="form.get('nombreEnfermedad')?.hasError('nombreUnico')">
+          Ya existe una enfermedad con este nombre.
+        </mat-error>
+      </mat-form-field>      
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Descripción</mat-label>
@@ -25,15 +39,33 @@
           placeholder="Ej. Temperatura Alta" 
           formControlName="descripcion" 
         />
+        <mat-error *ngIf="form.get('descripcion')?.hasError('required')">
+          La Descripción es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('descripcion')?.hasError('minlength')">
+          La Descripción debe tener al menos 5 caracteres.
+        </mat-error>
+        <mat-error *ngIf="form.get('descripcion')?.hasError('maxlength')">
+          La Descripción no debe exceder los 100 caracteres.
+        </mat-error>
       </mat-form-field>
-      <br/>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Síntomas</mat-label>
         <input 
           matInput 
           placeholder="Ej. Cansancio, dolor" 
-          formControlName="sintomas"/>
+          formControlName="sintomas"
+        />
+        <mat-error *ngIf="form.get('sintomas')?.hasError('required')">
+          EL sintoma es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('sintomas')?.hasError('minlength')">
+          EL sintoma debe tener al menos 5 caracteres.
+        </mat-error>
+        <mat-error *ngIf="form.get('sintomas')?.hasError('maxlength')">
+          EL sintoma no debe exceder los 100 caracteres.
+        </mat-error>
       </mat-form-field>
 
       <div style="width: 100%; display: flex; justify-content: center;">
