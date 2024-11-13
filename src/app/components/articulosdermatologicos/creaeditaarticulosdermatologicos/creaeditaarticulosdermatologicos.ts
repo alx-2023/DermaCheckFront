@@ -55,7 +55,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.init(); //Inicializar el init
-      this.isReadonly = true;
+      this.isReadonly = !this.edicion;
     }); 
     
       this.form = this.formBuilder.group({
@@ -86,6 +86,8 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
           this.snackBar.open('Articulo actualizado exitosamente.', 'Cerrar', {
             duration: 3000,
           });
+          this.router.navigate(['articulosdermatologicos/insertar']);
+
         });
       } else {
         this.aS.insert(this.articuloDermatologico).subscribe(() => {
@@ -95,6 +97,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
           this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
             duration: 3000,
           });
+          this.router.navigate(['articulosdermatologicos/insertar']);
         });
       }
     }else {
@@ -103,7 +106,6 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
         panelClass: ['error-snackbar']
       });
     }
-    this.router.navigate(['articulosdermatologicos/insertar']);
   }
 
   init() {
