@@ -50,15 +50,16 @@ export class CreaeditaenfermedadComponent implements OnInit {
     this.route.params.subscribe((data: Params) => {
       this.id = data['id'];
       this.edicion = data['id'] != null;
-      this.init()
-      this.isReadonly = true;
-    }); 
-
+      this.init();
+      this.isReadonly = this.edicion;
+    });
+  
     this.form = this.formBuilder.group({
       idEnfermedad: [''],
-      nombreEnfermedad: ['', Validators.required],
-      descripcion: ['', Validators.required],
-      sintomas: ['', Validators.required],
+      nombreEnfermedad: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(40)], 
+      [this.nombreUnicoValidator.bind(this)]], // Validación de repetidos
+      descripcion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
+      sintomas:    ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
   }
 
@@ -89,13 +90,32 @@ export class CreaeditaenfermedadComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.eS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          idEnfermedad: new FormControl(data.idEnfermedad),
-          nombreEnfermedad: new FormControl(data.nombreEnfermedad),
-          descripcion: new FormControl(data.descripcion),
-          sintomas: new FormControl(data.sintomas),
+        this.form.patchValue({
+          idEnfermedad: data.idEnfermedad,
+          nombreEnfermedad: data.nombreEnfermedad,
+          descripcion: data.descripcion,
+          sintomas: data.sintomas,
         });
       });
     }
   }
+  
+
+  nombreUnicoValidator(control: FormControl) {
+    const nombre = control.value;
+    
+    return new Promise(resolve => {
+      if (!nombre) {
+        resolve(null); // Si no hay nombre, no valida
+      } else {
+        this.eS.list().subscribe(data => {
+          const enfermedadExistente = data.find(e => 
+            e.nombreEnfermedad === nombre && (!this.edicion || e.idEnfermedad !== this.id)
+          );
+          resolve(enfermedadExistente ? { nombreUnico: true } : null);
+        });
+      }
+    });
+  }
+  
 }

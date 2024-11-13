@@ -6,7 +6,9 @@
     <form [formGroup]="form" (submit)="aceptar()" style="display: flex; flex-direction: column; align-items: center;">
       <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
         <mat-label>Id</mat-label>
-        <input matInput formControlName="hcodigo" [readonly]="isReadonly" />
+        <input 
+          matInput
+          formControlName="hcodigo" [readonly]="isReadonly" />
       </mat-form-field>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
@@ -16,6 +18,15 @@
           placeholder="Ejem. Centro Medico Jose Olaya"
           formControlName="hnombre"
         />
+        <mat-error *ngIf="form.get('hnombre')?.hasError('required')">
+          El nombre es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('hnombre')?.hasError('minlength')">
+          El nombre debe tener al menos 5 caracteres.
+        </mat-error>
+        <mat-error *ngIf="form.get('hnombre')?.hasError('maxlength')">
+          El nombre debe tener como máximo 20 caracteres.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
@@ -25,14 +36,28 @@
           placeholder="Ej. 987456963"
           formControlName="htelefono"
         />
+        <mat-error *ngIf="form.get('htelefono')?.hasError('required')">
+          El teléfono es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="form.get('htelefono')?.hasError('pattern')">
+          El teléfono debe tener exactamente 9 dígitos numéricos.
+        </mat-error>
       </mat-form-field>
-
-    
+      
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Dirección</mat-label>
-        <input matInput placeholder="Av.Los Lirios 243" formControlName="hdireccion" />
+        <input 
+          matInput 
+          placeholder="Av.Los Lirios 243" 
+          formControlName="hdireccion" />
+        <mat-error *ngIf="form.get('hdireccion')?.hasError('required')">
+          La dirección es obligatoria.
+        </mat-error>
+        <mat-error *ngIf="form.get('hdireccion')?.hasError('maxlength')">
+          La dirección no debe exceder 50 caracteres.
+        </mat-error>
       </mat-form-field>
-
+      
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Especialidades</mat-label>
         <input
@@ -40,8 +65,13 @@
           placeholder="Ej: Cardiología"
           formControlName="hespecialidades"
         />
+        <mat-error *ngIf="form.get('hespecialidades')?.hasError('required')">
+          La especialidad es obligatoria.
+        </mat-error>
+        <mat-error *ngIf="form.get('hespecialidades')?.hasError('maxlength')">
+          La especialidad no debe exceder 30 caracteres.
+        </mat-error>
       </mat-form-field>
-
     
       <div style="width: 100%; display: flex; justify-content: center;">
         <button mat-button class="custom-button" style="margin-top: 20px;">Registrar</button>
