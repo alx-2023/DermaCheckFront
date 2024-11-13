@@ -142,8 +142,12 @@
     <span>Cerrar sesión</span>
   </button>
   <button mat-menu-item>
+    Username:
+    <span style="color: blue;">{{ username }}</span>
+  </button>  
+  <button mat-menu-item>
     Rol:
-    <span>{{ role }}</span>
+    <span style="color: blue;">{{ role }}</span>
   </button>
 </mat-menu>
 <router-outlet></router-outlet>

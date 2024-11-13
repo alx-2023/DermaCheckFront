@@ -17,12 +17,14 @@ export class AppComponent {
   title = 'frontDemo';
   
   role:string = '';
+  username:string = '';
   constructor(private loginService: LoginService){}
   cerrar(){
     sessionStorage.clear();
   }
   verificar(){
     this.role= this.loginService.showRole();
+    this.username = this.loginService.showUsername();
     return this.loginService.verificar();
   }
 
@@ -34,5 +36,9 @@ export class AppComponent {
   }
   isCentros(){
     return this.role === 'Empresas anunciantes';
+  }
+
+  isCliente(){
+    return this.role === 'Cliente';
   }
 }
