@@ -1,10 +1,7 @@
-<div class="d-flex flex-column">
+<div class="d-flex flex-column" *ngIf="verificar()">
   <nav class="navbar navbar-expand-lg bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand text-light" href="#">
-        Dermacheck 
-        
-      </a>
+      <button mat-button [routerLink]="'/homes'">Home</button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -102,9 +99,12 @@
               <li><a class="dropdown-item" routerLink="/tratamientos/registrar">Registrar</a></li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-light" routerLink="/login">Log In</a>
-          </li>
+          <div class="right-menu">
+            <button mat-button [matMenuTriggerFor]="menuSalir" style="color: white">
+              <mat-icon>person</mat-icon>Usuario
+            </button>
+          </div>
+
         </ul>
       </div>
     </div>
@@ -135,5 +135,15 @@
     </div>
   </div>
 </footer>
- 
 </div>
+<mat-menu #menuSalir="matMenu">
+  <button mat-menu-item routerLink="/login" (click)="cerrar()">
+    <mat-icon>logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+  <button mat-menu-item>
+    Rol:
+    <span>{{ role }}</span>
+  </button>
+</mat-menu>
+<router-outlet></router-outlet>

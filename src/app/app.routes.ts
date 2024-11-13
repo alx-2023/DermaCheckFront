@@ -19,29 +19,42 @@ import { CreaeditaenfermedadComponent } from './components/enfermedad/creaeditae
 import { CreaeditaanuncioComponent } from './components/anuncio/creaeditaanuncio/creaeditaanuncio.component';
 import { CreaeditaarticulosdermatologicosComponent } from './components/articulosdermatologicos/creaeditaarticulosdermatologicos/creaeditaarticulosdermatologicos';
 import { CRUDtrataComponent } from './components/tratamiento/crudtrata/crudtrata.component';
+import { seguridadGuard } from './guard/seguridad.guard';
+import { HomeComponent } from './components/home/home.component';
 
 export const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+
   {
-    path: 'centros-medicos',component: CentrosmedicosComponent,
+    path: 'centros-medicos',
+    component: CentrosmedicosComponent,
     children: [
       {
-        path: 'insertar',component: CreaeditacentrosmedicosComponent,
+        path: 'insertar',
+        component: CreaeditacentrosmedicosComponent,
       },
       {
-        path: 'ediciones/:id',component: CreaeditacentrosmedicosComponent,
+        path: 'ediciones/:id',
+        component: CreaeditacentrosmedicosComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
-  { path: 'enfermedades', component: EnfermedadComponent, 
-    children: 
-    [
+  {
+    path: 'enfermedades',
+    component: EnfermedadComponent,
+    children: [
       {
-        path: 'insertar',component: CreaeditaenfermedadComponent ,
+        path: 'insertar',
+        component: CreaeditaenfermedadComponent,
       },
       {
-        path: 'ediciones/:id',component: CreaeditaenfermedadComponent,
+        path: 'ediciones/:id',
+        component: CreaeditaenfermedadComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
   { path: 'enfermedades', component: EnfermedadComponent },
   {
@@ -53,9 +66,11 @@ export const routes: Routes = [
         component: CRUDtrataComponent,
       },
       {
-        path:'ediciones/:id', component: CRUDtrataComponent
-      }
+        path: 'ediciones/:id',
+        component: CRUDtrataComponent,
+      },
     ],
+    canActivate: [seguridadGuard],
   },
   {
     path: 'usuarios',
@@ -70,45 +85,54 @@ export const routes: Routes = [
         component: CreaeditausuariosComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
-  { path: 'anuncios', component: AnuncioComponent,
+  {
+    path: 'anuncios',
+    component: AnuncioComponent,
     children: [
-      {path: 'insertar',
-        component: CreaeditaanuncioComponent,
-      },
+      { path: 'insertar', component: CreaeditaanuncioComponent },
       {
         path: 'ediciones/:id',
         component: CreaeditaanuncioComponent,
       },
-    ]
-   },
+    ],
+    canActivate: [seguridadGuard],
+  },
   {
     path: 'articulos-dermatologicos',
     component: ArticulosdermatologicosComponent,
     children: [
-      {path: 'insertar',
+      {
+        path: 'insertar',
         component: CreaeditaarticulosdermatologicosComponent,
       },
       {
         path: 'ediciones/:id',
         component: CreaeditaarticulosdermatologicosComponent,
       },
-    ]
+    ],
+    canActivate: [seguridadGuard],
   },
-  { path: 'recuperaciones', component: RecuperacionComponent, 
+  {
+    path: 'recuperaciones',
+    component: RecuperacionComponent,
 
     children: [
       {
         path: 'insertar',
-        component:  CreaeditarecuperacionComponent ,
+        component: CreaeditarecuperacionComponent,
       },
       {
         path: 'ediciones/:id',
         component: CreaeditarecuperacionComponent,
       },
     ],
+    canActivate: [seguridadGuard],
   },
-  { path: 'roles', component: RolComponent,
+  {
+    path: 'roles',
+    component: RolComponent,
     children: [
       {
         path: 'insertar',
@@ -119,9 +143,10 @@ export const routes: Routes = [
         component: CreaeditarolComponent,
       },
     ],
-   },
+    canActivate: [seguridadGuard],
+  },
   { path: 'diagnosticos', component: DiagnosticoComponent },
-  { path: 'login', component: LoginComponent },
+
   {
     path: 'diagnosticos-tratamientos',
     component: DiagnosticoxtratamientoComponent,
@@ -135,5 +160,11 @@ export const routes: Routes = [
         component: CreaeditadiagnosticoxtratamientoComponent,
       },
     ],
+    canActivate: [seguridadGuard],
+  },
+  {
+    path: 'homes',
+    component: HomeComponent,
+    canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
   },
 ];

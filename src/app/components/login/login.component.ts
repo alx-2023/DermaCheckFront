@@ -1,41 +1,44 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, inject } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
-import { catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { JwtRequest } from '../../models/jwtRequest';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [MatFormFieldModule,FormsModule,MatInputModule,MatButtonModule],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'], 
+  styleUrl: './login.component.css'
 })
-export class LoginComponent {
-  loginObj: any = {
-    "username": '',
-    "password": '',
-  };
+export class LoginComponent implements OnInit{
 
-  http = inject(HttpClient);
-  router = inject(Router);
-
-  onLogin() {
-    this.http.post('http://localhost:8080/login', this.loginObj).pipe(
-      catchError((error) => {
-        alert('Error en la conexión o en el servidor');
-        this.router.navigateByUrl('dashboard')
-        return of(null); 
-      })
-    ).subscribe((res: any) => {
-      if (res && res.message === 'Se ha logeado correctamente') {
-        alert('Login exitoso');
-        localStorage.setItem('loginToken', res.jwttoken); 
-        this.router.navigateByUrl('/dashboard');
-      } else {
-        alert('Login no exitoso');
-      }
-    });
+  constructor( private loginService: LoginService,
+    private router: Router,
+    private snackBar: MatSnackBar){}
+  username: string = '';
+  password: string = '';
+  mensaje: string = '';
+  ngOnInit(): void {
   }
+  login(){
+    let request = new JwtRequest();
+    request.username = this.username;
+    request.password = this.password;
+    this.loginService.login(request).subscribe(
+      (data: any) => {
+        sessionStorage.setItem('token', data.jwttoken);
+        this.router.navigate(['homes']);
+      },
+      (error) => {
+        this.mensaje = 'Credenciales incorrectas!!!';
+        this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
+      }
+    );
+  }
+
 }
