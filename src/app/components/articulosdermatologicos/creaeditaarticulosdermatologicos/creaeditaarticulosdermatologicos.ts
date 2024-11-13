@@ -10,10 +10,13 @@ import { Router,Params,ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Usuario } from '../../../models/Usuario';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UsuarioService } from '../../../services/usuario.service';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-creaeditaarticulosdermatologicos',
+  providers: [provideNativeDateAdapter()],
   standalone: true,
   imports: [
     MatFormFieldModule,
@@ -43,6 +46,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
     private uS:UsuarioService
   ) {}
 
@@ -83,13 +87,25 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
       } else {
         this.aS.insert(this.articuloDermatologico).subscribe(() => {
           this.aS.list().subscribe((d) => {
-            this.aS.setList(d);
+            this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
+              duration: 3000,
+            }).afterOpened().subscribe(() => {
+              this.form.reset();
+            });
+
+            setTimeout(() => {
+              window.location.reload();
+            }, 1600);
           });
         });
       }
-       
+    }else {
+      this.snackBar.open('Error al registrar. Por favor, revise todos los campos.', 'Cerrar', {
+        duration: 3000,
+        panelClass: ['error-snackbar']
+      });
     }
-    this.router.navigate(['articulosdermatologicos']);
+    this.router.navigate(['articulosdermatologicos/insertar']);
   }
 
   init() {
