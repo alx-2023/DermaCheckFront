@@ -83,19 +83,17 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
           });
+          this.snackBar.open('Articulo actualizado exitosamente.', 'Cerrar', {
+            duration: 3000,
+          });
         });
       } else {
         this.aS.insert(this.articuloDermatologico).subscribe(() => {
           this.aS.list().subscribe((d) => {
-            this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
-              duration: 3000,
-            }).afterOpened().subscribe(() => {
-              this.form.reset();
-            });
-
-            setTimeout(() => {
-              window.location.reload();
-            }, 1600);
+            this.aS.setList(d);            
+          });
+          this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
+            duration: 3000,
           });
         });
       }
@@ -111,13 +109,13 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.aS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          hcodigo: new FormControl(data.idArticulosDermatologico),
-          hnombre: new FormControl(data.nombreRevista),
-          htipo: new FormControl(data.tipoRevista),
-          hdescripcion: new FormControl(data.descripcion),
-          hurl: new FormControl(data.url),
-          hidUsuario: new FormControl(data.usuario)
+        this.form.patchValue({
+          hcodigo: data.idArticulosDermatologico,
+          hnombre: data.nombreRevista,
+          htipo: data.tipoRevista,
+          hdescripcion: data.descripcion,
+          hurl: data.url,
+          hidUsuario: data.usuario
         });
       });
     }

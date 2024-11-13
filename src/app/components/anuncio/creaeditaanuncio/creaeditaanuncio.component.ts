@@ -62,11 +62,11 @@ export class CreaeditaanuncioComponent implements OnInit {
       hcodigo: [''],
       hurl: ['', Validators.required],
       hdescripcion: ['', Validators.required],
-      hcredito: ['', Validators.required],
-      hingresos: ['', Validators.required],
-      hduracion: ['', Validators.required],
+      hcredito: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      hingresos: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      hduracion: ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
       hidUsuario: ['', Validators.required]
-    });
+    }, { updateOn: 'blur' });
     this.uS.list().subscribe(data=>{
     this.listaUsuarios=data
     })
@@ -86,19 +86,17 @@ export class CreaeditaanuncioComponent implements OnInit {
           this.cS.list().subscribe((data) => {
             this.cS.setList(data);
           });
+          this.snackBar.open('Anuncio actualizado exitosamente.', 'Cerrar', {
+            duration: 3000,
+          });
         });
       } else {
         this.cS.insert(this.Anuncio).subscribe(() => {
           this.cS.list().subscribe((d) => {
-            this.snackBar.open('Anuncio registrado correctamente', 'Cerrar', {
-              duration: 3000,
-            }).afterOpened().subscribe(() => {
-              this.form.reset();
-            });
-
-            setTimeout(() => {
-              window.location.reload();
-            }, 1600);
+            this.cS.setList(d);
+          });
+          this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
+            duration: 3000,
           });
         });
       }
@@ -115,14 +113,14 @@ export class CreaeditaanuncioComponent implements OnInit {
   init() {
     if (this.edicion) {
       this.cS.listId(this.id).subscribe((data) => {
-        this.form = new FormGroup({
-          hcodigo: new FormControl(data.idAnuncio),
-          hurl: new FormControl(data.url),
-          hdescripcion: new FormControl(data.descripcion),
-          hcredito: new FormControl(data.creditos),
-          hingresos: new FormControl(data.ingresosPorAnuncioSoles),
-          hduracion: new FormControl(data.duracionMinutos),
-          hidUsuario: new FormControl(data.usuario)
+        this.form.patchValue({
+          hcodigo: data.idAnuncio,
+          hurl: data.url,
+          hdescripcion: data.descripcion,
+          hcredito: data.creditos,
+          hingresos: data.ingresosPorAnuncioSoles,
+          hduracion: data.duracionMinutos,
+          hidUsuario: data.usuario.idUsuario
         });
       });
     }
