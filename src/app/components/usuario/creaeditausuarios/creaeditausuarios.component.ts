@@ -17,6 +17,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { Observable } from 'rxjs';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-creaeditausuarios',
@@ -29,7 +30,8 @@ import { Observable } from 'rxjs';
     ReactiveFormsModule,
     CommonModule,
     MatCheckboxModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatIcon
   ],
   templateUrl: './creaeditausuarios.component.html',
   styleUrl: './creaeditausuarios.component.css',
@@ -40,7 +42,7 @@ export class CreaeditausuariosComponent implements OnInit {
   id: number = 0;
   edicion: boolean = false;
   isReadonly: boolean = false;
-
+  hidePassword: boolean = true;
   constructor(
     private uS: UsuarioService,
     private formBuilder: FormBuilder,
@@ -69,6 +71,10 @@ export class CreaeditausuariosComponent implements OnInit {
       hnombreEmpresa: [''],
       hesPremium: [''],
     });
+  }
+
+  togglePasswordVisibility() {
+    this.hidePassword = !this.hidePassword;
   }
 
   aceptar(): void {
