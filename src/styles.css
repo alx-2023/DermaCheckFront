@@ -9,7 +9,10 @@ body {
 }
 
 body {
-  background: white;
+  background:  linear-gradient( 
+    #c3e7f1 45%,  
+    #70aaf7 65%
+  );  
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: 0;

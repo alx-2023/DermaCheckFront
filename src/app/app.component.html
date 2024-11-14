@@ -9,7 +9,7 @@
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="usuariosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Usuarios
+             <mat-icon>account_box</mat-icon> Usuarios
             </a>
             <ul class="dropdown-menu" aria-labelledby="usuariosDropdown">
               <li><a class="dropdown-item" routerLink="/usuarios"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
@@ -18,7 +18,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="rolesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Roles
+              <mat-icon>assessment</mat-icon>Roles
             </a>
             <ul class="dropdown-menu" aria-labelledby="rolesDropdown">
               <li><a class="dropdown-item" routerLink="/roles"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
@@ -27,7 +27,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="recuperacionesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Recuperaciones
+              <mat-icon>cached</mat-icon> Recuperaciones
             </a>
             <ul class="dropdown-menu" aria-labelledby="recuperacionesDropdown">
 
@@ -38,7 +38,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="diagnosticosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Diagnósticos
+              <mat-icon>healing</mat-icon>Diagnósticos
             </a>
             <ul class="dropdown-menu" aria-labelledby="diagnosticosDropdown">
               <li><a class="dropdown-item" routerLink="/diagnosticos/listar"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
@@ -47,7 +47,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="centrosmedicosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              CentrosMedicos
+              <mat-icon>local_hospital</mat-icon>CentrosMedicos
             </a>
             <ul class="dropdown-menu" aria-labelledby="centrosmedicosDropdown">
               <li><a class="dropdown-item" routerLink="/centros-medicos"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
@@ -56,6 +56,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="enfermedadesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <mat-icon>coronavirus</mat-icon>
               Enfermedades
             </a>
             <ul class="dropdown-menu" aria-labelledby="enfermedadesDropdown">
@@ -65,7 +66,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="diagnosticosxTratamientosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              DiagnósticosxTratamientos
+              <mat-icon>medication</mat-icon> DiagnósticosxTratamientos
             </a>
             <ul class="dropdown-menu" aria-labelledby="diagnosticosxTratamientosDropdown">
               <li><a class="dropdown-item" routerLink="/diagnosticos-tratamientos"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
@@ -74,7 +75,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="anunciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Anuncios
+              <mat-icon>business_center</mat-icon> Anuncios
             </a>
             <ul class="dropdown-menu" aria-labelledby="anunciosDropdown">
               <li><a class="dropdown-item" routerLink="/anuncios"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
@@ -83,7 +84,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="articulosdermatologicosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Articulos Dermatologicos
+              <mat-icon>health_and_safety</mat-icon>   Articulos Dermatologicos
             </a>
             <ul class="dropdown-menu" aria-labelledby="articulosdermatologicosDropdown">
               <li><a class="dropdown-item" routerLink="/articulos-dermatologicos"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
@@ -92,7 +93,7 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-light" href="#" id="articulosdermatologicosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Tratamientos
+              <mat-icon>medical_services</mat-icon> Tratamientos
             </a>
             <ul class="dropdown-menu" aria-labelledby="articulosdermatologicosDropdown">
               <li><a class="dropdown-item" routerLink="/tratamientos">Listar</a></li>
@@ -140,13 +141,13 @@
     <mat-icon>logout</mat-icon>
     <span>Cerrar sesión</span>
   </button>
-  <button style="color: rgb(0, 38, 163);" mat-menu-item>
+  <button mat-menu-item>
     Username:
-    <span style="color: rgb(0, 38, 163);">{{ username }}</span>
+    <span style="color: rgb(17, 0, 255);">{{ username }}</span>
   </button>  
-  <button style="color: rgb(0, 38, 163);" mat-menu-item>
+  <button mat-menu-item>
     Rol:
-    <span style="color: rgb(0, 38, 163);">{{ role }}</span>
+    <span style="color: rgb(0, 17, 255);">{{ role }}</span>
   </button>
 </mat-menu>
 <router-outlet></router-outlet>

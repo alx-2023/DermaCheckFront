@@ -1,8 +1,3 @@
-/* Fondo blanco para el cuerpo */
-body, .content {
-  background: #ffffff !important;
-}
-
 /* Navbar con fondo azul degradado */
 .navbar {
   width: 100%;
@@ -12,12 +7,14 @@ body, .content {
   );  
   color: #ffffff;
   padding: 10px 20px;
+ 
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .navbar .navbar-brand,
 .navbar .nav-link {
-  color: #ffffff !important; 
+  color: #ffffff !important; /* Color blanco para enlaces en el navbar */
+  display: flex;
 }
 
 .nav-link {
@@ -43,10 +40,11 @@ body, .content {
 
 .dropdown-menu .dropdown-item {
   color: #ffffff !important;
+  display: flex;
 }
 .navbar .dropdown-menu .dropdown-item {
   color: #1E3C72 !important;
-  display: flex;  /* Color azul */
+  display: flex;   
   padding: 5px 10px;
 }
 /* Footer */
@@ -55,19 +53,18 @@ body, .content {
     #001462 35%,  
     #255EA8 75%
   );  
-  color:white;
   padding: 1.5rem 0;
 }
-
-
+ 
 .footer-container a {
   color: #ffffff;
   margin-right: 1rem;
-  transition: color 0.3s ease;
+   
 }
 
 .footer-container a:hover {
-  color: #ffffff;
+  color: #00c3ff;
+  transition: color 0.3s ease;
 }
 
 .footer-container .footer-brand img {
@@ -84,16 +81,11 @@ body, .content {
  
 .footer-container {
   background-color: #fff;
-  color: #ffffff;
   padding: 15px 0;
   width: 100%;
   text-align: center;
   position: fixed;
   bottom: 0;
   left: 0;
-  border-top: 1px solid #ccc;
 }
 
-.nav-link:active, .dropdown-item:active {
-  background-color: transparent; 
-}
