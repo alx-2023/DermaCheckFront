@@ -17,7 +17,7 @@ body, .content {
 
 .navbar .navbar-brand,
 .navbar .nav-link {
-  color: #ffffff !important; /* Color blanco para enlaces en el navbar */
+  color: #ffffff !important; 
 }
 
 .nav-link {
@@ -94,3 +94,6 @@ body, .content {
   border-top: 1px solid #ccc;
 }
 
+.nav-link:active, .dropdown-item:active {
+  background-color: transparent; 
+}
