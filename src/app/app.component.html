@@ -100,7 +100,7 @@
             </ul>
           </li>
           <div class="right-menu">
-            <button mat-button [matMenuTriggerFor]="menuSalir" style="color: white">
+            <button mat-button [matMenuTriggerFor]="menuSalir" style="color: rgb(255, 255, 255)">
               <mat-icon>person</mat-icon>Usuario
             </button>
           </div>
@@ -114,13 +114,12 @@
     <router-outlet></router-outlet>
   </div>
  
- 
-<!-- Footer con mat-icon -->
 <footer class="footer-container bg-white text-dark py-3 border-top">
   <div class="container d-flex justify-content-between align-items-center">
     <span class="footer-brand">
       <img src="../assets/angular.png" alt="Logo" style="width: 30px; height: auto; margin-right: 10px;" />
       Dermacheck
+      <span style="color: rgb(255, 255, 255);"></span>
     </span>
     <div>
       <a href="https://www.facebook.com" target="_blank" class="text-dark me-3" aria-label="Facebook">
@@ -143,11 +142,11 @@
   </button>
   <button mat-menu-item>
     Username:
-    <span style="color: blue;">{{ username }}</span>
+    <span style="color: rgb(255, 255, 255);">{{ username }}</span>
   </button>  
   <button mat-menu-item>
     Rol:
-    <span style="color: blue;">{{ role }}</span>
+    <span style="color: rgb(255, 255, 255);">{{ role }}</span>
   </button>
 </mat-menu>
 <router-outlet></router-outlet>
