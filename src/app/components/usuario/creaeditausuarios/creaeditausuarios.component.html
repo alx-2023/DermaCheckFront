@@ -15,7 +15,10 @@
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Contraseña</mat-label>
-        <input matInput formControlName="hpassword" type="password" />
+        <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="hpassword" />
+        <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button">
+          <mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>        
         <mat-error *ngIf="form.controls['hpassword']?.hasError('required') && form.controls['hpassword'].touched">
           La contraseña es obligatoria.
         </mat-error>
@@ -26,6 +29,7 @@
           La contraseña debe contener al menos una mayúscula y uno de los siguientes caracteres especiales: * _ - # $.
         </mat-error>
       </mat-form-field>
+      
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Nombres</mat-label>
