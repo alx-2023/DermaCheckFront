@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit{
         this.router.navigate(['homes']);
       },
       (error) => {
-        this.mensaje = 'Credenciales incorrectas!!!';
+        this.mensaje = '¡Credenciales incorrectas!';
         this.snackBar.open(this.mensaje, 'Aviso', { duration: 2000 });
       }
     );

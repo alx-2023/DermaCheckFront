@@ -22,7 +22,10 @@ export class AppComponent {
   constructor(private loginService: LoginService, private router: Router){}
   cerrar(){
     sessionStorage.clear();
-    
+    this.router.navigate(['/login']).then(() => {
+      location.reload(); // Recarga la página
+    });
+  
   }
   verificar(){
     this.role= this.loginService.showRole();
