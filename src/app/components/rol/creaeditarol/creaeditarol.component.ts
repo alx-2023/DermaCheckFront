@@ -83,6 +83,10 @@ export class CreaeditarolComponent implements OnInit {
         this.rS.update(this.rol).subscribe((data) => {
           this.rS.list().subscribe((data) => {
             this.rS.setList(data);
+            this.snackBar.open('Rol actualizado correctamente', 'Cerrar', {
+              duration: 3000,
+            });
+            this.router.navigate(['roles']);
           });
         });
       } else {
