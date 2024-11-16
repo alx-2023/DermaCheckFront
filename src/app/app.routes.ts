@@ -166,5 +166,7 @@ export const routes: Routes = [
     path: 'homes',
     component: HomeComponent,
     canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+    
   },
+
 ];
