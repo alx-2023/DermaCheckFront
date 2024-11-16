@@ -6,7 +6,7 @@
       <form [formGroup]="form" (submit)="aceptar()">
         <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
           <mat-label>Id</mat-label>
-          <input matInput formControlName="hcodigo" [readonly]="isReadonly" />
+          <input matInput formControlName = "hcodigo" [readonly]="isReadonly">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">

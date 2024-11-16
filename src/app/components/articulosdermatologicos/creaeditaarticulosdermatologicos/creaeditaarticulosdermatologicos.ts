@@ -73,6 +73,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
 
   aceptar (): void {
     if (this.form.valid) {
+      this.articuloDermatologico.idArticulosDermatologico = this.form.value.hcodigo;
       this.articuloDermatologico.nombreRevista = this.form.value.hnombre;
       this.articuloDermatologico.tipoRevista = this.form.value.htipo;
       this.articuloDermatologico.descripcion = this.form.value.hdescripcion;
@@ -83,11 +84,10 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
           this.aS.list().subscribe((data) => {
             this.aS.setList(data);
           });
-          this.snackBar.open('Articulo actualizado exitosamente.', 'Cerrar', {
+          this.snackBar.open('Artículo actualizado correctamente', 'Cerrar', {
             duration: 3000,
           });
           this.router.navigate(['articulos-dermatologicos']);
-
         });
       } else {
         this.aS.insert(this.articuloDermatologico).subscribe(() => {
@@ -117,7 +117,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
           htipo: data.tipoRevista,
           hdescripcion: data.descripcion,
           hurl: data.url,
-          hidUsuario: data.usuario
+          hidUsuario: data.usuario.idUsuario
         });
       });
     }
