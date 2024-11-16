@@ -7,22 +7,22 @@
           <mat-card-title>Nombre: {{ element.nombre }}</mat-card-title>
         </mat-card-header>
         <mat-card-content>
+          
           <p><strong>Id: </strong> {{ element.idCentroMedico }}</p>
           <p><strong>Nombre: </strong> {{ element.nombre }}</p>
           <p><strong>Telefono: </strong> {{ element.telefono }}</p>
           <p><strong>Direccion: </strong> {{ element.direccion }}</p>
-           
           <p><strong>Especialidades: </strong> {{ element.especialidades }}</p>
-          <p>
+
+          <div class="btn-actions">
             <button mat-raised-button [routerLink]="['ediciones', element.idCentroMedico]">
-              <mat-icon>edit</mat-icon> Editar
+              <mat-icon>edit</mat-icon>
             </button>
-          </p>
-          <p>
             <button mat-button (click)="eliminar(element.idCentroMedico)">
-              <mat-icon>delete</mat-icon> Eliminar
+              <mat-icon>delete</mat-icon>
             </button>
-          </p>
+          </div>
+
         </mat-card-content>
       </mat-card>
     </ng-container>

@@ -58,8 +58,7 @@ export class CreaeditaenfermedadComponent implements OnInit {
   
     this.form = this.formBuilder.group({
       idEnfermedad: [''],
-      nombreEnfermedad: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(40)], 
-      [this.nombreUnicoValidator.bind(this)]], // Validación de repetidos
+      nombreEnfermedad:['', [Validators.required, Validators.minLength(5), Validators.maxLength(40)]],
       descripcion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
       sintomas:    ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]]
     });
@@ -112,23 +111,4 @@ export class CreaeditaenfermedadComponent implements OnInit {
       });
     }
   }
-  
-
-  nombreUnicoValidator(control: FormControl) {
-    const nombre = control.value;
-    
-    return new Promise(resolve => {
-      if (!nombre) {
-        resolve(null); // Si no hay nombre, no valida
-      } else {
-        this.eS.list().subscribe(data => {
-          const enfermedadExistente = data.find(e => 
-            e.nombreEnfermedad === nombre && (!this.edicion || e.idEnfermedad !== this.id)
-          );
-          resolve(enfermedadExistente ? { nombreUnico: true } : null);
-        });
-      }
-    });
-  }
-  
 }
