@@ -21,10 +21,14 @@ import { CreaeditaarticulosdermatologicosComponent } from './components/articulo
 import { CRUDtrataComponent } from './components/tratamiento/crudtrata/crudtrata.component';
 import { seguridadGuard } from './guard/seguridad.guard';
 import { HomeComponent } from './components/home/home.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { PlanesComponent } from './components/landing-page/planes/planes.component';
+import { AcercaDeNosotrosComponent } from './components/landing-page/acerca-de-nosotros/acerca-de-nosotros.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+   
 
   {
     path: 'centros-medicos',
@@ -40,6 +44,20 @@ export const routes: Routes = [
       },
     ],
     canActivate: [seguridadGuard],
+  },
+  { path: 'LandingPage', component: LandingPageComponent ,
+    children: [
+      {
+        path: 'Planes',
+        component: PlanesComponent,
+      },
+      {
+        path: 'AcercaDeNosotros',
+        component: AcercaDeNosotrosComponent,
+      },
+
+       
+    ],
   },
   {
     path: 'enfermedades',

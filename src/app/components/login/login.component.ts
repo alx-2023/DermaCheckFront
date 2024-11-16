@@ -40,5 +40,11 @@ export class LoginComponent implements OnInit{
       }
     );
   }
+  Planes(){
+    this.router.navigate(['LandingPage/Planes']);
+  }
+  AcercadeNosotros(){
+    this.router.navigate(['LandingPage/AcercaDeNosotros']);
+  }
 
 }
