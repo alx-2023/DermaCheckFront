@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-acerca-de-nosotros',
@@ -9,5 +10,12 @@ import { MatCardModule } from '@angular/material/card';
   styleUrl: './acerca-de-nosotros.component.css'
 })
 export class AcercaDeNosotrosComponent {
-
+  constructor(private router: Router) {}
+  
+  Planes() {
+    this.router.navigate(['LandingPage/Planes']);
+  }
+  AcercadeNosotros() {
+    this.router.navigate(['LandingPage/AcercaDeNosotros']);
+  }
 }
