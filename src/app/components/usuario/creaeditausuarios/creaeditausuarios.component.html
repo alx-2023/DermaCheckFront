@@ -37,6 +37,9 @@
         <mat-error *ngIf="form.controls['hnombres']?.hasError('required') && form.controls['hnombres'].touched">
           El nombre es obligatorio.
         </mat-error>
+        <mat-error *ngIf="form.controls['hnombres']?.hasError('minlength') || form.controls['hnombres']?.hasError('maxlength')  && form.controls['hnombres'].touched">
+          El nombre debe tener al menos 3 caracteres y máximo 20.
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
@@ -44,6 +47,9 @@
         <input matInput placeholder="Díaz Mendez" formControlName="hapellidos" />
         <mat-error *ngIf="form.controls['hapellidos']?.hasError('required') && form.controls['hapellidos'].touched">
           Los apellidos son obligatorios.
+        </mat-error>
+        <mat-error *ngIf="form.controls['hapellidos']?.hasError('minlength') || form.controls['hapellidos']?.hasError('maxlength')  && form.controls['hapellidos'].touched">
+          Los apellidos debe tener al menos 2 caracteres y máximo 20.
         </mat-error>
       </mat-form-field>
 
@@ -72,16 +78,13 @@
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Sitio Web</mat-label>
         <input matInput placeholder="Ej. UltraDerma.com" formControlName="hsitioWeb" />
-        <mat-error *ngIf="form.controls['hsitioWeb']?.hasError('required') && form.controls['hsitioWeb'].touched">
-          El sitio web es obligatorio.
-        </mat-error>
       </mat-form-field>
 
       <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
         <mat-label>Nombre Empresa</mat-label>
         <input matInput placeholder="Ej. FadricStar" formControlName="hnombreEmpresa" />
-        <mat-error *ngIf="form.controls['hnombreEmpresa']?.hasError('required') && form.controls['hnombreEmpresa'].touched">
-          El nombre de la empresa es obligatorio.
+        <mat-error *ngIf="form.controls['hnombreEmpresa']?.hasError('maxlength') && form.controls['hnombreEmpresa'].touched">
+          El nombre de la empresa debe tener máximo 30 caracteres.
         </mat-error>
       </mat-form-field>
 

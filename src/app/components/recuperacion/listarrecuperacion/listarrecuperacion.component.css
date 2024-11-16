@@ -13,12 +13,12 @@
 
 .btn-actions {
     display: flex;
-    justify-content: right; /* Alinea los botones al extremo izquierdo y derecho */
+    justify-content: right; 
     margin-top: 10px;
 }
 
 button {
-    background-color: transparent; /* Remueve el fondo de los botones */
+    background-color: transparent; 
     box-shadow: none;
     border: none;
 }

@@ -25,20 +25,29 @@
             <div *ngIf="element.sitioWeb != ''">
               <p>
                 <strong>Sitio Web: </strong>
-                <a href="{{ element.sitioWeb }}" target="_blank">{{ element.sitioWeb }}</a>
+                <a href="{{ element.sitioWeb }}" target="_blank">{{
+                  element.sitioWeb
+                }}</a>
               </p>
             </div>
             <p><strong>Teléfono: </strong> {{ element.telefono }}</p>
             <div *ngIf="element.nombreEmpresa != ''">
-              <p><strong>Nombre de Empresa: </strong> {{ element.nombreEmpresa }}</p>
+              <p>
+                <strong>Nombre de Empresa: </strong> {{ element.nombreEmpresa }}
+              </p>
             </div>
-            <p><strong>Plan: </strong> {{ element.esPremium ? 'Premium' : 'No Premium' }}</p>
+            <p>
+              <strong>Plan: </strong>
+              {{ element.esPremium ? "Premium" : "No Premium" }}
+            </p>
           </div>
 
           <div class="btn-details-container">
             <button
               mat-raised-button
-              (click)="showDetails[element.idUsuario] = !showDetails[element.idUsuario]"
+              (click)="
+                showDetails[element.idUsuario] = !showDetails[element.idUsuario]
+              "
               class="btn-details"
             >
               {{ showDetails[element.idUsuario] ? "Ocultar" : "Ver" }} detalles
@@ -46,18 +55,24 @@
           </div>
 
           <div class="btn-actions">
-            <button mat-raised-button [routerLink]="['ediciones', element.idUsuario]">
-              <mat-icon>edit</mat-icon> 
+            <button
+              mat-raised-button
+              [routerLink]="['ediciones', element.idUsuario]"
+            >
+              <mat-icon>edit</mat-icon>
             </button>
 
             <button mat-button (click)="eliminar(element.idUsuario)">
-              <mat-icon>delete</mat-icon> 
+              <mat-icon>delete</mat-icon>
             </button>
-              
           </div>
         </mat-card-content>
       </mat-card>
     </ng-container>
+  </div>
+
+  <div *ngIf="dataSource.data.length === 0" class="mensaje-vacio">
+    <span style="color: rgb(184, 1, 1);"> {{ mensajeSinRegistros }}</span>
   </div>
 
   <div class="paginator-container">
