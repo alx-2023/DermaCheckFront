@@ -39,7 +39,7 @@ export class AppComponent {
   isEspecialista(){
     return this.role === 'Especialista';
   }
-  isCentros(){
+  isEmpresas(){
     return this.role === 'Empresas anunciantes';
   }
 
