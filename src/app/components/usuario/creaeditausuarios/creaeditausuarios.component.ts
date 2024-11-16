@@ -63,12 +63,12 @@ export class CreaeditausuariosComponent implements OnInit {
       husername: ['', Validators.required],
       hpassword: ['', [Validators.required, Validators.minLength(8)]],
       henabled: [true],
-      hnombres: ['', Validators.required],
-      hapellidos: ['', Validators.required],
+      hnombres: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      hapellidos: ['', [Validators.required,  Validators.minLength(2), Validators.maxLength(20)]],
       hcorreo: ['', [Validators.required, Validators.email]],
       hsitioWeb: [''],
       htelefono: ['', [Validators.required, Validators.pattern('^9\\d{8}$')]],
-      hnombreEmpresa: [''],
+      hnombreEmpresa: ['', Validators.maxLength(30)],
       hesPremium: [''],
     });
   }
@@ -87,16 +87,15 @@ export class CreaeditausuariosComponent implements OnInit {
   
     const username = this.form.value.husername;
     
-    // Verificar si el nombre de usuario ya existe
     this.uS.checkUsernameExists(username).subscribe((exists) => {
       if (exists) {
         this.snackBar.open('El nombre de usuario ya está en uso. Por favor elija otro.', 'Cerrar', {
           duration: 3000,
         });
-        return; // Detener el proceso si el username ya existe
+        return; 
       }
   
-      // Continuar con el proceso de inserción o actualización
+    
       this.usuario.idUsuario = this.form.value.hcodigo;
       this.usuario.username = username;
       this.usuario.password = this.form.value.hpassword;

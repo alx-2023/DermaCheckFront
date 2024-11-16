@@ -31,6 +31,9 @@ import { MatTableDataSource } from '@angular/material/table';
 export class ListarusuarioComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
   showDetails: { [key: number]: boolean } = {};
+  dataSource2 = new MatTableDataSource<Usuario>([]); // Inicializado con una lista vacía
+  mensajeSinRegistros = 'No hay recuperaciones registradas';
+  
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
