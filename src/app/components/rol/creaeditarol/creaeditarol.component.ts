@@ -89,7 +89,7 @@ export class CreaeditarolComponent implements OnInit {
         this.rS.insert(this.rol).subscribe((d) => {
           this.rS.list().subscribe((d) => {
             this.rS.setList(d);
-            this.snackBar.open('Recuperación registrada correctamente', 'Cerrar', {
+            this.snackBar.open('Rol asignado correctamente', 'Cerrar', {
               duration: 3000,
             }).afterOpened().subscribe(() => {
               this.form.reset();

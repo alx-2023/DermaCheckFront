@@ -18,7 +18,8 @@ import { RouterModule } from '@angular/router';
 export class ListarrecuperacionComponent implements OnInit {
   dataSource: Recuperacion[] = [];
   displayedColumns: string [] = ['Id', 'codigo de recuperacion', 'Fecha de Solicitud','Fecha de Expiracion','Usuario','Estado']
-
+  dataSource2 = new MatTableDataSource<Recuperacion>([]); // Inicializado con una lista vacía
+  mensajeSinRegistros = 'No hay recuperaciones registradas';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   pageSize = 3;

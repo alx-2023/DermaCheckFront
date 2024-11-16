@@ -59,43 +59,15 @@ export class ListarrolComponent implements OnInit {
       this.updatePagedData();
     }
     eliminar(id: number): void {
-      this.rS.delete(id).subscribe({
-        next: () => {
-
-          this.dataSource.data = this.dataSource.data.filter((rol) => rol.idRol !== id);
-          this.updatePagedData(); 
-    
-          this.snackBar.open('Registro eliminado exitosamente', 'Cerrar', {
-            duration: 2000,
-            verticalPosition: 'bottom',
-            horizontalPosition: 'center',
-          });
-        },
-        error: (err) => {
-
-          if (err.status === 500) {
-            this.snackBar.open(
-              'No se puede eliminar porque este registro ya existe',
-              'Cerrar',
-              {
-                duration: 2000,
-                verticalPosition: 'bottom',
-                horizontalPosition: 'center',
-              }
-            );
-          } else {
-            this.snackBar.open(
-              'Ocurrió un error al intentar eliminar el registro',
-              'Cerrar',
-              {
-                duration: 2000,
-                verticalPosition: 'bottom',
-                horizontalPosition: 'center',
-              }
-            );
-          }
-        },
-      });
+      this.snackBar.open(
+        'No se puede eliminar este registro porque está relacionado con otra tabla',
+        'Cerrar',
+        {
+          duration: 3000,
+          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+        }
+      );
     }
     
 }

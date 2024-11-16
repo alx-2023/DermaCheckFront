@@ -24,10 +24,14 @@
       </mat-card>
     </ng-container>
   </div>
-
+   
+  <div *ngIf="dataSource.length === 0" class="mensaje-vacio">
+    <span style="color: rgb(184, 1, 1);">  {{ mensajeSinRegistros }}</span>
+  </div>
   <div class="paginator-container">
     <mat-paginator [length]="dataSource.length"
                    [pageSize]="pageSize"
+                   
                    [pageSizeOptions]="[3, 6,9]"
                    (page)="onPageChange($event)"
                    showFirstLastButtons

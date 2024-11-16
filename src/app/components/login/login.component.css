@@ -1,3 +1,37 @@
-.body{
-    background-color: white;
+body {
+    background: linear-gradient(180deg, #cfe7f3, #83bdf0);
+    font-family: 'Arial', sans-serif;
+    padding-top: 70px; /* Espacio para el navbar */
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.navbar-nav .nav-link {
+    margin-left: 10px;
+    font-weight: 500;
+    color: #555;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #007bff;
+}
+
+.card {
+    border-radius: 15px;
+    background: white;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
 }
