@@ -10,11 +10,14 @@
       
           
           <div class="btn-actions">
-            <button mat-icon-button [routerLink]="['ediciones', element.idRol]">
-              <mat-icon>edit</mat-icon>
+            <button mat-raised-button [routerLink]="['ediciones', element.idRol]">
+              <mat-icon>edit</mat-icon> 
             </button>
 
-          
+            <button mat-button (click)="eliminar(element.idRol)">
+              <mat-icon>delete</mat-icon> 
+            </button>
+              
           </div>
         </mat-card-content>
       </mat-card>
@@ -22,7 +25,7 @@
   </div>
 
   <div class="paginator-container">
-    <mat-paginator [length]="dataSource.length"
+    <mat-paginator [length]="dataSource.data.length"
                    [pageSize]="pageSize"
                    [pageSizeOptions]="[3, 6,9]"
                    (page)="onPageChange($event)"
