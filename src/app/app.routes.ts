@@ -25,6 +25,7 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { PlanesComponent } from './components/landing-page/planes/planes.component';
 import { AcercaDeNosotrosComponent } from './components/landing-page/acerca-de-nosotros/acerca-de-nosotros.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { TratamientoporfechaComponent } from './components/reportes/tratamientoporfecha/tratamientoporfecha.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -87,6 +88,10 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: CRUDtrataComponent,
+      },
+      {
+        path: 'reportes',
+        component: TratamientoporfechaComponent,
       },
     ],
     canActivate: [seguridadGuard],

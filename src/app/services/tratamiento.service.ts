@@ -33,4 +33,11 @@ export class TratamientoService {
   update(tratamiento: Tratamiento) {
     return this.http.patch(this.url, tratamiento);
   }
+
+  buscarPorFecha(fechaInicio: Date) {
+    const formattedDate = fechaInicio.toISOString().split('T')[0];
+    return this.http.get<Tratamiento[]>(`${this.url}/por-fecha-inicio?fechaInicio=${formattedDate}`);
+  }
+  
+  
 }
