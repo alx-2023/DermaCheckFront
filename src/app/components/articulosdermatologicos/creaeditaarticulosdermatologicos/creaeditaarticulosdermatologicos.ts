@@ -86,7 +86,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
           this.snackBar.open('Articulo actualizado exitosamente.', 'Cerrar', {
             duration: 3000,
           });
-          this.router.navigate(['articulosdermatologicos/insertar']);
+          this.router.navigate(['articulos-dermatologicos']);
 
         });
       } else {
@@ -97,7 +97,7 @@ export class CreaeditaarticulosdermatologicosComponent implements OnInit {
           this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
             duration: 3000,
           });
-          this.router.navigate(['articulosdermatologicos/insertar']);
+          this.router.navigate(['articulos-dermatologicos/insertar']);
         });
       }
     }else {
