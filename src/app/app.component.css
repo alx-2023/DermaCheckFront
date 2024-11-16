@@ -1,13 +1,13 @@
 
 .navbar {
-  width: 115%;
+  width: 100%;
   background:   linear-gradient( 
     #001462 35%,
     #255EA8 75%
   );
   color: #ffffff;
   padding: 10px 20px;
- 
+  display: flex;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
