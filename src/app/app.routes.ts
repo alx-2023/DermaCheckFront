@@ -24,6 +24,9 @@ import { HomeComponent } from './components/home/home.component';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { PlanesComponent } from './components/landing-page/planes/planes.component';
 import { AcercaDeNosotrosComponent } from './components/landing-page/acerca-de-nosotros/acerca-de-nosotros.component';
+import { ReporteCantidadCreditosComponent } from './components/usuario/reportes/reporte-cantidad-creditos/reporte-cantidad-creditos.component';
+import { ReportesComponent } from './components/usuario/reportes/reportes.component';
+import { UsuarioxAnuncioCreditosDTO } from './models/UsuarioxAnuncioCreditosDTO';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -102,7 +105,14 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: CreaeditausuariosComponent,
       },
+      {
+       
+            path:'Usuario-Cantidad-Credito',component:ReporteCantidadCreditosComponent,
+          
+        
+      }
     ],
+    
     canActivate: [seguridadGuard],
   },
   {

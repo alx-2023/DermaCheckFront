@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Usuario } from '../models/Usuario';
-import { retry, Subject } from 'rxjs';
+import { Observable, retry, Subject } from 'rxjs';
+import { UsuarioxAnuncioCreditosDTO } from '../models/UsuarioxAnuncioCreditosDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
@@ -35,6 +36,9 @@ export class UsuarioService {
   
   checkUsernameExists(username: string) {
     return this.http.get<boolean>(`${this.url}/exists/${username}`);
+  }
+  obtenerCantidad(): Observable<UsuarioxAnuncioCreditosDTO[]> {
+    return this.http.get<UsuarioxAnuncioCreditosDTO[]>(`${this.url}/Usuario-Cantidad-Creditos`);
   }
   
 }
