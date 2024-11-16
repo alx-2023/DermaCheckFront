@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Diagnostico } from '../models/Diagnostico';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
@@ -32,4 +32,8 @@ export class DiagnosticoService {
   update(diagnostico: Diagnostico) {
     return this.http.patch(this.url, diagnostico);
   }
+  diagnosticoMaxPunt():Observable<Diagnostico[]>{
+    return this.http.get<Diagnostico[]>(`${this.url}/maxima-puntuacion`);
+  }
+
 }

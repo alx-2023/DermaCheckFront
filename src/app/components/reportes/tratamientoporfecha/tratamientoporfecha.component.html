@@ -1,0 +1,29 @@
+<div>
+  <h1 class="title">Tratamientos por Fecha</h1>
+  
+  <mat-form-field appearance="outline" class="input-field">
+    <mat-label>Seleccione una fecha</mat-label>
+    <input matInput [matDatepicker]="picker" [(ngModel)]="fechaInicio" class="input-style" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  
+  <button mat-raised-button color="primary" (click)="buscarTratamientosPorFecha()" class="btn-buscar">
+    Buscar Tratamientos
+  </button>
+
+  <div *ngIf="showChart" class="chart-container">
+    <canvas
+      baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [type]="barChartType"
+    ></canvas>
+  </div>
+
+  <div *ngIf="!showChart && tratamientos.length === 0" class="no-tratamientos">
+    <p>No se encontraron tratamientos para la fecha seleccionada.</p>
+  </div>
+</div>
