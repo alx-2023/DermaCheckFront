@@ -26,6 +26,10 @@
         </mat-card>
       </ng-container>
     </div>
+
+    <div *ngIf="dataSource.data.length === 0" class="mensaje-vacio">
+      <span style="color: rgb(184, 1, 1);"> {{ mensajeSinRegistros }}</span>
+    </div>
   
     <div class="paginator-container">
       <mat-paginator

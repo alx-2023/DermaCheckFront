@@ -31,7 +31,8 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ListardiagnosticoxtratamientoComponent implements OnInit {
   dataSource: MatTableDataSource<DiagnosticoxTratamiento> = new MatTableDataSource();
-
+  dataSource2 = new MatTableDataSource<DiagnosticoxTratamiento>([]); // Inicializado con una lista vacía
+  mensajeSinRegistros = 'No hay recuperaciones registradas';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) matSort!: MatSort;
 
