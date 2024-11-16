@@ -30,17 +30,6 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ListarusuarioComponent implements OnInit {
   dataSource: MatTableDataSource<Usuario> = new MatTableDataSource();
-  displayedColumns: string[] = [
-    'Id',
-    'Username',
-    'Nombres',
-    'Apellidos',
-    'Correo',
-    'SitioWeb',
-    'Cellphone',
-    'NameCompany',
-    'EsPremiun',
-  ];
   showDetails: { [key: number]: boolean } = {};
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
