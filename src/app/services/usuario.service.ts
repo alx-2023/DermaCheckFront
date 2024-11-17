@@ -40,7 +40,7 @@ export class UsuarioService {
     return this.http.get<boolean>(`${this.url}/exists/${username}`);
   }
   obtenerCantidad(): Observable<UsuarioxAnuncioCreditosDTO[]> {
-    return this.http.get<UsuarioxAnuncioCreditosDTO[]>(`${this.url}/CantidadCreditos`);
+    return this.http.get<UsuarioxAnuncioCreditosDTO[]>(`${this.url}/Usuario-Cantidad-Creditos`);
   }
   obtenerCantidadEnfermades(): Observable<EnfermedadesxUsuarioDTO[]> {
     return this.http.get<EnfermedadesxUsuarioDTO[]>(`${this.url}/Usuario-Cantidad-Enfermedades`);

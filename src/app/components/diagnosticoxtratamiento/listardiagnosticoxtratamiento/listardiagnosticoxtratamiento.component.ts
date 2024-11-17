@@ -44,6 +44,7 @@ export class ListardiagnosticoxtratamientoComponent implements OnInit {
 
   ngOnInit(): void {
     this.dtS.getList().subscribe((data) => {
+      console.log(data);  // Revisa la estructura de los datos
       this.dataSource.data = data;
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.matSort;

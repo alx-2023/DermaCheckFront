@@ -17,7 +17,7 @@ export class DiagmaximopuntuacionComponent {
     responsive: true,
   };
   barChartLabels: string[] = []; 
-  barChartType: ChartType = 'pie'; 
+  barChartType: ChartType = 'polarArea'; 
   barChartLegend = true; 
   barChartData: ChartDataset[] = [];
 

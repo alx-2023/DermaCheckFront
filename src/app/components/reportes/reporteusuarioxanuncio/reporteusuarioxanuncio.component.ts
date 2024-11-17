@@ -32,9 +32,9 @@ export class ReporteusuarioxanuncioComponent implements OnInit {
         {
           data: data.map((item) => item.cantidadCreditos),
           label: 'Cantidad de Creditos por Usuario',
-          backgroundColor: ['#2430e8', '#575fd4', '#373da0', '#95b5ea'], // Colores de fondo
-          borderColor: '#0d3475', // Color de borde
-          borderWidth: 1 // Tiene borde o no
+          backgroundColor: ['#2430e8', '#575fd4', '#373da0', '#95b5ea'],  
+          borderColor: '#0d3475',  
+          borderWidth: 1  
         },
       ];
     });
