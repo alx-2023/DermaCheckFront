@@ -25,6 +25,9 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { PlanesComponent } from './components/landing-page/planes/planes.component';
 import { AcercaDeNosotrosComponent } from './components/landing-page/acerca-de-nosotros/acerca-de-nosotros.component';
 import { TratamientoporfechaComponent } from './components/reportes/tratamientoporfecha/tratamientoporfecha.component';
+import { ReportesComponent } from './components/reportes/reportes.component';
+import { CantidadCreditosPorUsuarioComponent } from './components/reportes/cantidad-creditos-por-usuario/cantidad-creditos-por-usuario.component';
+import { CantidadEnfermedadesporUsuarioComponent } from './components/reportes/cantidad-enfermedadespor-usuario/cantidad-enfermedadespor-usuario.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -92,6 +95,7 @@ export const routes: Routes = [
         path: 'reportes',
         component: TratamientoporfechaComponent,
       },
+      
     ],
     canActivate: [seguridadGuard],
   },
@@ -106,6 +110,14 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: CreaeditausuariosComponent,
+      },
+      {
+        path: 'reportes',
+        component: CantidadCreditosPorUsuarioComponent,
+      },
+      {
+        path: 'reportes2',
+        component: CantidadEnfermedadesporUsuarioComponent,
       },
        
     ],

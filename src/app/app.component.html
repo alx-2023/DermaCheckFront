@@ -15,11 +15,10 @@
             <ul class="dropdown-menu" aria-labelledby="usuariosDropdown">
               <li><a class="dropdown-item" routerLink="/usuarios"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
               <li><a class="dropdown-item" routerLink="/usuarios/insertar"><mat-icon class="iconos">add</mat-icon> Registrar</a></li>
-              <li>
-                <a class="dropdown-item" routerLink="/usuarios/Usuario-Cantidad-Creditos">
-                  <mat-icon class="iconos">pie_chart</mat-icon> Reporte cantidad
-                </a>
-              </li>
+              <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/usuarios/reportes"><mat-icon class="iconos">add</mat-icon> Reportes</a></li>
+              <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/usuarios/reportes2"><mat-icon class="iconos">add</mat-icon> Reporte de Enfermedades</a></li>
+              
+              
             </ul>
           </li>
           <li class="nav-item dropdown" *ngIf="isAdmin()">
