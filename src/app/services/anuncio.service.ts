@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Anuncio } from '../models/Anuncio';
 import { HttpClient } from '@angular/common/http';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { AnuncioxUsuarioDTO } from '../models/AnuncioxUsuarioDTO';
 const base_url = environment.base;
 
 @Injectable({
@@ -33,5 +34,9 @@ export class AnuncioService {
   }
   update(anuncio: Anuncio) {
     return this.http.patch(this.url, anuncio);
+  }
+
+  getQuantity():Observable<AnuncioxUsuarioDTO[]>{
+    return this.http.get<AnuncioxUsuarioDTO[]>(`${this.url}/AnunciosxUsuarios`)
   }
 }

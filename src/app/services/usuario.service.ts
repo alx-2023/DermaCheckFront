@@ -5,6 +5,7 @@ import { Usuario } from '../models/Usuario';
 import { Observable, retry, Subject } from 'rxjs';
 import { UsuarioxAnuncioCreditosDTO } from '../models/UsuarioxAnuncioCreditosDTO';
 import { EnfermedadesxUsuarioDTO } from '../models/EnfermedadesxUsuarioDTO';
+import { DiagnosticoXUsuarioDTO } from '../models/DiagnosticoXUsuarioDTO';
 const base_url = environment.base;
 @Injectable({
   providedIn: 'root',
@@ -43,5 +44,9 @@ export class UsuarioService {
   }
   obtenerCantidadEnfermades(): Observable<EnfermedadesxUsuarioDTO[]> {
     return this.http.get<EnfermedadesxUsuarioDTO[]>(`${this.url}/Usuario-Cantidad-Enfermedades`);
+  }
+
+  getQuantity():Observable<DiagnosticoXUsuarioDTO[]>{
+    return this.http.get<DiagnosticoXUsuarioDTO[]>(`${this.url}/CantidadDiagnosticosPorUsuario`)
   }
 }
