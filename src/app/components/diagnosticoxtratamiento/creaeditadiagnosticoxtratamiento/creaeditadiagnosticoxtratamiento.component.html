@@ -12,18 +12,15 @@
       <mat-form-field>
         <mat-label>Diagnosticos</mat-label>
         <mat-select formControlName="hidDiagnostico">
-          @for (food of listaDiagnosticos; track food) {
-          <mat-option [value]="food.idDiagnostico">{{ food.idDiagnostico }}</mat-option>
-          }
+          <mat-option *ngFor="let food of listaDiagnosticos" [value]="food.idDiagnostico">{{ food.idDiagnostico }}</mat-option>
         </mat-select>
       </mat-form-field>
       <br />
       <mat-form-field>
           <mat-label>Tratamientos</mat-label>
           <mat-select formControlName="hidTratamiento">
-            @for (food of listaTratamientos; track food) {
-            <mat-option [value]="food.idTratamiento">{{ food.idTratamiento }}</mat-option>
-            }
+            <mat-option *ngFor="let food of listaTratamientos" [value]="food.idTratamiento">{{ food.idTratamiento }}</mat-option>
+
           </mat-select>
         </mat-form-field>
         <br />
