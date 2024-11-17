@@ -47,4 +47,10 @@ export class LoginComponent implements OnInit{
     this.router.navigate(['LandingPage/AcercaDeNosotros']);
   }
 
+  register(){
+    this.router.navigate(['registrarse']);
+  }
+
+  
+
 }
