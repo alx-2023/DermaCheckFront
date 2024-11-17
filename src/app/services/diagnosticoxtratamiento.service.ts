@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { DiagnosticoxTratamiento } from '../models/DiagnosticoxTratamiento';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { EstadoTRUEDTO } from '../models/EstadoTRUEDTO';
+import { EstadoFALSEDTO } from '../models/EstadoFALSEDTO';
 const base_url = environment.base;
 
 @Injectable({
@@ -36,4 +38,14 @@ export class DiagnosticoxtratamientoService {
   update(diagnosticoxTratamiento: DiagnosticoxTratamiento) {
     return this.http.patch(this.url, diagnosticoxTratamiento);
   }
+
+  enable(): Observable<EstadoTRUEDTO[]>{
+    return this.http.get<EstadoTRUEDTO[]>(`${this.url}/EstadodeTratamientoIndicandoDiagnisticoyUsuarioTERMINADO`);
+  }
+
+  desable(): Observable<EstadoFALSEDTO[]>{
+    return this.http.get<EstadoFALSEDTO[]>(`${this.url}/EstadodeTratamientoIndicandoDiagnisticoyUsuarioNOTERMINADO`);
+  }
+
+
 }

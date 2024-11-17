@@ -1,0 +1,18 @@
+<div class="container">
+    <h2>Diagnósticos con Tratamientos Terminados</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID Diagnóstico</th>
+          <th>Fecha Diagnóstico</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tratamiento of tratamientos">
+          <td>{{ tratamiento.idDiagnostico }}</td>
+          <td>{{ tratamiento.fechaDiagnostico | date: 'shortDate' }}</td>  
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

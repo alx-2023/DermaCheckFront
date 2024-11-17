@@ -34,6 +34,8 @@ import { recuperacionesxusuarioComponent } from './components/reportes/recuperac
 import { revistasporusuarioComponent } from './components/reportes/revistasporusuario/revistasporusuario.component';
 import { ReporteusuarioxanuncioComponent } from './components/reportes/reporteusuarioxanuncio/reporteusuarioxanuncio.component';
 import { InsertdiagnosticoComponent } from './components/diagnostico/insertdiagnostico/insertdiagnostico.component';
+import { ReportediagxtrataenableComponent } from './components/reportes/reportediagxtrataenable/reportediagxtrataenable.component';
+import { ReportediagxtratafalseComponent } from './components/reportes/reportediagxtratafalse/reportediagxtratafalse.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -236,6 +238,14 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: CreaeditadiagnosticoxtratamientoComponent,
       },
+      {
+        path:'reporteenable',
+        component: ReportediagxtrataenableComponent,
+      },
+      {
+        path:'reportefalse',
+        component: ReportediagxtratafalseComponent
+      }
     ],
     canActivate: [seguridadGuard],
   },
