@@ -46,7 +46,7 @@
               <mat-icon>healing</mat-icon>Diagnósticos
             </a>
             <ul class="dropdown-menu" aria-labelledby="diagnosticosDropdown">
-              <li><a class="dropdown-item" routerLink="/diagnosticos/listar"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
+              <li><a class="dropdown-item" routerLink="/diagnosticos"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
               <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/diagnosticos/registrar"><mat-icon class="iconos">add</mat-icon> Registrar</a></li>
               <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/diagnosticos/reportes"><mat-icon class="iconos"> pie_chart</mat-icon> Reportes</a></li>
             </ul>
