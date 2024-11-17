@@ -1,7 +1,7 @@
 .container {
   max-width: 800px;
   margin: 5% auto;
-  padding: 20px;
+  padding: 30px;
   background: #ffffff; /* Color de fondo similar al de la primera imagen */
   border-radius: 10px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -13,7 +13,7 @@
   font-weight: bold;
   color: #091389;
   font-size: 2.5em;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 mat-form-field {

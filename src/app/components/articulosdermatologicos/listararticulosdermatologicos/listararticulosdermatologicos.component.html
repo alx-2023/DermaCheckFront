@@ -3,30 +3,31 @@
     <div class="row">
       <ng-container *ngFor="let element of pagedData"> 
         <mat-card class="col-md-4 mb-4" style="margin: 0 20px;">
-            <mat-card-header>
-                <mat-card-title>{{ element.nombreRevista }}</mat-card-title>
-            </mat-card-header>
             <mat-card-content>
-                <p><strong>Id: </strong> {{ element.idArticulosDermatologico }}</p>
                 <p><strong>Nombre: </strong> {{ element.nombreRevista }}</p>
+                <p><strong>Id Revista: </strong> {{ element.idArticulosDermatologico }}</p>
                 <p><strong>Tipo: </strong> {{ element.tipoRevista }}</p>
-                <p><strong>Descripción: </strong> {{ element.descripcion }}</p>
                 <p><strong>Url: </strong> <a href= "{{ element.url }}" target="_blank">{{ element.url }}</a></p>
-                <p><strong>Usuario: </strong> {{ element.usuario.idUsuario }}</p>
-                <p>
+                <p><strong>Descripción: </strong> {{ element.descripcion }}</p>
+                <p><strong>Nombre de Usuario: </strong> {{ element.usuario.username }}</p>
+                <div class="iconos">
                     <button mat-raised-button [routerLink]="['ediciones', element.idArticulosDermatologico]">
-                        <mat-icon>edit</mat-icon> Editar
+                        <mat-icon>edit</mat-icon> 
                     </button>
-                </p>
-                <p>
+                
                     <button mat-button (click)="eliminar(element.idArticulosDermatologico)">
-                        <mat-icon>delete</mat-icon> Eliminar
+                        <mat-icon>delete</mat-icon>
                     </button>
-                </p>
+                </div>
             </mat-card-content>
         </mat-card>
         </ng-container>
     </div>
+
+    <div *ngIf="dataSource.length === 0" class="mensaje-vacio">
+        <span style="color: rgb(184, 1, 1);">  {{ mensajeSinRegistros }}</span>
+    </div>
+
     <div class="paginator-container">
         <mat-paginator [length]="dataSource.length"
                    [pageSize]="pageSize"

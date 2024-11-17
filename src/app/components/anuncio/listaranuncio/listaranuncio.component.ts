@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 export class ListaranuncioComponent implements OnInit {
   dataSource: Anuncio[] = []; 
   displayedColumns: string[] = ['Id', 'Url', 'Descripcion', 'Creditos', 'Ingresos', 'Duracion', 'Usuario'];
-
+  mensajeSinRegistros = 'No hay anuncios registrados';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   pageSize = 3;

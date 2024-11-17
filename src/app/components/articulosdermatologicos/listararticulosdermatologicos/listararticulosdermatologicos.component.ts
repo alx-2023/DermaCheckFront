@@ -18,7 +18,7 @@ import { CommonModule } from '@angular/common';
 export class ListararticulosdermatologicosComponent implements OnInit {
   dataSource: ArticulosDermatologicos[] = [];
   displayedColumns: string[] = ['Id', 'Nombre', 'Tipo', 'Descripcion', 'URL', 'Usuario'];
-
+  mensajeSinRegistros = 'No hay articulos registrados';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   pageSize = 3;

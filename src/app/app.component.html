@@ -38,7 +38,7 @@
 
               <li><a class="dropdown-item" routerLink="/recuperaciones"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
               <li><a class="dropdown-item" routerLink="/recuperaciones/insertar"><mat-icon class="iconos">add</mat-icon> Registrar</a></li>
-
+              <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/recuperaciones/reportes"><mat-icon class="iconos">bar_chart</mat-icon> Reportes</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -86,7 +86,7 @@
             <ul class="dropdown-menu" aria-labelledby="anunciosDropdown">
               <li><a class="dropdown-item" routerLink="/anuncios"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
               <li *ngIf="isAdmin() || isEmpresas()"><a class="dropdown-item" routerLink="/anuncios/insertar"><mat-icon class="iconos">add</mat-icon> Registrar</a></li>
-              <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/anuncios/reportes"><mat-icon class="iconos">bar_chart</mat-icon> Reportes</a></li>
+              <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/anuncios/reportes"><mat-icon class="iconos">pie_chart</mat-icon> Reportes</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -96,6 +96,7 @@
             <ul class="dropdown-menu" aria-labelledby="articulosdermatologicosDropdown">
               <li><a class="dropdown-item" routerLink="/articulos-dermatologicos"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
               <li *ngIf="isAdmin() || isEspecialista()"><a class="dropdown-item" routerLink="/articulos-dermatologicos/insertar"><mat-icon class="iconos">add</mat-icon> Registrar</a></li>
+              <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/articulos-dermatologicos/reportes"><mat-icon class="iconos">pie_chart</mat-icon> Reportes</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown" *ngIf="isAdmin() || isEspecialista()">

@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ArticulosDermatologicos } from '../models/ArticulosDermatologicos';
 import { environment } from '../../environments/environment';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
+import { revistasporusuarioDTO } from '../models/RevistasporUsuario';
 const base_url = environment.base;
 
 @Injectable({
@@ -32,5 +33,8 @@ export class ArticulosdermatologicosService {
   }
   update(articulosDermatologicos: ArticulosDermatologicos) {
     return this.http.patch(this.url, articulosDermatologicos);
+  }
+  getQuantity(): Observable<revistasporusuarioDTO[]>{
+    return this.http.get<revistasporusuarioDTO[]>(`${this.url}/RevistasPorUsuario`)
   }
 }
