@@ -1,7 +1,7 @@
 body {
     background: linear-gradient(180deg, #cfe7f3, #83bdf0);
     font-family: 'Arial', sans-serif;
-    padding-top: 70px; /* Espacio para el navbar */
+    
 }
 
 .navbar-brand {

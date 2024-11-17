@@ -1,16 +1,22 @@
-<div class="container" style="text-align: center;">
+<div class="container" style="text-align: center">
   <div style="margin: 5%">
     <h1>REGISTRAR DIAGNOSTICO</h1>
   </div>
   <div>
     <form [formGroup]="form" (ngSubmit)="register()">
-
-      <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
+      <mat-form-field
+        class="example-full-width"
+        *ngIf="edicion"
+        style="width: 100%; margin-bottom: 20px"
+      >
         <mat-label>Id</mat-label>
         <input matInput formControlName="hidDiagnostico" />
       </mat-form-field>
 
-      <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+      <mat-form-field
+        class="example-full-width"
+        style="width: 100%; margin-bottom: 20px"
+      >
         <mat-label>Puntuacion</mat-label>
         <input matInput placeholder="Ejem. 10" formControlName="hpuntuacion" />
         <mat-error *ngIf="form.controls['hpuntuacion']?.hasError('required')">
@@ -24,61 +30,89 @@
         </mat-error>
       </mat-form-field>
 
-
       <div class="row">
         <div class="col-md-6">
-          <mat-form-field style="width: 100%;">
-            <mat-label>Fecha Diagnostico</mat-label>
-            <input matInput [matDatepicker]="picker2" formControlName="hfechaDiagnostico" />
+          <mat-form-field style="width: 100%">
+            <mat-label>Fecha Diagnóstico</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker2"
+              formControlName="hfechaDiagnostico"
+            />
             <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matIconSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
-            <mat-error *ngIf="form.controls['hfechaDiagnostico']?.hasError('required')">
-              La fecha de diagnostico es obligatoria
+            <mat-error
+              *ngIf="form.controls['hfechaDiagnostico']?.hasError('required')"
+            >
+              La fecha de diagnóstico es obligatoria
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%">
+            <mat-label>Usuario</mat-label>
+            <mat-select formControlName="husuario">
+              <mat-option *ngFor="let food of usuario" [value]="food.idUsuario">
+                {{ food.username }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="form.controls['husuario']?.hasError('required')">
+              El usuario es obligatorio
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%">
+            <mat-label>Enfermedades</mat-label>
+            <mat-select formControlName="henfermedad">
+              <mat-option
+                *ngFor="let food of enfermedades"
+                [value]="food.idEnfermedad"
+              >
+                {{ food.nombreEnfermedad }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="form.controls['henfermedad']?.hasError('required')"
+            >
+              La enfermedad es obligatoria
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4">
+          <mat-form-field style="width: 100%">
+            <mat-label>Centros Médicos</mat-label>
+            <mat-select formControlName="hcentrosMedicos">
+              <mat-option
+                *ngFor="let food of centros"
+                [value]="food.idCentroMedico"
+              >
+                {{ food.nombre }}
+              </mat-option>
+            </mat-select>
+            <mat-error
+              *ngIf="form.controls['hcentrosMedicos']?.hasError('required')"
+            >
+              El centro médico es obligatorio
             </mat-error>
           </mat-form-field>
         </div>
       </div>
 
-      <mat-form-field>
-        <mat-label>Usuario</mat-label>
-        <mat-select formControlName="husuario">
-          <mat-option *ngFor="let food of usuario" [value]="food.idUsuario">
-            {{ food.username }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.controls['husuario']?.hasError('required')">
-          El usuario es obligatorio
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Enfermedades</mat-label>
-        <mat-select formControlName="henfermedad">
-          <mat-option *ngFor="let food of enfermedades" [value]="food.idEnfermedad">
-            {{ food.nombreEnfermedad }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.controls['henfermedad']?.hasError('required')">
-          La enfermedad es obligatoria
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
-        <mat-label>Centros Medicos</mat-label>
-        <mat-select formControlName="hcentrosMedicos">
-          <mat-option *ngFor="let food of centros" [value]="food.idCentroMedico">
-            {{ food.nombre }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="form.controls['hcentrosMedicos']?.hasError('required')">
-          El centro médico es obligatorio
-        </mat-error>
-      </mat-form-field>
-
-      <div style="width: 100%; display: flex; justify-content: center;">
-          <button mat-button class="custom-button" style="margin-top: 20px;">Registrar</button>
-        </div>
+      <div style="width: 100%; display: flex; justify-content: center">
+        <button mat-button class="custom-button" style="margin-top: 20px">
+          Registrar
+        </button>
+      </div>
     </form>
   </div>
 </div>

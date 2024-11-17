@@ -73,36 +73,37 @@ export class CreaeditadiagnosticoxtratamientoComponent implements OnInit {
     });
   }
 
-  aceptar() {
+  aceptar(): void {
     if (!this.form.valid) {
       this.snackBar.open('Por favor complete todos los campos obligatorios.', 'Cerrar', {
         duration: 3000,
       });
       return;
     }
-
-      this.diagXTrat.diagnostico.idDiagnostico = this.form.value.hidDiagnostico;
-      this.diagXTrat.tratamiento.idTratamiento = this.form.value.hidTratamiento;
-      
-      if (this.edicion) {
-        this.dtS.update(this.diagXTrat).subscribe(() => {
-          this.dtS.list().subscribe((data) => {
-            this.dtS.setList(data);
-          });
-          this.snackBar.open('Registro actualizado exitosamente.', 'Cerrar', {
-            duration: 3000,
-          });
+  
+    this.diagXTrat.idDiagnosticoxTratamiento = this.form.value.hidDiagxTrat;
+    this.diagXTrat.diagnostico.idDiagnostico = this.form.value.hidDiagnostico;
+    this.diagXTrat.tratamiento.idTratamiento = this.form.value.hidTratamiento;
+  
+    if (this.edicion) {
+      this.dtS.update(this.diagXTrat).subscribe((data) => {
+        this.dtS.list().subscribe((data) => {
+          this.dtS.setList(data); 
         });
-      }
-      else {
-        this.dtS.insert(this.diagXTrat).subscribe((data) => {
-          this.dtS.list().subscribe((data) => {
-            this.dtS.setList(data);
-          });
+        this.snackBar.open('Registro actualizado exitosamente.', 'Cerrar', {
+          duration: 3000,
+        });
+        this.router.navigate(['diagnosticos-tratamientos']); 
+      });
+    } else {
+      this.dtS.insert(this.diagXTrat).subscribe((data) => {
+        this.dtS.list().subscribe((data) => {
+          this.dtS.setList(data); 
         });
         this.router.navigate(['diagnosticos-tratamientos']);
-      }
+      });
     }
+  }
     init() {
       if (this.edicion) {
         this.dtS.listId(this.id).subscribe((data) => {
