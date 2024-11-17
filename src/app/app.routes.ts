@@ -25,10 +25,6 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { PlanesComponent } from './components/landing-page/planes/planes.component';
 import { AcercaDeNosotrosComponent } from './components/landing-page/acerca-de-nosotros/acerca-de-nosotros.component';
 import { TratamientoporfechaComponent } from './components/reportes/tratamientoporfecha/tratamientoporfecha.component';
-import { RegistrousuarioComponent } from './components/registrousuario/registrousuario.component';
-import { ReportesComponent } from './components/reportes/reportes.component';
-import { CantidadEnfermedadesporUsuarioComponent } from './components/reportes/cantidad-enfermedadespor-usuario/cantidad-enfermedadespor-usuario.component';
-import { CantidadCreditosPorUsuarioComponent } from './components/reportes/cantidad-creditos-por-usuario/cantidad-creditos-por-usuario.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
