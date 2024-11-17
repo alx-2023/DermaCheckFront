@@ -1,4 +1,4 @@
 export class EnfermedadesxUsuarioDTO{
-    CantidadEnfermedades:number=0
-     nombreUsuario:string=""
+        nombreUsuario:string='';
+        cantidadEnfermedades:number=0;
 }

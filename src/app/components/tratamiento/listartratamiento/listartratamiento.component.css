@@ -41,13 +41,9 @@
 
   
   /* Contenedor para el paginador con fondo blanco ajustado al contenido */
+
   .paginator-container {
-    background-color: white;
-    border-radius: 10px;
-    padding: 10px;
-    display: inline-block;
-    position: absolute; /* Posiciona el paginador respecto al contenedor principal */
-    bottom: 20px; /* Alinea el paginador en la parte inferior */
-    right: 20px; /* Alinea el paginador en la parte derecha */
-  }
+    width: 500px;
+    margin-left: auto;
+}
   

@@ -2,6 +2,12 @@
   <div style="margin: 2%"><h1>Diagnósticos por tratamiento</h1></div>
   <div>
     <form [formGroup]="form" (submit)="aceptar()">
+      <mat-form-field class="example-full-width" *ngIf="edicion" style="width: 100%; margin-bottom: 20px">
+        <mat-label>ID</mat-label>
+        <input 
+          matInput 
+          formControlName="hidDiagxTrat" [readonly]= "isReadonly" />
+      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Diagnosticos</mat-label>

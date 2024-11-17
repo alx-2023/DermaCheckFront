@@ -1,4 +1,4 @@
 export class UsuarioxAnuncioCreditosDTO{
-    NombreUsuario:string=""
-    CantidadCreditos:number=0
+    nombreUsuario:string='';
+    cantidadCreditos:number=0;
 }
