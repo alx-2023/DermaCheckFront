@@ -3,6 +3,7 @@
     margin: 0 auto; /* Centra el gráfico horizontalmente */
     padding: 15px; /* Espacio alrededor del gráfico */
     box-sizing: border-box;
+    color: #04019e;
    }
   
    @media (max-width: 768px) {
