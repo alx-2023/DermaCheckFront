@@ -1,0 +1,78 @@
+.container h1 {
+  font-family: "Merriweather", sans-serif;
+  font-weight: bold;
+  color: #091389;
+  font-size: 2.5em;
+  margin-bottom: 25px;
+}
+.container {
+  max-width: 600px;
+  margin: 2% auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+mat-form-field .mat-form-field-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field .mat-form-field-infix {
+  margin-bottom: 0;
+}
+
+mat-form-field .mat-form-field-label {
+  margin-bottom: 5px;
+}
+
+mat-form-field .mat-error {
+  margin-top: 0;
+  font-size: 0.9em;
+}
+
+mat-form-field .mat-form-field-underline {
+  bottom: 0;
+}
+
+.error {
+  color: red;
+  margin-top: 0;
+  font-size: 0.9em;
+}
+
+.container .custom-button {
+  background-color: #00416a !important;
+  color: white !important;
+  border: none;
+  color: #ffffff;
+  font-family: "Merriweather", sans-serif;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+.container {
+  margin-bottom: 50px;
+}
+mat-form-field:hover {
+  background-color: #f0f8ff;
+}
+
+.container {
+  margin-bottom: 50px;
+}
