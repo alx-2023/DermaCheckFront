@@ -29,6 +29,8 @@ import { ReportesComponent } from './components/reportes/reportes.component';
 import { RegistrousuarioComponent } from './components/registrousuario/registrousuario.component';
 import { CantidadCreditosPorUsuarioComponent } from './components/reportes/cantidad-creditos-por-usuario/cantidad-creditos-por-usuario.component';
 import { CantidadEnfermedadesporUsuarioComponent } from './components/reportes/cantidad-enfermedadespor-usuario/cantidad-enfermedadespor-usuario.component';
+import { ReportediagnosticoxusuarioComponent } from './components/reportes/reportediagnosticoxusuario/reportediagnosticoxusuario.component';
+import { ReporteanuncioxusuarioComponent } from './components/reportes/reporteanuncioxusuario/reporteanuncioxusuario.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -120,6 +122,11 @@ export const routes: Routes = [
         path: 'reportes2',
         component: CantidadEnfermedadesporUsuarioComponent,
       },
+      {
+        path: 'reportes3',
+        component: ReportediagnosticoxusuarioComponent,
+      },
+       
        
     ],
     
@@ -133,6 +140,10 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: CreaeditaanuncioComponent,
+      },
+      {
+        path: 'reportes',
+        component: ReporteanuncioxusuarioComponent,
       },
     ],
     canActivate: [seguridadGuard],

@@ -17,7 +17,7 @@
               <li><a class="dropdown-item" routerLink="/usuarios/insertar"><mat-icon class="iconos">add</mat-icon> Registrar</a></li>
               <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/usuarios/reportes"><mat-icon class="iconos">add</mat-icon> Reportes</a></li>
               <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/usuarios/reportes2"><mat-icon class="iconos">add</mat-icon> Reporte de Enfermedades</a></li>
-              
+              <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/usuarios/reportes3"><mat-icon class="iconos">bar_chart</mat-icon> Reportes de Diagnosticos</a></li>
               
             </ul>
           </li>
@@ -86,6 +86,7 @@
             <ul class="dropdown-menu" aria-labelledby="anunciosDropdown">
               <li><a class="dropdown-item" routerLink="/anuncios"><mat-icon class="iconos">list</mat-icon> Listar </a></li>
               <li *ngIf="isAdmin() || isEmpresas()"><a class="dropdown-item" routerLink="/anuncios/insertar"><mat-icon class="iconos">add</mat-icon> Registrar</a></li>
+              <li *ngIf="isAdmin()"><a class="dropdown-item" routerLink="/anuncios/reportes"><mat-icon class="iconos">bar_chart</mat-icon> Reportes</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
