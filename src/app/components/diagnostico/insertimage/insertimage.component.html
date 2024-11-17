@@ -1,84 +1,48 @@
 <div class="container">
-    <h3>Registro de Imágenes</h3>
+    <h3 class="text-center">Registro de Imágenes</h3>
     <form [formGroup]="form">
         <div class="row">
-            <div class="col-3">
-                <mat-card>
+            <div class="col-12 col-md-3 mb-3">
+                <mat-card class="shadow-sm">
                     <mat-card-content>
-                        <h5>Imagen Principal</h5>
-                        <label for="imagePrincipal" id="icon-image" class="btn btn-primary">
-                            <mat-icon>cloud_upload</mat-icon>
+                        <h5 class="text-center">Imagen Principal</h5>
+                        <label for="imagePrincipal" class="btn btn-light d-block w-100">
+                            <mat-icon>cloud_upload</mat-icon> Cargar Imagen
                         </label>
                         <label *ngIf="previewUrls[0]" class="btn btn-danger" (click)="ClearImage(0)">
                             <mat-icon>close</mat-icon>
                         </label>
                         <input id="imagePrincipal" type="file" [hidden]="true" accept="image/*"
-                            (change)="onFileSelected($event, 0);" formControlName="imagePrincipal">
-                        <div *ngIf="previewUrls[0]" class="container-img-preview">
-                            <img [src]="previewUrls[0]" alt="Image preview" />
+                               (change)="onFileSelected($event, 0);" formControlName="imagePrincipal">
+                        <div *ngIf="previewUrls[0]" class="container-img-preview mt-2">
+                            <img [src]="previewUrls[0]" alt="Imagen previa" class="img-fluid" />
                         </div>
                     </mat-card-content>
                 </mat-card>
             </div>
-            <div class="col-3">
-                <mat-card>
+            <div class="col-12 col-md-3 mb-3" *ngFor="let image of previewUrls; let i = index">
+                <mat-card class="shadow-sm">
                     <mat-card-content>
-                        <h5>Imagen 2 Opcional</h5>
-                        <label for="image2" id="icon-image" class="btn btn-primary">
-                            <mat-icon>cloud_upload</mat-icon>
+                        <h5 class="text-center">Imagen {{i + 2}} Opcional</h5>
+                        <label for="image{{i + 2}}" class="btn btn-light d-block w-100">
+                            <mat-icon>cloud_upload</mat-icon> Cargar Imagen
                         </label>
-                        <label *ngIf="previewUrls[1]" class="btn btn-danger" (click)="ClearImage(1)">
+                        <label *ngIf="previewUrls[i + 1]" class="btn btn-danger" (click)="ClearImage(i + 1)">
                             <mat-icon>close</mat-icon>
                         </label>
-                        <input id="image2" type="file" [hidden]="true" accept="image/*"
-                            (change)="onFileSelected($event, 1);" formControlName="image2">
-                        <div *ngIf="previewUrls[1]" class="container-img-preview">
-                            <img [src]="previewUrls[1]" alt="Image preview" />
-                        </div>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <div class="col-3">
-                <mat-card>
-                    <mat-card-content>
-                        <h5>Imagen 3 Opcional</h5>
-                        <label for="image3" id="icon-image" class="btn btn-primary">
-                            <mat-icon>cloud_upload</mat-icon>
-                        </label>
-                        <label *ngIf="previewUrls[2]" class="btn btn-danger" (click)="ClearImage(2)">
-                            <mat-icon>close</mat-icon>
-                        </label>
-                        <input id="image3" type="file" [hidden]="true" accept="image/*"
-                            (change)="onFileSelected($event, 2);" formControlName="image3">
-                        <div *ngIf="previewUrls[2]" class="container-img-preview">
-                            <img [src]="previewUrls[2]" alt="Image preview" />
-                        </div>
-                    </mat-card-content>
-                </mat-card>
-            </div>
-            <div class="col-3">
-                <mat-card>
-                    <mat-card-content>
-                        <h5>Imagen 4 Opcional</h5>
-                        <label for="image4" id="icon-image" class="btn btn-primary">
-                            <mat-icon>cloud_upload</mat-icon>
-                        </label>
-                        <label *ngIf="previewUrls[3]" class="btn btn-danger" (click)="ClearImage(3)">
-                            <mat-icon>close</mat-icon>
-                        </label>
-                        <input id="image4" type="file" [hidden]="true" accept="image/*"
-                            (change)="onFileSelected($event, 3);" formControlName="image4">
-                        <div *ngIf="previewUrls[3]" class="container-img-preview">
-                            <img [src]="previewUrls[3]" alt="Image preview" />
+                        <input id="image{{i + 2}}" type="file" [hidden]="true" accept="image/*"
+                               (change)="onFileSelected($event, i + 1);" formControlName="image{{i + 2}}">
+                        <div *ngIf="previewUrls[i + 1]" class="container-img-preview mt-2">
+                            <img [src]="previewUrls[i + 1]" alt="Imagen previa" class="img-fluid" />
                         </div>
                     </mat-card-content>
                 </mat-card>
             </div>
         </div>
-        <mat-dialog-actions>
+        <mat-dialog-actions class="d-flex justify-content-between">
             <button mat-raised-button [disabled]="ocultarBoton" color="primary" (click)="register()">Registrar</button>
             <button mat-raised-button [mat-dialog-close] color="warn">Cancelar</button>
-            <mat-progress-bar mode="indeterminate" [hidden]="progress_bar"></mat-progress-bar>
+            <mat-progress-bar mode="indeterminate" [hidden]="progress_bar" class="w-100"></mat-progress-bar>
         </mat-dialog-actions>
     </form>
 </div>
