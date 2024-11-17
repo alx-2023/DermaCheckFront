@@ -114,7 +114,7 @@ export class InsertdiagnosticoComponent implements OnInit {
         this.dS.insert(this.diagnostico).subscribe((d) => {
           this.dS.list().subscribe((d) => {
             this.dS.setList(d);
-            this.snackBar.open('Recuperación registrada correctamente', 'Cerrar', {
+            this.snackBar.open('Diagnóstico registrado correctamente', 'Cerrar', {
               duration: 3000,
             }).afterOpened().subscribe(() => {
               this.form.reset();

@@ -5,10 +5,11 @@
       <ng-container *ngFor="let element of pagedData">
         <mat-card class="col-md-4 mb-4" style="margin: 0 20px">
           <mat-card-header class="card-header">
-            <mat-icon class="icon">person</mat-icon>
+            <mat-icon>bug_report</mat-icon>
           </mat-card-header>
           <mat-card-content>
            
+            <p><strong>Enfermedad: </strong> {{ element.diagnostico.enfermedad.nombreEnfermedad }}</p>
             <p><strong>Tratamiento: </strong> {{ element.tratamiento.nombreTratamiento }}</p>
 
   
