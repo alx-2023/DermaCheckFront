@@ -1,6 +1,6 @@
 <div class="container my-4">
   <h1 class="text-center">Diagnósticos</h1>
-  <div class="row justify-content-center align-items-center">
+  <div class="row justify-content-center align-items-stretch">
     <ng-container *ngFor="let element of pagedData">
       <mat-card class="col-md-4 mb-4" style="margin: 0 20px">
         <mat-card-header>
@@ -12,22 +12,20 @@
           <p><strong>ID de Usuario: </strong> {{ element.usuario?.idUsuario }}</p>
           <p><strong>Enfermedad: </strong> {{ element.enfermedad?.nombreEnfermedad }}</p>
           <p><strong>Centro Médico: </strong> {{ element.centrosMedicos?.nombre }}</p>
-          
-          <div class="btn-actions">
+
+          <div class="btn-actions d-flex justify-content-between align-items-center">
             <button mat-raised-button color="primary" [routerLink]="['ediciones', element.idDiagnostico]">
               <mat-icon>edit</mat-icon> Editar
             </button>
             <button mat-raised-button color="warn" (click)="eliminar(element.idDiagnostico)">
               <mat-icon>delete</mat-icon> Eliminar
             </button>
-        
-            <!-- Coloca el bloque del botón de imágenes aquí -->
-            <div class="container-ac">
-              <button class="accioness upload" mat-raised-button (click)="InsertImage(element.idDiagnostico)"
-                      matTooltip="Subir Imagenes">
-                <mat-icon>add_photo_alternate</mat-icon>
-              </button>
-            </div>
+
+            <!-- Botón de imágenes con estilo ajustado -->
+            <button class="accioness upload" mat-raised-button color="accent" (click)="InsertImage(element.idDiagnostico)"
+                    matTooltip="Subir Imágenes">
+              <mat-icon>add_photo_alternate</mat-icon> Subir Imagen
+            </button>
           </div>
         </mat-card-content>
       </mat-card>
@@ -35,10 +33,10 @@
   </div>
 
   <mat-paginator [length]="dataSource.data.length"
-  [pageSize]="pageSize"
-  [pageSizeOptions]="[3, 6]"
-  (page)="onPageChange($event)"
-  showFirstLastButtons
-  aria-label="Select page of periodic elements">
-</mat-paginator>
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="[3, 6]"
+                 (page)="onPageChange($event)"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
 </div>
