@@ -1,0 +1,82 @@
+.chart-container {
+    width: 60%; 
+
+    margin: 0 auto; 
+
+    padding: 15px;
+
+    box-sizing: border-box;
+  }
+
+  @media (max-width: 768px) {
+    .chart-container {
+      width: 100%; 
+
+      padding: 10px; /
+    }
+  }
+
+  .title-container {
+    text-align: center;
+
+    margin-bottom: 40px; 
+
+    margin-top: 60px; /
+  }
+
+  .title {
+    font-family: "Poppins", sans-serif;
+    text-align: center;
+
+    font-weight: 600;
+
+    font-size: 2em;
+
+    color: #333;
+  }
+
+  
+  .input-field {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+  }
+  
+  .input-style {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+  
+  .btn-buscar {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-buscar:hover {
+    background-color: #357ae8;
+  }
+  
+  .chart-container {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .no-tratamientos {
+    text-align: center;
+    color: #ff4444;
+    font-size: 18px;
+  }
+  

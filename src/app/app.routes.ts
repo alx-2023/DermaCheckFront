@@ -27,10 +27,10 @@ import { AcercaDeNosotrosComponent } from './components/landing-page/acerca-de-n
 import { TratamientoporfechaComponent } from './components/reportes/tratamientoporfecha/tratamientoporfecha.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
 import { RegistrousuarioComponent } from './components/registrousuario/registrousuario.component';
-import { CantidadCreditosPorUsuarioComponent } from './components/reportes/cantidad-creditos-por-usuario/cantidad-creditos-por-usuario.component';
 import { CantidadEnfermedadesporUsuarioComponent } from './components/reportes/cantidad-enfermedadespor-usuario/cantidad-enfermedadespor-usuario.component';
 import { ReportediagnosticoxusuarioComponent } from './components/reportes/reportediagnosticoxusuario/reportediagnosticoxusuario.component';
 import { ReporteanuncioxusuarioComponent } from './components/reportes/reporteanuncioxusuario/reporteanuncioxusuario.component';
+import { ReporteusuarioxanuncioComponent } from './components/reportes/reporteusuarioxanuncio/reporteusuarioxanuncio.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -116,11 +116,11 @@ export const routes: Routes = [
       },
       {
         path: 'reportes',
-        component: CantidadCreditosPorUsuarioComponent,
+        component: ReporteusuarioxanuncioComponent
       },
       {
         path: 'reportes2',
-        component: CantidadEnfermedadesporUsuarioComponent,
+        component: CantidadEnfermedadesporUsuarioComponent
       },
       {
         path: 'reportes3',
