@@ -95,9 +95,10 @@ export class CreaeditaanuncioComponent implements OnInit {
         this.cS.insert(this.Anuncio).subscribe(() => {
           this.cS.list().subscribe((d) => {
             this.cS.setList(d);
-            this.router.navigate(['anuncios']);
+            
           });
-          this.snackBar.open('Articulo registrado correctamente', 'Cerrar', {
+          
+          this.snackBar.open('Anuncio registrado correctamente', 'Cerrar', {
             duration: 3000,
           });
         });

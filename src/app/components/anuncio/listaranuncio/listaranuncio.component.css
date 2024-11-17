@@ -7,5 +7,6 @@
 }
 .paginator-container{
     width: 500px;
-    margin-left: auto; 
+    margin-left: auto;
+    padding-bottom: 20%;
 }
