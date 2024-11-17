@@ -26,6 +26,7 @@ import { PlanesComponent } from './components/landing-page/planes/planes.compone
 import { AcercaDeNosotrosComponent } from './components/landing-page/acerca-de-nosotros/acerca-de-nosotros.component';
 import { TratamientoporfechaComponent } from './components/reportes/tratamientoporfecha/tratamientoporfecha.component';
 import { ReportesComponent } from './components/reportes/reportes.component';
+import { RegistrousuarioComponent } from './components/registrousuario/registrousuario.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -198,6 +199,12 @@ export const routes: Routes = [
     path: 'homes',
     component: HomeComponent,
     canActivate: [seguridadGuard], // solo construcciones, se debe agregar a cada uno
+    
+  },
+
+  {
+    path: 'registrarse',
+    component: RegistrousuarioComponent,
     
   },
 
