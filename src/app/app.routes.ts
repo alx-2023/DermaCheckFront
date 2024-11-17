@@ -30,6 +30,8 @@ import { RegistrousuarioComponent } from './components/registrousuario/registrou
 import { CantidadEnfermedadesporUsuarioComponent } from './components/reportes/cantidad-enfermedadespor-usuario/cantidad-enfermedadespor-usuario.component';
 import { ReportediagnosticoxusuarioComponent } from './components/reportes/reportediagnosticoxusuario/reportediagnosticoxusuario.component';
 import { ReporteanuncioxusuarioComponent } from './components/reportes/reporteanuncioxusuario/reporteanuncioxusuario.component';
+import { recuperacionesxusuarioComponent } from './components/reportes/recuperacionesporusuario/recuperacionesporusuario.component';
+import { revistasporusuarioComponent } from './components/reportes/revistasporusuario/revistasporusuario.component';
 import { ReporteusuarioxanuncioComponent } from './components/reportes/reporteusuarioxanuncio/reporteusuarioxanuncio.component';
 import { InsertdiagnosticoComponent } from './components/diagnostico/insertdiagnostico/insertdiagnostico.component';
 
@@ -161,6 +163,10 @@ export const routes: Routes = [
         path: 'ediciones/:id',
         component: CreaeditaarticulosdermatologicosComponent,
       },
+      {
+        path: 'reportes',
+        component: revistasporusuarioComponent,
+      },
     ],
     canActivate: [seguridadGuard],
   },
@@ -176,6 +182,10 @@ export const routes: Routes = [
       {
         path: 'ediciones/:id',
         component: CreaeditarecuperacionComponent,
+      },
+      {
+        path: 'reportes',
+        component: recuperacionesxusuarioComponent,
       },
     ],
     canActivate: [seguridadGuard],

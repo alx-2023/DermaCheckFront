@@ -8,19 +8,7 @@
           <mat-label>Id</mat-label>
           <input matInput formControlName="hcodigo" [readonly]="isReadonly" />
         </mat-form-field>
-  
-        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
-          <mat-label>URL</mat-label>
-          <input
-            matInput
-            placeholder="Ejem. https://www.youtube.com/"
-            formControlName="hurl"
-          />
-          <mat-error *ngIf="form.controls['hurl']?.hasError('required')">
-            La URL es obligatoria
-          </mat-error>
-        </mat-form-field>
-  
+
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
           <mat-label>Descripcion</mat-label>
           <input
@@ -33,18 +21,18 @@
           </mat-error>
         </mat-form-field>
   
-      
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
-          <mat-label>Crédito</mat-label>
-          <input matInput placeholder="Ej. 10" formControlName="hcredito"/>
-          <mat-error *ngIf="form.controls['hcredito']?.hasError('pattern')">
-            Solo se permiten números
-          </mat-error>
-          <mat-error *ngIf="form.controls['hcredito']?.hasError('required')">
-            El crédito es obligatorio
+          <mat-label>URL</mat-label>
+          <input
+            matInput
+            placeholder="Ejem. https://www.youtube.com/"
+            formControlName="hurl"
+          />
+          <mat-error *ngIf="form.controls['hurl']?.hasError('required')">
+            La URL es obligatoria
           </mat-error>
         </mat-form-field>
-  
+
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
           <mat-label>Ingresos por Anuncio</mat-label>
           <input
@@ -61,19 +49,31 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
-            <mat-label>Duración (en minutos)</mat-label>
-            <input
-              matInput
-              placeholder="Ej: 3"
-              formControlName="hduracion"
-            />
-            <mat-error *ngIf="form.controls['hduracion']?.hasError('pattern')">
-              Solo se permiten números
-            </mat-error>
-            <mat-error *ngIf="form.controls['hduracion']?.hasError('required')">
-              La duración del vídeo es obligatoria
-            </mat-error>
+          <mat-label>Duración en minutos</mat-label>
+          <input
+            matInput
+            placeholder="Ej: 3"
+            formControlName="hduracion"
+          />
+          <mat-error *ngIf="form.controls['hduracion']?.hasError('pattern')">
+            Solo se permiten números
+          </mat-error>
+          <mat-error *ngIf="form.controls['hduracion']?.hasError('required')">
+            La duración del vídeo es obligatoria
+          </mat-error>
+      </mat-form-field>
+        
+        <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
+          <mat-label>Cantidad de Créditos</mat-label>
+          <input matInput placeholder="Ej. 10" formControlName="hcredito"/>
+          <mat-error *ngIf="form.controls['hcredito']?.hasError('pattern')">
+            Solo se permiten números
+          </mat-error>
+          <mat-error *ngIf="form.controls['hcredito']?.hasError('required')">
+            El crédito es obligatorio
+          </mat-error>
         </mat-form-field>
+
         <mat-form-field class="example-full-width" style="width: 100%; margin-bottom: 20px;">
           <mat-label>Usuario</mat-label>
           <mat-select formControlName="hidUsuario">
