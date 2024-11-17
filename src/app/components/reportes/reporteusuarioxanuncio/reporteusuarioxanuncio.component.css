@@ -1,7 +1,7 @@
 .chart-container {
-    width: 35%; /* Ajusta este valor según sea necesario */
-    margin: 0 auto; /* Centra el gráfico horizontalmente */
-    padding: 15px; /* Espacio alrededor del gráfico */
+    width: 50%;  
+    margin: 0 auto;  
+    padding: 15px; 
     box-sizing: border-box;
     color: #04019e;
    }
@@ -9,15 +9,15 @@
    @media (max-width: 768px) {
   
     .chart-container {
-     width: 100%; /* Ajusta el ancho para pantallas más pequeñas */
-     padding: 10px; /* Reduce el padding en pantallas más pequeñas */
+     width: 100%;  
+     padding: 10px;  
     }
    }
   
    .title-container {
     text-align: center;
-    margin-bottom: 40px; /* Increase the margin-bottom to move the title lower */
-    margin-top: 60px;  /* Add a margin-top to further position it down the page */ 
+    margin-bottom: 40px; 
+    margin-top: 60px;  
    }
   
    .title {

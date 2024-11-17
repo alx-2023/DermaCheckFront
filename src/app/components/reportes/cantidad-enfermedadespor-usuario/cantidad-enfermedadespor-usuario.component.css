@@ -1,7 +1,7 @@
 .chart-container {
-    width: 35%; /* Ajusta este valor según sea necesario */
-    margin: 0 auto; /* Centra el gráfico horizontalmente */
-    padding: 15px; /* Espacio alrededor del gráfico */
+    width: 35%;  
+    margin: 0 auto;  
+    padding: 15px;  
     box-sizing: border-box;
    }
   
