@@ -32,7 +32,7 @@ export class CantidadEnfermedadesporUsuarioComponent implements OnInit {
       this.barChartData=[
         {
           data:data.map(item=>item.cantidadEnfermedades),
-          label:'Cantidad de Anuncios por Usuario',
+          label:'Cantidad de Enfermedades por Usuario',
           backgroundColor:['#2430e8','#f4c216','#373da0','#95b5ea'],
           borderColor:'#0d3475',
           borderWidth:1
