@@ -104,6 +104,10 @@ export class CreaeditarecuperacionComponent implements OnInit{
         this.rS.update(this.Recuperacion).subscribe((data) => {
           this.rS.list().subscribe((data) => {
             this.rS.setList(data);
+            this.snackBar.open('Recuperación actualizada correctamente', 'Cerrar', {
+              duration: 3000,
+            });
+            this.router.navigate(['recuperaciones']);
           });
         });
       } else {
